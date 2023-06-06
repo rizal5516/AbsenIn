@@ -20,6 +20,7 @@
 <body>
 
     <!-- Jquery and Bootstrap Bundle Js -->
+    <script src="assets\template\js\jquery.min.js"></script>
     <script src="assets\template\js\bootstrap.bundle.min.js"></script>
 
     <!-- Main.js -->
