@@ -38,7 +38,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
 $routes->set404Override(function () {
-    echo view('auth/error_404');
+    echo view('auth/error-404');
 });
 
 /*

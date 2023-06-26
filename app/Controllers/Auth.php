@@ -10,4 +10,14 @@ class Auth extends BaseController
     {
         return view('auth/login');
     }
+
+    public function login()
+    {
+        return redirect()->to('admin');
+    }
+
+    public function logout()
+    {
+        return view('auth/login');
+    }
 }
