@@ -1,6 +1,7 @@
 <?= $this->extend('layout/admin') ;?>
 <?= $this->section('content') ;?>
 <?= $this->include('layout/sidebar-admin') ;?>
+<?= session()->getFlashdata('pesan'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
@@ -17,8 +18,8 @@
                         <div id="table-excel-pdf" class="table-editable">
                             <form class="search-form mb-3 col-md-4 float-right">
                                 <span class="table-add float-right mb-3">
-                                    <a href="<?= base_url('admin/tambahDataPegawai') ?>"
-                                        class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
+                                    <a href="<?= base_url('admin/tambah_pegawai') ?>" class="btn btn-sm iq-bg-info"><i
+                                            class="icon-plus1"><span class="pl-1">Add
                                                 New</span></i>
                                     </a>
                                 </span>
@@ -41,23 +42,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if ($pegawai != null) : ?>
+                                    <?php foreach ($pegawai as $p) : ?>
                                     <tr>
-                                        <td>Aisyah</td>
-                                        <td>Kepala Sekolah</td>
-                                        <td><span class="table-remove"><button type="button"
-                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Active</button></span>
-                                        </td>
-                                        <td>guru@gmail.com</td>
+                                        <td><?= $p->nama_pegawai; ?></td>
+                                        <td><?= $p->nama_jabatan; ?></td>
                                         <td>
+                                            <?php if ($p->is_active == 1) : ?>
                                             <span class="table-remove"><button type="button"
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Active</button></span>
+                                            <?php else : ?>
+                                            <span class="table-remove"><button type="button"
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Deactive</button></span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td><?= $p->email; ?></td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="table-remove btn-edit"
+                                                data-placement="top" data-original-title="Edit"
+                                                data-id_pegawai="<?= $p->id_pegawai; ?>"><button
                                                     class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"
                                                     data-toggle="modal" data-target="#exampleModal"><i
-                                                        class="icon-edit"></i>Edit</button></span>
-                                            <span class="table-remove"><button type="button"
+                                                        class="icon-edit"></i>Edit</button></a>
+                                            <a href="<?= base_url('admin/hapus_pegawai'); ?>/<?= $p->id_pegawai; ?>"
+                                                class="table-remove btn-hapus" data-placement="top" title=""
+                                                data-original-title="Delete"><button
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0 ml-2"><i
-                                                        class="icon-delete"></i>Delete</button></span>
+                                                        class="icon-delete"></i>Delete</button></a>
                                         </td>
                                     </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -82,7 +97,8 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <form id="form-wizard1" class="text-center mt-4">
+                            <form action="<?= base_url('admin/edit_pegawai_'); ?>" method="POST"
+                                enctype="multipart/form-data" class="text-center mt-4">
                                 <!-- fieldsets -->
                                 <fieldset>
                                     <div class="form-card text-left">
@@ -90,53 +106,67 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Nama Pegawai</label>
-                                                    <input type="text" class="form-control" name="nama" />
+                                                    <input class="form-control" id="id_pegawai" type="hidden"
+                                                        name="id_pegawai" required>
+                                                    <input type="text" class="form-control" id="nama_pegawai"
+                                                        name="nama_pegawai" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1">
-                                                        <option>Laki - Laki</option>
-                                                        <option>Perempuan</option>
+                                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin"
+                                                        title="Select Product Category" data-live-search="true"
+                                                        required>
+                                                        <option value="Laki - Laki">Laki - Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect2">Jabatan</label>
-                                                    <select class="form-control" id="exampleFormControlSelect2">
-                                                        <option>Kepala Sekolah</option>
-                                                        <option>Office Boy</option>
+                                                    <select class="form-control" id="exampleFormControlSelect2"
+                                                        id="jabatan" name="jabatan" title="Select Product Category"
+                                                        data-live-search="true" required>
+                                                        <?php foreach ($jabatan as $j) : ?>
+                                                        <option value="<?= $j->id_jabatan; ?>">
+                                                            <?= $j->nama_jabatan; ?>
+                                                        </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control" name="email" />
+                                                    <input type="email" class="form-control" id="email" name="email"
+                                                        required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" class="form-control" name="password" />
+                                                    <input type="password" class="form-control" id="password"
+                                                        name="password" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect2">Status</label>
-                                                    <select class="form-control" id="exampleFormControlSelect2">
-                                                        <option>Active</option>
-                                                        <option>Deactive</option>
+                                                    <label for="is_active">Status</label>
+                                                    <select class="form-control" id="is_active" name="is_active"
+                                                        title="Select Product Category" data-live-search="true"
+                                                        required>
+                                                        <option value="1">Active</option>
+                                                        <option value="0">Deactive</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="iq-card justify-content-center align-items-center">
                                                     <div class="iq-card-body">
-                                                        <img src="<?= base_url() ?>/assets/img/pegawai/default.jpg" class="img-thumbnail"
-                                                            alt="Responsive image">
+                                                        <img src="<?= base_url() ?>/assets/img/pegawai/default.jpg"
+                                                            class="img-thumbnail foto-pegawai" alt="Foto Pegawai">
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,18 +178,19 @@
                                                     </div>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
-                                                            id="inputGroupFile01"
-                                                            aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01">Choose
+                                                            aria-describedby="inputGroupFileAddon01" name="gambar"
+                                                            id="input-foto" onchange="previewImg();"
+                                                            accept=".jpg, .jpeg, .png">
+                                                        <label class="custom-file-label" for="input-foto">Choose
                                                             file</label>
                                                     </div>
+                                                    <input type="hidden" name="gambar_lama" id="gambar_lama">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" name="next"
-                                        class="btn user-bg-color text-white next action-button float-left mt-4"
-                                        value="Next">Submit</button>
+                                    <button
+                                        class="btn user-bg-color text-white next action-button float-left mt-4">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -168,5 +199,64 @@
         </div>
     </div>
 </div>
+<script>
+    $('.btn-edit').click(function () {
+        var id_pegawai = $(this).data('id_pegawai');
+
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            data: {
+                id_pegawai: id_pegawai,
+            },
+            url: "<?= base_url('admin/edit_pegawai') ?>",
+            success: function (data) {
+                $.each(data, function (id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email,
+                    password, gambar, is_active, role) {
+                    $("#id_pegawai").val(data.id_pegawai);
+                    $("#nip").val(data.nip);
+                    $("#nama_pegawai").val(data.nama_pegawai);
+                    $("#jenis_kelamin").val(data.jenis_kelamin);
+                    $("#jabatan").val(data.jabatan);
+                    $("#email").val(data.email);
+                    $("#password").val(data.password);
+                    var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
+                        .gambar +
+                        `" class="img-thumbnail foto-pegawai" alt="Foto Pegawai" style="width: 90%;">`;
+                    $(".gambar").html(gambar);
+                    $("#gambar_lama").val(data.gambar);
+                    $("#is_active").val(data.is_active);
+                });
+            }
+        })
+    });
+
+    function previewImg() {
+        const gambar = document.querySelector('#input-foto');
+        const imgPreview = document.querySelector('.foto-pegawai');
+
+        const filegambar = new FileReader();
+        filegambar.readAsDataURL(gambar.files[0]);
+
+        filegambar.onload = function (e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+
+    $('#table-excel-pdf').DataTable({
+        "ordering": true,
+        "lengthMenu": [
+            [-1, 5, 10, 25, 50],
+            ["All", 5, 10, 25, 50]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5',
+            'print'
+        ]
+    });
+</script>
 
 <?= $this->endSection() ;?>

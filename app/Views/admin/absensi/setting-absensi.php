@@ -24,49 +24,59 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="iq-card">
                     <div class="iq-card-body">
-                        <form>
+                        <form action="<?= base_url('admin/setting_absen_'); ?>" method="POST">
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationDefault01">Jam Masuk</label>
-                                    <input type="time" class="form-control" id="validationDefault01" required>
+                                    <input class="form-control" type="hidden" name="id_pengaturan_absen"
+                                        value="<?= $pengaturan->id_pengaturan_absen; ?>">
+                                    <input class="form-control" type="time" name="jam_masuk"
+                                        value="<?= $pengaturan->jam_masuk; ?>">
                                     <p class="text-muted font-size-12">Jam Masuk Kerja</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationDefault02">Jam Keluar</label>
-                                    <input type="time" class="form-control" id="validationDefault02" required>
+                                    <input class="form-control" type="time" name="jam_keluar"
+                                        value="<?= $pengaturan->jam_keluar; ?>">
                                     <p class="text-muted font-size-12">Jam Pulang Kerja</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefaultUsername">Garis Lintang Bujur</label>
+                                    <label>Garis Lintang Bujur</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="validationDefaultUsername"
-                                            aria-describedby="inputGroupPrepend2" required>
+                                        <input type="text" class="form-control" aria-describedby="inputGroupPrepend2"
+                                            name="latitude_longitude"
+                                            value="<?= $pengaturan->latitude; ?>, <?= $pengaturan->longitude; ?>">
                                     </div>
                                     <p class="text-muted font-size-12">Latitude Longitude / Garis Lintang - Bujur</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Batas Jarak</label>
-                                    <input type="number" class="form-control" id="validationDefault03" required>
+                                    <label>Batas Jarak</label>
+                                    <input class="form-control" type="text" name="batas_jarak"
+                                        value="<?= $pengaturan->batas_jarak; ?>">
                                     <p class="text-muted font-size-12">jarak tersimpan dalam satuan Meter</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Upah</label>
-                                    <input type="number" class="form-control" id="validationDefault03" required>
+                                    <label>Upah</label>
+                                    <input type="number" class="form-control" name="upah"
+                                        value="<?= $pengaturan->upah; ?>">
                                     <p class="text-muted font-size-12">Upah per Jam</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Denda</label>
-                                    <input type="number" class="form-control" id="validationDefault03" required>
+                                    <label>Denda</label>
+                                    <input type="number" class="form-control" name="denda"
+                                        value="<?= $pengaturan->denda; ?>">
                                     <p class="text-muted font-size-12">Denda Terlambat</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Bonus Siswa</label>
-                                    <input type="number" class="form-control" id="validationDefault03" required>
+                                    <label>Bonus Siswa</label>
+                                    <input type="number" class="form-control" name="bonus_siswa"
+                                        value="<?= $pengaturan->bonus_siswa; ?>">
                                     <p class="text-muted font-size-12">Bonus per Siswa</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Bonus Absen</label>
-                                    <input type="number" class="form-control" id="validationDefault03" required>
+                                    <label>Bonus Absen</label>
+                                    <input type="number" class="form-control" name="bonus_absen"
+                                        value="<?= $pengaturan->bonus_absen; ?>">
                                     <p class="text-muted font-size-12">Bonus Tepat Waktu</p>
                                 </div>
                             </div>
@@ -88,10 +98,9 @@
                     </div>
                     <div class="card" style="height: 400px;">
                         <div class="card-body">
-                            <iframe style="width: 100%; height: 95%;" class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170410.
-                            75606658432!2d16.97583486545303!3d48.13592437338002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1
-                            !3m3!1m2!1s0x476c89360aca6197%3A0x631f9b82fd884368!2sBratislava%2C%20Slovakia!5e0!3m2!1sen!2sbg!4v1602852055483
-                            !5m2!1sen!2sbg" frameborder="0"></iframe>
+                            <iframe style="width: 100%; height: 95%;" class="w-100"
+                                src="https://www.google.com/maps?q=<?= $pengaturan->latitude; ?>,<?= $pengaturan->longitude; ?>&hl=es;z=14&output=embed"
+                                frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
@@ -107,9 +116,9 @@
                     <div class="card">
                         <div class="card-body">
                             <button type="button" class="btn user-bg-color stripes-btn text-white" style="width: 100%;">
-                                Jam Masuk 07:00</button>
+                                Jam Masuk <?= $pengaturan->jam_masuk; ?></button>
                             <button type="button" class="btn user-bg-color stripes-btn mt-3 text-white"
-                                style="width: 100%;"> Jam Keluar 12:00</button>
+                                style="width: 100%;"> Jam Keluar <?= $pengaturan->jam_keluar; ?></button>
                         </div>
                     </div>
                 </div>

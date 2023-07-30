@@ -1,6 +1,14 @@
-<?= $this->extend('layout/pegawai') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-pegawai') ;?>
+<?php
+
+use App\Models\AbsenDetailModel;
+
+$AbsenDetailModel = new AbsenDetailModel();
+?>
+
+<?= $this->extend('layout/pegawai'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-pegawai'); ?>
+<?= session()->getFlashdata('pesan'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
@@ -30,20 +38,70 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>07:15</td>
-                                        <td>11:12</td>
-                                        <td><span class="table-remove"><button type="button"
-                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Tidak
-                                                    Izin</button></span>
-                                        </td>
-                                        <td>
-                                            <span class="table-remove"><a
-                                                    href="<?= base_url('pegawai/detailAbsensi') ?>"
-                                                    class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i
-                                                        class="icon-open_in_new"></i>Show</a></span>
-                                        </td>
-                                    </tr>
+                                    <?php if ($absensi != null) : ?>
+                                        <?php $detail_absen = $AbsenDetailModel->getByKodeAndIdPegawai($absensi->kode_absensi, session()->get('id_pegawai')); ?>
+                                        <?php if ($detail_absen != null) : ?>
+                                            <tr>
+                                                <?php if ($detail_absen->izin == null) : ?>
+                                                    <td>
+                                                        <?php if ($detail_absen->absen_masuk == 0) : ?>
+                                                            <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                    Absen</button></span>
+                                                        <?php else : ?>
+                                                            <?php if ($detail_absen->status_masuk == 1) : ?>
+                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $detail_absen->absen_masuk); ?></span>
+                                                            <?php else : ?>
+                                                                <?= date('H : i', $detail_absen->absen_masuk); ?>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($detail_absen->absen_keluar == 0) : ?>
+                                                            <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                    Absen</button></span>
+                                                        <?php else : ?>
+                                                            <?= date('H : i', $detail_absen->absen_keluar); ?>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                <?php else : ?>
+                                                    <td colspan="2">IZIN</td>
+                                                <?php endif; ?>
+                                                <td>
+                                                    <?php if ($detail_absen->izin == null) : ?>
+                                                        <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Tidak
+                                                                Izin</button></span>
+                                                    <?php else : ?>
+                                                        <?php if ($detail_absen->status_izin == 0) : ?>
+                                                            <span class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Tunggu
+                                                                Persetujuan</span>
+                                                        <?php else : ?>
+                                                            <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Di
+                                                                Izinkan</span>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($detail_absen->absen_masuk == null || $detail_absen->absen_keluar == null || $detail_absen->izin == null) : ?>
+                                                        <?php if ($detail_absen->izin == null && $detail_absen->absen_keluar == null) : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/absen') ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Absen</a></span>
+                                                        <?php endif; ?>
+
+                                                        <?php if ($detail_absen->absen_masuk != null && $detail_absen->absen_keluar != null) : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/detail_absen'); ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"><i class="icon-open_in_new"></i>Detail</a></span>
+                                                        <?php endif; ?>
+
+                                                        <?php if ($detail_absen->absen_masuk == null && $detail_absen->absen_keluar == null && $detail_absen->izin == null) : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/izin_absen'); ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Izin</a></span>
+                                                        <?php endif; ?>
+
+                                                        <?php if ($detail_absen->absen_masuk == null && $detail_absen->absen_keluar == null && $detail_absen->izin != null) : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/izin_absen'); ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"><i class="icon-open_in_new"></i>Detail</a></span>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -70,8 +128,7 @@
                                 <div class="input-group">
                                     <input type="text" id="search-input" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button type="button" id="search-button"
-                                            class="btn user-bg-color text-white">Search</button>
+                                        <button type="button" id="search-button" class="btn user-bg-color text-white">Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -86,20 +143,66 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>22/06/2023</td>
-                                        <td>07:15</td>
-                                        <td>11:12</td>
-                                        <td><span class="table-remove"><button type="button"
-                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Tidak
-                                                    Izin</button></span>
-                                        </td>
-                                        <td>
-                                            <span class="table-remove"><button type="button"
-                                                    class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i
-                                                        class="icon-open_in_new"></i>Show</button></span>
-                                        </td>
-                                    </tr>
+                                    <?php if ($riwayat_absensi != null) : ?>
+                                        <?php foreach ($riwayat_absensi as $ra) : ?>
+                                            <?php if ($ra->tgl_absen != date('d-M-Y', time())) : ?>
+                                                <tr>
+                                                    <td><?= $ra->tgl_absen; ?></td>
+                                                    <td>
+                                                        <?php if ($ra->izin == null) : ?>
+                                                            <?php if ($ra->absen_masuk == 0) : ?>
+                                                                <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                        Absen</button></span>
+                                                            <?php else : ?>
+                                                                <?php if ($ra->status_masuk == 0) : ?>
+                                                                    <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $ra->absen_masuk); ?></span>
+                                                                <?php else : ?>
+                                                                    <?= date('H : i', $ra->absen_masuk); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            IZIN
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($ra->izin == null) : ?>
+                                                            <?php if ($ra->absen_keluar == 0) : ?>
+                                                                <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                        Absen</button></span>
+                                                            <?php else : ?>
+                                                                <?= date('H : i', $ra->absen_keluar); ?>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            IZIN
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($ra->izin == 0) : ?>
+                                                            <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Tidak
+                                                                    Izin</button></span>
+                                                        <?php else : ?>
+
+                                                            <?php if ($ra->status_izin == 0) : ?>
+                                                                <span class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Tunggu
+                                                                    Persetujuan</span>
+                                                            <?php else : ?>
+
+                                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Di
+                                                                    Izinkan</span>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($ra->izin == 1) : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/izin_absen'); ?>/<?= $ra->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail</a></span>
+                                                        <?php else : ?>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/detail_absen'); ?>/<?= $ra->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail</a></span>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -110,4 +213,4 @@
     </div>
 </div>
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>

@@ -24,6 +24,14 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template/css/responsive.css">
 
+    <!-- Jquery and Bootstrap Bundle Js -->
+    <script src="<?= base_url() ?>/assets/template/js/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/template/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/template/vendor/swal/sweetalert2.all.js"></script>
+
+    <!-- PLUGIN -->
+    <!-- <?= $plugin; ?> -->
+
 </head>
 
 <body>
@@ -52,10 +60,6 @@
     </footer>
     <!-- Footer END -->
 
-    <!-- Jquery and Bootstrap Bundle Js -->
-    <script src="<?= base_url() ?>/assets/template/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/template/js/bootstrap.min.js"></script>
-
     <!-- Jquery Counter Up JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/jquery.counterup.min.js"></script>
 
@@ -76,6 +80,33 @@
 
     <!-- Custom JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn-hapus').click(function(e) {
+                e.preventDefault();
+                var href = $(this).attr('href');
+
+                Swal.fire({
+                    title: 'Kamu Yakin?',
+                    text: "data yg di hapus tidak dapat kembali!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        document.location.href = href;
+
+                    }
+                })
+
+            })
+        });
+    </script>
 
 </body>
 

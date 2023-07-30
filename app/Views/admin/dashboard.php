@@ -27,7 +27,7 @@
                         </div>
                         <p class="text-secondary">Pegawai</p>
                         <div class="d-flex align-items-center justify-content-between">
-                            <h4><b>1</b></h4>
+                            <h4><b><?= count($pegawai); ?></b></h4>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         </div>
                         <p class="text-secondary">Jabatan</p>
                         <div class="d-flex align-items-center justify-content-between">
-                            <h4><b>5</b></h4>
+                            <h4><b><?= count($jabatan); ?></b></h4>
                         </div>
                     </div>
                 </div>

@@ -79,6 +79,53 @@ NOTE: This file contains the styling for responsive Template.
   max-height: 113px;
 }
 
+.doc-block {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  border-radius: 3px;
+  background: #f6f6fd;
+  margin: 0 0 1rem 0;
+}
+
+.doc-block .doc-icon {
+  width: 100px;
+  height: 100px;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 100px;
+  margin: 0 0 1rem 0;
+  background: #ffffff;
+}
+
+.doc-block .doc-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.doc-block .doc-title {
+  font-size: .9rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
 /*--------------------------------------------------------------------
                             General
 ---------------------------------------------------------------------*/
@@ -110,7 +157,7 @@ dl dd:last-child {
 }
 
 /* Table */
-th {}
+/* th {} */
 
 a:hover {
   text-decoration: none;
@@ -2456,7 +2503,6 @@ button.banner-button {
   -moz-border-radius: 5px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -3894,7 +3940,7 @@ Calender
 }
 
 /*---------------------------------------------------------------------
- Wizard
+Wizard
 -----------------------------------------------------------------------*/
 #form-wizard1,
 #form-wizard2,

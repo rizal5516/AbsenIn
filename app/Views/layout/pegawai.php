@@ -24,6 +24,14 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template/css/responsive.css">
 
+    <!-- Jquery and Bootstrap Bundle Js -->
+    <script src="<?= base_url() ?>/assets/template/js/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/template/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/template/vendor/swal/sweetalert2.all.js"></script>
+
+    <!-- PLUGIN -->
+    <?= $plugin; ?>
+
 </head>
 
 <body>
@@ -51,10 +59,6 @@
         </div>
     </footer>
     <!-- Footer END -->
-
-    <!-- Jquery and Bootstrap Bundle Js -->
-    <script src="<?= base_url() ?>/assets/template/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/template/js/bootstrap.min.js"></script>
 
     <!-- Jquery Counter Up JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/jquery.counterup.min.js"></script>
