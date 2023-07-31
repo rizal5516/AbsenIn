@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <form id="form-wizard1" class="text-center mt-4">
+                        <form action="<?= base_url('admin/tambah_jabatan_'); ?>" method="POST" class="text-center mt-4">
                             <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card text-left">
@@ -22,7 +22,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Jabatan</label>
-                                                <input type="text" class="form-control" name="jabatan" />
+                                                <input type="text" class="form-control" name="nama_jabatan[]" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Gaji Pokok</label>
@@ -35,9 +35,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" name="next"
-                                    class="btn user-bg-color text-white next action-button float-left mt-4"
-                                    value="Next">Add</button>
+                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Add</button>
                         </form>
                     </div>
                 </div>
