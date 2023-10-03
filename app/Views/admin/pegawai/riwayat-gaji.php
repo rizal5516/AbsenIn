@@ -1,6 +1,6 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
@@ -11,8 +11,7 @@
                     <h4 class="card-title">Riwayat Gaji</h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span
-                                class="pl-1">Back
+                    <a href="<?= base_url('admin/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
                             </span></i>
                     </a>
                 </span>
@@ -22,8 +21,7 @@
             <div class="col-sm-3 col-lg-3">
                 <div class="iq-card">
                     <div class="iq-card-body">
-                        <img src="<?= base_url() ?>/assets/img/pegawai/default.jpg" class="img-fluid"
-                            alt="Responsive image">
+                        <img src="<?= base_url() ?>/assets/img/pegawai/default.jpg" class="img-fluid" alt="Responsive image">
                     </div>
                 </div>
             </div>
@@ -41,22 +39,19 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Nama</label>
-                                                            <input type="text" class="form-control" name="nama"
-                                                                value="User" />
+                                                            <input type="text" class="form-control" name="nama" value="User" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>NIK</label>
-                                                            <input type="number" class="form-control" name="nik"
-                                                                value="0111" />
+                                                            <input type="number" class="form-control" name="nik" value="0111" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Jabatan</label>
-                                                            <input type="text" class="form-control" name="jabatan"
-                                                                value="Kepala Sekolah" />
+                                                            <input type="text" class="form-control" name="jabatan" value="Kepala Sekolah" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -84,8 +79,7 @@
                                 <div class="input-group">
                                     <input type="text" id="search-input" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button type="button" id="search-button"
-                                            class="btn user-bg-color text-white">Search</button>
+                                        <button type="button" id="search-button" class="btn user-bg-color text-white">Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -125,9 +119,7 @@
                                         <td>Rp 1.000</td>
                                         <td>Rp 102.000</td>
                                         <td>
-                                            <span class="table-remove"><button type="button"
-                                                    class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"> <i
-                                                        class="icon-open_in_new"></i>Print</button></span>
+                                            <span class="table-remove"><button type="button" class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Print</button></span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -141,4 +133,4 @@
 </div>
 
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>

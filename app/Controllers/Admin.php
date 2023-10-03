@@ -48,7 +48,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         // Plugin Tambahan
@@ -79,7 +79,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         // Plugin Tambahan
@@ -184,7 +184,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -226,7 +226,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -495,7 +495,7 @@ class Admin extends BaseController
             'jabatan' => 'current-page',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -536,7 +536,7 @@ class Admin extends BaseController
             'jabatan' => 'current-page',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -644,7 +644,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => 'current-page',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '';
@@ -744,7 +744,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -833,7 +833,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -875,7 +875,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -906,7 +906,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -969,4 +969,54 @@ class Admin extends BaseController
         return redirect()->to('admin/absensi');
     }
     // END::ABSENSI
+
+    public function dataPenggajian()
+    {
+        if (session()->get('role') != 1) {
+            return redirect()->to('auth');
+        }
+        // absen_hari_ini();
+
+        $data['menu'] = [
+            'tab_home' => '',
+            'tab_master' => 'show active',
+            'dashboard' => '',
+            'pegawai' => '',
+            'jabatan' => '',
+            'pengaturan_absen' => '',
+            'absensi' => '',
+            'gaji' => 'current-page'
+        ];
+
+        $data['plugin'] = '';
+
+        $data['admin'] = $this->AdminModel->asObject()->first();
+
+        return view('admin/pegawai/data-penggajian', $data);
+    }
+
+    public function riwayatPenggajian()
+    {
+        if (session()->get('role') != 1) {
+            return redirect()->to('auth');
+        }
+        // absen_hari_ini();
+
+        $data['menu'] = [
+            'tab_home' => '',
+            'tab_master' => 'show active',
+            'dashboard' => '',
+            'pegawai' => '',
+            'jabatan' => '',
+            'pengaturan_absen' => '',
+            'absensi' => '',
+            'gaji' => 'current-page'
+        ];
+
+        $data['plugin'] = '';
+
+        $data['admin'] = $this->AdminModel->asObject()->first();
+
+        return view('admin/pegawai/riwayat-gaji', $data);
+    }
 }

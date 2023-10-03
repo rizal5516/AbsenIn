@@ -1,6 +1,6 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
@@ -24,8 +24,7 @@
                                 <div class="input-group">
                                     <input type="text" id="search-input" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button type="button" id="search-button"
-                                            class="btn user-bg-color text-white">Search</button>
+                                        <button type="button" id="search-button" class="btn user-bg-color text-white">Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -40,8 +39,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><img src="<?= base_url() ?>/assets/img/pegawai/default.jpg" alt="pegawai"
-                                                class="img-fluid rounded mr-2 mb-4" width="50px">
+                                        <td><img src="<?= base_url() ?>/assets/img/pegawai/default.jpg" alt="pegawai" class="img-fluid rounded mr-2 mb-4" width="50px">
                                             <div class="d-inline-block">
                                                 <a href="#"><strong>user</strong></a>
                                                 <p class="text-muted">NIK: #111</p>
@@ -50,13 +48,8 @@
                                         <td>Kepala Sekolah</td>
                                         <td>user@gmail.com</td>
                                         <td>
-                                            <span class="table-remove"><a href="<?= base_url('') ?>"
-                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"> <i
-                                                        class="icon-open_in_new"></i>Hitung Gaji</a></span>
-                                            <span class="table-remove"><a
-                                                    href="<?= base_url('admin/riwayatPenggajian') ?>"
-                                                    class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2 btn-hapus"> <i
-                                                        class="icon-open_in_new"></i>Riwayat Gaji</a></span>
+                                            <span class="table-remove"><a href="<?= base_url('') ?>" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Hitung Gaji</a></span>
+                                            <span class="table-remove"><a href="<?= base_url('admin/riwayatPenggajian') ?>" class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Riwayat Gaji</a></span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -69,4 +62,4 @@
     </div>
 </div>
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>
