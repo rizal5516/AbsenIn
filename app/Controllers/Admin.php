@@ -56,11 +56,10 @@ class Admin extends BaseController
             
         ';
 
-        // $data['judul_halaman'] = 'Dashboard Admin | Presensi By Abduloh Malela';
-        // $data['judul_sidebar'] = 'Dashboard';
         $data['admin'] = $this->AdminModel->asObject()->first();
         $data['pegawai'] = $this->PegawaiModel->asObject()->findAll();
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
+        $data['absensi'] = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
 
         return view('admin/dashboard', $data);
     }
@@ -87,7 +86,7 @@ class Admin extends BaseController
             
         ';
 
-        $data['judul_halaman'] = 'Profile Admin | Presensi By Abduloh Malela';
+        $data['judul_halaman'] = 'Profile Admin';
         $data['judul_sidebar'] = 'Dashboard';
         $data['admin'] = $this->AdminModel->asObject()->first();
 
@@ -230,9 +229,9 @@ class Admin extends BaseController
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.css" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select-custom.js"></script>
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/bs-select/bs-select.css" />
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select-custom.js"></script>
         ';
 
         $data['judul_halaman'] = 'Tambah Pegawai';
@@ -499,18 +498,18 @@ class Admin extends BaseController
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
 
         $data['judul_halaman'] = 'Data Jabatan';
@@ -540,9 +539,9 @@ class Admin extends BaseController
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.css" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select-custom.js"></script>
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/bs-select/bs-select.css" />
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select-custom.js"></script>
         ';
 
         $data['judul_halaman'] = 'Tambah Jabatan';
@@ -748,18 +747,18 @@ class Admin extends BaseController
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
 
         $data['judul_halaman'] = 'Data Absensi';
@@ -773,51 +772,51 @@ class Admin extends BaseController
 
         return view('admin/absensi/data-absensi', $data);
     }
-    public function absen_hari_ini()
-    {
-        $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
-        $pegawai = $this->PegawaiModel->asObject()->findAll();
+    // public function absen_hari_ini()
+    // {
+    //     $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
+    //     $pegawai = $this->PegawaiModel->asObject()->findAll();
 
-        if ($absen_hari_ini != null) {
-            // ABSEN SUDAH DIBUAT
-            session()->setFlashdata('pesan', "
-                <script>
-                    Swal.fire(
-                        'Error!',
-                        'Absen hari ini sudah pernah dibuat!',
-                        'error'
-                    );
-                </script>
-            ");
-            return redirect()->to('admin/absensi');
-        }
+    //     if ($absen_hari_ini != null) {
+    //         // ABSEN SUDAH DIBUAT
+    //         session()->setFlashdata('pesan', "
+    //             <script>
+    //                 Swal.fire(
+    //                     'Error!',
+    //                     'Absen hari ini sudah pernah dibuat!',
+    //                     'error'
+    //                 );
+    //             </script>
+    //         ");
+    //         return redirect()->to('admin/absensi');
+    //     }
 
-        if ($pegawai == null) {
-            // BELUM ADA DATA PEGAWAI
-            session()->setFlashdata('pesan', "
-                <script>
-                    Swal.fire(
-                        'Error!',
-                        'Belum ada data pegawai, absen tidak bisa dibuat!',
-                        'error'
-                    );
-                </script>
-            ");
-            return redirect()->to('admin/absensi');
-        }
+    //     if ($pegawai == null) {
+    //         // BELUM ADA DATA PEGAWAI
+    //         session()->setFlashdata('pesan', "
+    //             <script>
+    //                 Swal.fire(
+    //                     'Error!',
+    //                     'Belum ada data pegawai, absen tidak bisa dibuat!',
+    //                     'error'
+    //                 );
+    //             </script>
+    //         ");
+    //         return redirect()->to('admin/absensi');
+    //     }
 
-        absen_hari_ini();;
-        session()->setFlashdata('pesan', "
-            <script>
-                Swal.fire(
-                    'Berhasil!',
-                    'Absen Dibuat!',
-                    'success'
-                )
-            </script>
-        ");
-        return redirect()->to('admin/absensi');
-    }
+    //     absen_hari_ini();;
+    //     session()->setFlashdata('pesan', "
+    //         <script>
+    //             Swal.fire(
+    //                 'Berhasil!',
+    //                 'Absen Dibuat!',
+    //                 'success'
+    //             )
+    //         </script>
+    //     ");
+    //     return redirect()->to('admin/absensi');
+    // }
     public function absen($kode_absen)
     {
         if (session()->get('role') != 1) {
@@ -837,18 +836,18 @@ class Admin extends BaseController
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
 
         $data['judul_halaman'] = 'Detail Absensi';

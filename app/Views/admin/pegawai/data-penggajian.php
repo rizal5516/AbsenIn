@@ -48,7 +48,7 @@
                                         <td>Kepala Sekolah</td>
                                         <td>user@gmail.com</td>
                                         <td>
-                                            <span class="table-remove"><a href="<?= base_url('') ?>" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Hitung Gaji</a></span>
+                                            <span class="table-remove"><a href="#" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Hitung Gaji</a></span>
                                             <span class="table-remove"><a href="<?= base_url('admin/riwayatPenggajian') ?>" class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Riwayat Gaji</a></span>
                                         </td>
                                     </tr>

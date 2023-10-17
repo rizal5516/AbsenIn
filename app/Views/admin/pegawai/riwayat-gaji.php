@@ -98,6 +98,7 @@
                                         <th>Total Denda</th>
                                         <th>Total Bonus Siswa</th>
                                         <th>Total Bonus Absen</th>
+                                        <th></th>
                                         <th>Gaji Bersih</th>
                                         <th>Action</th>
                                     </tr>

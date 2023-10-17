@@ -12,6 +12,10 @@ $AbsenDetailModel = new AbsenDetailModel();
 
 <div id="content-page" class="content-page">
     <div class="container-fluid">
+    <?php if ($absensi == null) : ?>
+        
+        <a class="btn btn-dark user-bg-color mb-3 absen-hari-ini" href="<?= base_url('pegawai/absen_hari_ini') ?>">Absen Hari Ini</a>
+        <?php endif; ?>
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="iq-card">
@@ -158,5 +162,22 @@ $AbsenDetailModel = new AbsenDetailModel();
         </div>
     </div>
 </div>
+
+<script>
+    // Fungsi untuk mengklik tombol secara otomatis jika $absensi == null
+    function otomatisKlik() {
+        var tombol = document.querySelector('.absen-hari-ini');
+        if (tombol) {
+            // Periksa kondisi sebelum mengklik
+            if (<?= $absensi === null ? 'true' : 'false' ?>) {
+                tombol.click();
+            }
+        }
+    }
+
+    // Panggil fungsi otomatisKlik setelah halaman dimuat
+    window.addEventListener('load', otomatisKlik);
+</script>
+
 
 <?= $this->endSection() ;?>

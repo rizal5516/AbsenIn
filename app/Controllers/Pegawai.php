@@ -173,18 +173,18 @@ class Pegawai extends BaseController
 
         // Plugin Tambahan
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
 
         $data['judul_halaman'] = 'Absensi | Presensi By Abduloh Malela';
@@ -501,5 +501,49 @@ class Pegawai extends BaseController
 
         return view('pegawai/detail_absen', $data);
     }
-    // END::ABSENSI
+    public function absen_hari_ini()
+    {
+        $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
+        $pegawai = $this->PegawaiModel->asObject()->findAll();
+
+        if ($absen_hari_ini != null) {
+            // ABSEN SUDAH DIBUAT
+            session()->setFlashdata('pesan', "
+                <script>
+                    Swal.fire(
+                        'Error!',
+                        'Absen hari ini sudah pernah dibuat!',
+                        'error'
+                    );
+                </script>
+            ");
+            return redirect()->to('pegawai/index');
+        }
+
+        if ($pegawai == null) {
+            // BELUM ADA DATA PEGAWAI
+            session()->setFlashdata('pesan', "
+                <script>
+                    Swal.fire(
+                        'Error!',
+                        'Belum ada data pegawai, absen tidak bisa dibuat!',
+                        'error'
+                    );
+                </script>
+            ");
+            return redirect()->to('pegawai/index');
+        }
+
+        absen_hari_ini();;
+        session()->setFlashdata('pesan', "
+            <script>
+                Swal.fire(
+                    'Berhasil!',
+                    'Absen Dibuat!',
+                    'success'
+                )
+            </script>
+        ");
+        return redirect()->to('pegawai/index');
+    }
 }

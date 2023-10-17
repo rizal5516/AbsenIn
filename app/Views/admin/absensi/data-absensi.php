@@ -15,10 +15,6 @@
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <?php if ($absensi == null) : ?>
-                        <a class="btn btn-dark user-bg-color mb-3 absen-hari-ini"
-                            href="<?= base_url('admin/absen_hari_ini') ?>">Absen Hari Ini</a>
-                        <?php endif; ?>
                         <div id="table-excel-pdf" class="table-editable">
                             <table class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
@@ -163,28 +159,7 @@
         ]
     });
 
-    $('.absen-hari-ini').click(function (e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-
-        Swal.fire({
-            title: 'Kamu Yakin?',
-            text: "Absen untuk hari ini akan dibuat!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, buat!',
-            cancelButtonText: 'Tidak'
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                document.location.href = href;
-
-            }
-        })
-
-    })
+    
 </script>
 
 <?= $this->endSection() ;?>

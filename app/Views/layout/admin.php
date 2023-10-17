@@ -30,7 +30,7 @@
     <script src="<?= base_url() ?>/assets/template/vendor/swal/sweetalert2.all.js"></script>
 
     <!-- PLUGIN -->
-    <!-- <?= $plugin; ?> -->
+    <?= $plugin; ?>
 
 </head>
 
