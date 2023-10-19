@@ -151,7 +151,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                 Jam Masuk <?= $jabatan->jam_masuk; ?></a>
                             <a class="btn user-bg-color stripes-btn mt-3 text-white" style="width: 100%;"> Jam Keluar <?= $jabatan->jam_keluar; ?></a>
                             <?php if ($absensi == null) : ?>
-                                <a class="btn btn-dark user-bg-color mb-3 absen-hari-ini" href="<?= base_url('pegawai/absen_hari_ini') ?>">Absen Hari Ini</a>
+                                <a class="btn btn-dark user-bg-color mt-3 mb-3 absen-hari-ini" href="<?= base_url('pegawai/absen_hari_ini') ?>">Absen Hari Ini</a>
                             <?php endif; ?>
                         </div>
                     </div>
