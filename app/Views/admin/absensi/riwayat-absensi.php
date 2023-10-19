@@ -48,7 +48,7 @@
                                                 <td><img src="<?= base_url('assets/img/pegawai'); ?>/<?= $absen->gambar; ?>" alt="pegawai" class="img-fluid rounded mr-2 mb-4" width="50px">
                                                     <div class="d-inline-block">
                                                         <a href="#"><strong><?= $absen->nama_pegawai; ?></strong></a>
-                                                        <p class="text-muted">NIK: #<?= $absen->nip; ?></p>
+                                                        <p class="text-muted" style="letter-spacing: 2px;">NIK: #<?= $absen->nip; ?></p>
                                                     </div>
                                                 </td>
                                                 <td>

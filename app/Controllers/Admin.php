@@ -154,7 +154,7 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', "
             <script>
                 Swal.fire(
-                    'Berhasil!',
+                    'Berhasil!',jabatan
                     'Password Terupdate!',
                     'success'
                 )
@@ -760,51 +760,7 @@ class Admin extends BaseController
 
         return view('admin/absensi/data-absensi', $data);
     }
-    // public function absen_hari_ini()
-    // {
-    //     $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
-    //     $pegawai = $this->PegawaiModel->asObject()->findAll();
 
-    //     if ($absen_hari_ini != null) {
-    //         // ABSEN SUDAH DIBUAT
-    //         session()->setFlashdata('pesan', "
-    //             <script>
-    //                 Swal.fire(
-    //                     'Error!',
-    //                     'Absen hari ini sudah pernah dibuat!',
-    //                     'error'
-    //                 );
-    //             </script>
-    //         ");
-    //         return redirect()->to('admin/absensi');
-    //     }
-
-    //     if ($pegawai == null) {
-    //         // BELUM ADA DATA PEGAWAI
-    //         session()->setFlashdata('pesan', "
-    //             <script>
-    //                 Swal.fire(
-    //                     'Error!',
-    //                     'Belum ada data pegawai, absen tidak bisa dibuat!',
-    //                     'error'
-    //                 );
-    //             </script>
-    //         ");
-    //         return redirect()->to('admin/absensi');
-    //     }
-
-    //     absen_hari_ini();;
-    //     session()->setFlashdata('pesan', "
-    //         <script>
-    //             Swal.fire(
-    //                 'Berhasil!',
-    //                 'Absen Dibuat!',
-    //                 'success'
-    //             )
-    //         </script>
-    //     ");
-    //     return redirect()->to('admin/absensi');
-    // }
     public function absen($kode_absen)
     {
         if (session()->get('role') != 1) {
@@ -869,6 +825,7 @@ class Admin extends BaseController
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, $id_pegawai);
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
         $data['admin'] = $this->AdminModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['detail_absensi']->id_jabatan)->first();
 
         return view('admin/absensi/detail-absensi-pegawai', $data);
     }

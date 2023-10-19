@@ -9,12 +9,13 @@ class AbsenDetailModel extends Model
     protected $table            = 'detail_absensi';
     protected $primaryKey       = 'id_detail_absensi';
     protected $protectFields    = true;
-    protected $allowedFields    = ['kode_absensi', 'pegawai', 'absen_masuk', 'status_masuk', 'latitude_masuk', 'longitude_masuk', 'absen_keluar', 'status_keluar', 'latitude_keluar', 'longitude_keluar', 'izin', 'status_izin', 'alasan', 'bukti_izin', 'bukti_masuk', 'bukti_keluar'];
+    protected $allowedFields    = ['kode_absensi', 'pegawai', 'jabatan', 'absen_masuk', 'status_masuk', 'latitude_masuk', 'longitude_masuk', 'absen_keluar', 'status_keluar', 'latitude_keluar', 'longitude_keluar', 'izin', 'status_izin', 'alasan', 'bukti_izin', 'bukti_masuk', 'bukti_keluar'];
 
     public function getAllByKodeAbsen($kode_absen)
     {
         return $this
             ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
+            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->where('detail_absensi.kode_absensi', $kode_absen)
             ->get()->getResultObject();
     }
@@ -24,6 +25,7 @@ class AbsenDetailModel extends Model
         return $this
             ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
             ->join('absensi', 'absensi.kode_absensi=detail_absensi.kode_absensi')
+            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->where('detail_absensi.pegawai', $id_pegawai)
             ->orderBy('detail_absensi.id_detail_absensi', 'DESC')
             ->get()->getResultObject();
@@ -34,6 +36,7 @@ class AbsenDetailModel extends Model
         return $this
             ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
             ->join('absensi', 'absensi.kode_absensi=detail_absensi.kode_absensi')
+            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->where('detail_absensi.kode_absensi', $kode_absen)
             ->where('detail_absensi.pegawai', $id_pegawai)
             ->get()->getRowObject();
@@ -45,6 +48,7 @@ class AbsenDetailModel extends Model
             ->whereIn('kode_absensi', $kode_absens)
             ->where('pegawai', $id_pegawai)
             ->where('absen_masuk !=', null)
+            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->get()->getResultObject();
     }
 }
