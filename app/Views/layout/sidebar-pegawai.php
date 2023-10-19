@@ -76,7 +76,7 @@
                                     </div>
                                 </a>
                                 <div class="d-inline-block w-100 text-center p-3">
-                                    <a class="user-bg-color iq-sign-btn text-white" href="<?= base_url('auth/logout') ?>" role="button">Sign
+                                    <a class="user-bg-color iq-sign-btn text-white" href="<?= base_url() ?>auth/logout" role="button">Sign
                                         out<i class="icon-exit_to_app ml-2"></i></a>
                                 </div>
                             </div>

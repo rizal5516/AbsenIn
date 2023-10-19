@@ -662,8 +662,6 @@ class Admin extends BaseController
 
         $this->PengaturanModel->save([
             'id_pengaturan_absen' => $this->request->getVar('id_pengaturan_absen'),
-            'jam_masuk' => $this->request->getVar('jam_masuk'),
-            'jam_keluar' => $this->request->getVar('jam_keluar'),
             'latitude' => $latitude_longitude[0],
             'longitude' => trim($latitude_longitude[1], ' '),
             'batas_jarak' => $this->request->getVar('batas_jarak'),
