@@ -25,7 +25,7 @@
                         <li><a href="<?= base_url('admin/jabatan') ?>" class="<?= $menu['jabatan']; ?>"><i class="icon-briefcase"></i>Jabatan</a></li>
                         <li><a href="<?= base_url('admin/absensi') ?>" class="<?= $menu['absensi']; ?>"><i class="icon-date_range"></i>Data Absen</a></li>
                         <li><a href="<?= base_url('admin/pengaturan_absen') ?>" class="<?= $menu['pengaturan_absen']; ?>"><i class="icon-settings1"></i>Setting Absen & Gaji</a></li>
-                        <li><a href="<?= base_url('admin/dataPenggajian') ?>"><i class="icon-attach_money"></i>Penggajian</a></li>
+                        <li><a href="<?= base_url('gaji/dataPenggajian') ?>"><i class="icon-attach_money"></i>Penggajian</a></li>
                     </ul>
                 </li>
             </ul>
@@ -43,7 +43,7 @@
                     <div class="hover-circle"><i class="icon-close"></i></div>
                 </div>
                 <div class="iq-navbar-logo d-flex justify-content-between ml-3">
-                    <a href="index.html" class="header-logo">
+                    <a href="<?= base_url('admin/index'); ?>" class="header-logo">
                         <img src="<?= base_url() ?>/assets/template/img/logo-absenin.png" class="img-fluid rounded" alt="">
                     </a>
                 </div>

@@ -5,9 +5,9 @@ use App\Models\AbsenDetailModel;
 $AbsenDetailModel = new AbsenDetailModel();
 ?>
 
-<?= $this->extend('layout/pegawai') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-pegawai') ;?>
+<?= $this->extend('layout/pegawai'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-pegawai'); ?>
 <?= session()->getFlashdata('pesan'); ?>
 
 <!-- Page Content  -->
@@ -26,33 +26,28 @@ $AbsenDetailModel = new AbsenDetailModel();
                             <div class="stepwizard-row setup-panel">
                                 <div id="user" class="wizard-step">
                                     <a href="#user-detail" class="btn btn-default">
-                                        <img src="<?= base_url() ?>/assets/img/pegawai/<?= $pegawai->gambar ?>"
-                                            class="avatar-user img-fluid rounded mr-3" alt="user-img">
+                                        <img src="<?= base_url() ?>/assets/img/pegawai/<?= $pegawai->gambar ?>" class="avatar-user img-fluid rounded mr-3" alt="user-img">
                                     </a>
                                 </div>
 
                                 <div class="row">
-                                    <form action="<?= base_url('pegawai/profile_'); ?>" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="<?= base_url('pegawai/profile_'); ?>" method="POST" enctype="multipart/form-data">
                                         <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Nama</label>
-                                                    <input type="text" class="form-control" name="nama"
-                                                        value="<?= $pegawai->nama_pegawai ?>" required>
+                                                    <input type="text" class="form-control" name="nama" value="<?= $pegawai->nama_pegawai ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="inputGroupFile">Choose
+                                                    <span class="input-group-text" id="changeAvatar">Choose
                                                         File</span>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="hidden" class="form-control" name="gambar_lama"
-                                                        value="<?= $pegawai->gambar; ?>">
-                                                    <input type="file" name="gambar" class="custom-file-input"
-                                                        id="inputGroupFile" aria-describedby="inputGroupFile">
-                                                    <label class="custom-file-label" for="inputGroupFile">Choose
+                                                    <input type="hidden" class="form-control" name="gambar_lama" value="<?= $pegawai->gambar; ?>">
+                                                    <input type="file" name="gambar" class="custom-file-input" id="changeAvatar" aria-describedby="changeAvatar">
+                                                    <label class="custom-file-label" for="changeAvatar">Choose
                                                         file</label>
                                                 </div>
                                             </div>
@@ -81,15 +76,13 @@ $AbsenDetailModel = new AbsenDetailModel();
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="current_password"
-                                                placeholder="Password" required>
+                                            <input type="password" class="form-control" name="current_password" placeholder="Password" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>New Password</label>
-                                            <input type="password" class="form-control" name="new_password"
-                                                placeholder="New Password" required>
+                                            <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -102,5 +95,19 @@ $AbsenDetailModel = new AbsenDetailModel();
         </div>
     </div>
 
+    <script>
+        // Get the custom file input element
+        const customFileInput = document.querySelector('.custom-file-input');
 
-    <?= $this->endSection() ;?>
+        // Add an event listener for the 'change' event
+        customFileInput.addEventListener('change', function() {
+            // Get the file name
+            const fileName = customFileInput.value.split('\\').pop();
+
+            // Update the label text
+            const customFileLabel = document.querySelector('.custom-file-label');
+            customFileLabel.textContent = fileName;
+        });
+    </script>
+
+    <?= $this->endSection(); ?>

@@ -9,5 +9,5 @@ class JabatanModel extends Model
     protected $table            = 'jabatan';
     protected $primaryKey       = 'id_jabatan';
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_jabatan'];
+    protected $allowedFields    = ['nama_jabatan', 'gaji_pokok', 'tunjangan', 'jam_masuk', 'jam_keluar',];
 }

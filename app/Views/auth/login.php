@@ -35,13 +35,11 @@
         <form action="<?= base_url() ?>auth/login" method="POST">
             <div class="form-group mb-4">
                 <label for="inputEmail">Email address</label>
-                <input type="email" name="email" class="form-control mb-0" id="inputEmail"
-                    placeholder="Enter email" value="<?= old('email'); ?>" autofocus required>
+                <input type="email" name="email" class="form-control mb-0" id="inputEmail" placeholder="Enter email" value="<?= old('email'); ?>" autofocus required>
             </div>
             <div class="form-group mb-4">
                 <label for="inputPassword">Password</label>
-                <input type="password" name="password" class="form-control mb-0" id="inputPassword"
-                    placeholder="Password" required>
+                <input type="password" name="password" class="form-control mb-0" id="inputPassword" placeholder="Password" required>
             </div>
             <div class="sign-info text-center mb-3">
                 <button type="submit" class="btn sign-in-btn-color text-white p-2 d-block w-100 mb-2">Sign

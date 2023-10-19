@@ -39,7 +39,7 @@ class AbsenDetailModel extends Model
             ->get()->getRowObject();
     }
 
-    public function getByArrayKodeAndIdPegawai($kode_absens,$id_pegawai)
+    public function getByArrayKodeAndIdPegawai($kode_absens, $id_pegawai)
     {
         return $this
             ->whereIn('kode_absensi', $kode_absens)
@@ -47,28 +47,4 @@ class AbsenDetailModel extends Model
             ->where('absen_masuk !=', null)
             ->get()->getResultObject();
     }
-
-    // public function jumlah_masuk($kode_absen)
-    // {
-    //     return $this
-    //         ->where('kode_absensi', $kode_absen)
-    //         ->where('absen_masuk !=', null)
-    //         ->get()->getResultObject();
-    // }
-
-    // public function jumlah_keluar($kode_absen)
-    // {
-    //     return $this
-    //         ->where('kode_absensi', $kode_absen)
-    //         ->where('absen_keluar !=', null)
-    //         ->get()->getResultObject();
-    // }
-
-    // public function jumlah_keluar($kode_absen)
-    // {
-    //     return $this
-    //         ->where('kode_absensi', $kode_absen)
-    //         ->where('absen_keluar !=', null)
-    //         ->get()->getResultObject();
-    // }
 }

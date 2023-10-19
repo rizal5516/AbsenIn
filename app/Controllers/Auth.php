@@ -28,14 +28,9 @@ class Auth extends BaseController
             }
         }
 
-        // $admin = $this->AdminModel->asObject()->first();
-        // // if ($admin == null) {
-        // //     return redirect()->to('auth/install');
-        // // }
-
         return view('auth/login');
     }
-    
+
     public function login()
     {
         $email = $this->request->getVar('email');

@@ -47,11 +47,9 @@ class Pegawai extends BaseController
             
         ';
 
-        $data['judul_halaman'] = 'Dashboard Pegawai | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
-
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['pegawai']->id_jabatan)->first();
         $data['absensi'] = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
 
         return view('pegawai/dashboard', $data);
@@ -72,9 +70,6 @@ class Pegawai extends BaseController
         $data['plugin'] = '
             
         ';
-
-        $data['judul_halaman'] = 'Dashboard Pegawai | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
 
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
@@ -173,22 +168,19 @@ class Pegawai extends BaseController
 
         // Plugin Tambahan
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
-
-        $data['judul_halaman'] = 'Absensi | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
 
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['absensi'] = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
@@ -213,20 +205,20 @@ class Pegawai extends BaseController
             <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>	
         ';
 
-        $data['judul_halaman'] = 'Isi Absen | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
-
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, session()->get('id_pegawai'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['pegawai']->id_jabatan)->first();
 
         return view('pegawai/isi-absen', $data);
     }
     public function absen_masuk()
     {
+        $pegawai = $this->PegawaiModel->getByEmail(session()->get('email'));
         $kode_absensi = $this->request->getVar('kode_absensi');
         $absensi = $this->AbsenModel->getByKode($kode_absensi);
         $pengaturan_absen = $this->PengaturanModel->asObject()->first();
+        $jabatan = $this->JabatanModel->asObject()->where('id_jabatan', $pegawai->id_jabatan)->first();
         $latitude = $this->request->getVar('latitude');
         $longitude = $this->request->getVar('longitude');
         $image_tag = $this->request->getVar('image_tag');
@@ -277,7 +269,7 @@ class Pegawai extends BaseController
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 
         // CEK APAKAH DIA TERLAMBAT
-        if (strtotime($waktu_absen) > strtotime($pengaturan_absen->jam_masuk)) {
+        if (strtotime($waktu_absen) > strtotime($jabatan->jam_masuk) + 900) {
             $terlambat = 1; // 1 Berarti Telambat
         } else {
             $terlambat = 0; // 0 Berarti tidak terlambat
@@ -423,12 +415,10 @@ class Pegawai extends BaseController
             
         ';
 
-        $data['judul_halaman'] = 'Izin Absen | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
-
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, session()->get('id_pegawai'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['pegawai']->id_jabatan)->first();
 
         return view('pegawai/detail-izin', $data);
     }
@@ -492,14 +482,22 @@ class Pegawai extends BaseController
         // Plugin Tambahan
         $data['plugin'] = '';
 
-        $data['judul_halaman'] = 'Detail Absen | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
-
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['detail_absen'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, session()->get('id_pegawai'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['pegawai']->id_jabatan)->first();
 
         return view('pegawai/detail_absen', $data);
     }
     // END::ABSENSI
+
+    public function absen_hari_ini()
+    {
+        $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
+        $pegawai = $this->PegawaiModel->asObject()->findAll();
+
+        absen_hari_ini();;
+
+        return redirect()->to('pegawai/index');
+    }
 }

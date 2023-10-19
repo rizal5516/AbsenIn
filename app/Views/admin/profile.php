@@ -1,6 +1,6 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 <?= session()->getFlashdata('pesan'); ?>
 
 <!-- Page Content  -->
@@ -18,9 +18,8 @@
                         <div class="stepwizard mt-2">
                             <div class="stepwizard-row setup-panel">
                                 <div id="user" class="wizard-step">
-                                    <a href="#user-detail" class="btn btn-default">
-                                        <img src="<?= base_url() ?>/assets/img/pegawai/<?= $admin->gambar ?>"
-                                            class="avatar-user img-fluid rounded mr-3" alt="user-img">
+                                    <a class="btn btn-default">
+                                        <img src="<?= base_url() ?>/assets/img/pegawai/<?= $admin->gambar ?>" class="avatar-user img-fluid rounded mr-3" alt="user-img">
                                     </a>
                                 </div>
 
@@ -34,16 +33,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputGroupFile">Choose File</span>
-                                                    </div>
-                                                    <div class="custom-file">
-                                                        <input type="hidden" class="form-control" name="gambar_lama" value="<?= $admin->gambar; ?>">
-                                                        <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile"
-                                                            aria-describedby="inputGroupFile">
-                                                        <label class="custom-file-label" for="inputGroupFile">Choose
-                                                            file</label>
-                                                    </div>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="changeAvatar">Choose File</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="hidden" class="form-control" name="gambar_lama" value="<?= $admin->gambar; ?>">
+                                                    <input type="file" name="gambar" class="custom-file-input" id="changeAvatar" aria-describedby="changeAvatar">
+                                                    <label class="custom-file-label" for="changeAvatar">Choose
+                                                        file</label>
+                                                </div>
                                             </div>
                                             <button class="btn user-bg-color mt-2 ml-3 p-2 text-white">Save
                                                 Settings</button>
@@ -76,8 +74,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>New Password</label>
-                                            <input type="password" class="form-control" name="new_password"
-                                                placeholder="New Password" required>
+                                            <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -90,4 +87,19 @@
         </div>
     </div>
 
-    <?= $this->endSection() ;?>
+    <script>
+        // Get the custom file input element
+        const customFileInput = document.querySelector('.custom-file-input');
+
+        // Add an event listener for the 'change' event
+        customFileInput.addEventListener('change', function() {
+            // Get the file name
+            const fileName = customFileInput.value.split('\\').pop();
+
+            // Update the label text
+            const customFileLabel = document.querySelector('.custom-file-label');
+            customFileLabel.textContent = fileName;
+        });
+    </script>
+
+    <?= $this->endSection(); ?>

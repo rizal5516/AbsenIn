@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <?php if (strtotime(date('H:i', time())) >= strtotime($pengaturan->jam_keluar)) : ?>
+                            <?php if (strtotime(date('H:i', time())) >= strtotime($jabatan->jam_keluar)) : ?>
                                 <?= session()->getFlashdata('jarak'); ?>
                                 <center>
                                     <div id="my_camera"></div>
@@ -184,7 +184,7 @@
     <?php endif; ?>
 
     <?php if ($absensi->absen_masuk != null) : ?>
-        <?php if (strtotime(date('H:i', time())) >= strtotime($pengaturan->jam_keluar)) : ?>
+        <?php if (strtotime(date('H:i', time())) >= strtotime($jabatan->jam_keluar)) : ?>
             Webcam.set({
                 width: 220,
                 height: 300,

@@ -26,7 +26,7 @@ class AbsenModel extends Model
     public function getByMonth($month)
     {
         return $this
-            ->like('tgl_absen', "%$month%")
+            ->like('tgl_absen', $month)
             ->get()->getResultObject();
     }
 }

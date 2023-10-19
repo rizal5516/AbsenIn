@@ -22,12 +22,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <div id="table-excel-pdf" class="table-editable">
-                            <!-- <span class="table-add float-right mb-3 mr-2">
-                                <a href="<?= base_url('admin/tambahDataPegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
-                                            New</span></i>
-                                </a>
-                            </span> -->
+                        <div class="table-editable">
                             <table class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
@@ -118,7 +113,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <div id="table-excel-pdf" class="table-editable">
+                        <div class="table-editable">
                             <!-- <span class="table-add float-right mb-3 mr-2">
                                 <a href="<?= base_url('admin/tambahDataPegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
                                             New</span></i>
@@ -126,13 +121,13 @@ $AbsenDetailModel = new AbsenDetailModel();
                             </span> -->
                             <form class="search-form mb-3 col-md-4 float-right">
                                 <div class="input-group">
-                                    <input type="text" id="search-input" class="form-control" placeholder="Search...">
+                                    <input type="text" id="filter_riwayat-absensi" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button type="button" id="search-button" class="btn user-bg-color text-white">Search</button>
+                                        <button type="button" id="filter_riwayat-absensi" class="btn user-bg-color text-white">Search</button>
                                     </div>
                                 </div>
                             </form>
-                            <table class="table table-bordered table-responsive-md table-striped text-center">
+                            <table id="datatable_riwayat-absensi" class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
@@ -212,5 +207,25 @@ $AbsenDetailModel = new AbsenDetailModel();
         </div>
     </div>
 </div>
+
+<script>
+    $('#datatable_riwayat-absensi').DataTable({
+        "ordering": true,
+        "lengthMenu": [
+            [-1, 5, 10, 25, 50],
+            ["All", 5, 10, 25, 50]
+        ],
+        dom: 'lfrtip',
+        "order": [
+            [4, "asc"]
+        ]
+    });
+
+    // Ubah desain search field
+    $('#filter_riwayat-absensi').on('keyup', function() {
+        // Aktifkan fungsi search
+        $('#datatable_riwayat-absensi').DataTable().search($('#filter_riwayat-absensi').val()).draw();
+    });
+</script>
 
 <?= $this->endSection(); ?>

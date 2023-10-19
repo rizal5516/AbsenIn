@@ -11,37 +11,33 @@
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
                             <h4 class="card-title">Riwayat Absensi
-                                <?= ($absensi->tgl_absen == date('d-M-Y')) ? 'HARI INI' : $absensi->tgl_absen; ?></h4>
+                                <?= $absensi->tgl_absen; ?></h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <div id="table-excel-pdf" class="table-editable">
-                            <!-- <span class="table-add float-right mb-3 mr-2">
-                                <a href="<?= base_url('admin/tambahDataPegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
-                                            New</span></i>
-                                </a>
-                            </span> -->
-                            <form class="search-form mb-3 col-md-4 float-right">
+                        <div class="table-editable">
+                            <div class="search-form mb-3 col-md-4 float-right">
                                 <span class="table-add float-right mb-3">
                                     <a href="<?= base_url('admin/absensi') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
                                             </span></i>
                                     </a>
                                 </span>
                                 <div class="input-group">
-                                    <input type="text" id="search-input" class="form-control" placeholder="Search...">
+                                    <input type="text" id="filter_riwayat-absensi" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
-                                        <button type="button" id="search-button" class="btn user-bg-color text-white">Search</button>
+                                        <button type="button" id="filter_riwayat-absensi" class="btn user-bg-color text-white">Search</button>
                                     </div>
                                 </div>
-                            </form>
-                            <table class="table table-bordered table-responsive-md table-striped text-center">
+                            </div>
+                            <table id="datatable_riwayat-absensi" class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th>Pegawai</th>
                                         <th>Absen Masuk</th>
                                         <th>Absen Pulang</th>
+                                        <th>Total Jam Kerja</th>
                                         <th>Izin</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,6 +78,7 @@
                                                         IZIN
                                                     <?php endif; ?>
                                                 </td>
+                                                <td></td>
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
                                                         <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Tidak</span>
@@ -95,9 +92,9 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
-                                                        <span class="table-remove"><a href="<?= base_url('admin/absen_pegawai') ?>/<?= $absen->kode_absensi; ?>/<?= $absen->pegawai; ?>" data-placement="top" data-original-title="Edit" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Show</a></span>
+                                                        <span class="table-remove"><a href="<?= base_url('admin/absen_pegawai') ?>/<?= $absen->kode_absensi; ?>/<?= $absen->pegawai; ?>" data-placement="top" data-original-title="Edit" class="btn iq-bg-warning btn-rounded btn-sm my-0"> <i class="icon-open_in_new"></i></a></span>
                                                     <?php else : ?>
-                                                        <span class="table-remove"><a href="<?= base_url('admin/izin_pegawai') ?>/<?= $absen->kode_absensi; ?>/<?= $absen->pegawai; ?>" data-placement="top" data-original-title="Edit" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Show</a></span>
+                                                        <span class="table-remove"><a href="<?= base_url('admin/izin_pegawai') ?>/<?= $absen->kode_absensi; ?>/<?= $absen->pegawai; ?>" data-placement="top" data-original-title="Edit" class="btn iq-bg-warning btn-rounded btn-sm my-0"> <i class="icon-open_in_new"></i></a></span>
                                                     <?php endif; ?>
                                                 </td>
                                             </tr>
@@ -114,19 +111,33 @@
 </div>
 
 <script>
-    $('#datatable2').DataTable({
+    $('#datatable_riwayat-absensi').DataTable({
         "ordering": true,
         "lengthMenu": [
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
         dom: 'Bfrtip',
-        buttons: [
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5',
-            'print'
+        buttons: [{
+                extend: 'excelHtml5',
+                title: 'Riwayat Absensi <?= $absensi->tgl_absen; ?>'
+            },
+            // 'csvHtml5',
+            {
+                extend: 'pdfHtml5',
+                title: 'Riwayat Absensi <?= $absensi->tgl_absen; ?>'
+            },
+            {
+                extend: 'print',
+                title: 'Riwayat Absensi <?= $absensi->tgl_absen; ?>'
+            }
         ]
+    });
+
+    // Ubah desain search field
+    $('#filter_riwayat-absensi').on('keyup', function() {
+        // Aktifkan fungsi search
+        $('#datatable_riwayat-absensi').DataTable().search($('#filter_riwayat-absensi').val()).draw();
     });
 </script>
 
