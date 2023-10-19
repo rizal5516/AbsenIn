@@ -15,23 +15,17 @@
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li class="<?= $menu['tab_home']; ?> mb-1" id="home-tab">
-                    <a href="<?= base_url('admin/index'); ?>" class="iq-waves-effect""
-                        aria-expanded="true"><span class="ripple rippleEffect"></span><i
-                            class="icon-laptop iq-arrow-left"></i><span>Dashboard</span><i
-                            class="iq-arrow-right"></i></a>
+                    <a href="<?= base_url('admin/index'); ?>" class="iq-waves-effect" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="icon-laptop iq-arrow-left"></i><span>Dashboard</span><i class="iq-arrow-right"></i></a>
                 </li>
 
                 <li class="<?= $menu['tab_master']; ?>">
-                    <a href="#masterinfo" class="iq-waves-effect" data-toggle="collapse"
-                        aria-expanded="false"><span class="ripple rippleEffect"></span><i
-                            class="icon-database iq-arrow-left"></i><span>Data Master</span><i
-                            class="icon-arrow-right iq-arrow-right"></i></a>
-                    <ul id="masterinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" >
+                    <a href="#masterinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="icon-database iq-arrow-left"></i><span>Data Master</span><i class="icon-arrow-right iq-arrow-right"></i></a>
+                    <ul id="masterinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="<?= base_url('admin/pegawai') ?>" class="<?= $menu['pegawai']; ?>"><i class="icon-users"></i>Pegawai</a></li>
                         <li><a href="<?= base_url('admin/jabatan') ?>" class="<?= $menu['jabatan']; ?>"><i class="icon-briefcase"></i>Jabatan</a></li>
                         <li><a href="<?= base_url('admin/absensi') ?>" class="<?= $menu['absensi']; ?>"><i class="icon-date_range"></i>Data Absen</a></li>
                         <li><a href="<?= base_url('admin/pengaturan_absen') ?>" class="<?= $menu['pengaturan_absen']; ?>"><i class="icon-settings1"></i>Setting Absen & Gaji</a></li>
-                        <li><a href="<?= base_url('admin/dataPenggajian') ?>"><i class="icon-attach_money"></i>Penggajian</a></li>
+                        <li><a href="<?= base_url('gaji/dataPenggajian') ?>"><i class="icon-attach_money"></i>Penggajian</a></li>
                     </ul>
                 </li>
             </ul>
@@ -49,7 +43,7 @@
                     <div class="hover-circle"><i class="icon-close"></i></div>
                 </div>
                 <div class="iq-navbar-logo d-flex justify-content-between ml-3">
-                    <a href="index.html" class="header-logo">
+                    <a href="<?= base_url('admin/index'); ?>" class="header-logo">
                         <img src="<?= base_url() ?>/assets/template/img/logo-absenin.png" class="img-fluid rounded" alt="">
                     </a>
                 </div>

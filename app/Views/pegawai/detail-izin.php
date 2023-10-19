@@ -20,14 +20,11 @@
                                 <div class="mb-3">
                                     <label for="validationTextarea">Alasan</label>
                                     <textarea name="alasan" class="form-control is-invalid" id="validationTextarea" placeholder="Masukkan Alasan Izin Absensi" cols="30" rows="10" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Tuliskan Alasan Izin.
-                                    </div>
                                 </div>
                                 <label>Bukti</label>
                                 <div class="custom-file">
-                                    <input type="file" name="bukti_izin" class="custom-file-input" id="validatedCustomFile" accept=".jpg, .jpeg, .png, .pdf, .doc" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                    <input type="file" name="bukti_izin" class="custom-file-input" id="buktiIzin" accept=".jpg, .jpeg, .png, .pdf, .doc" required>
+                                    <label class="custom-file-label" for="buktiIzin">Choose file...</label>
                                     <div class="invalid-feedback">Bukti Berupa File Foto Ataupun PDF</div>
                                 </div>
                                 <button class="user-bg-color btn btn-secondary mt-2 mb-2" type="submit">Submit form</button>
@@ -62,5 +59,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Event listener untuk mengubah label
+    $("#buktiIzin").on("change", function() {
+        // Dapatkan nama file
+        var fileName = $(this).val().split("\\").pop();
+
+        // Ubah label menjadi nama file
+        $(this).next().text(fileName);
+    });
+</script>
 
 <?= $this->endSection(); ?>

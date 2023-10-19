@@ -12,6 +12,11 @@
                         <div class="iq-header-title">
                             <h4 class="card-title">Detail Izin <span style="text-transform: uppercase;"><?= $detail_absensi->nama_pegawai; ?></h4>
                         </div>
+                        <span class="table-add float-right mb-3 m-3 ">
+                            <a href="<?= base_url('admin/absen') ?>/<?= $absensi->kode_absensi; ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                                    </span></i>
+                            </a>
+                        </span>
                     </div>
                     <div class="iq-card-body">
                         <div class="row">

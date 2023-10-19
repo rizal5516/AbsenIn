@@ -48,7 +48,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         // Plugin Tambahan
@@ -56,8 +56,6 @@ class Admin extends BaseController
             
         ';
 
-        // $data['judul_halaman'] = 'Dashboard Admin | Presensi By Abduloh Malela';
-        // $data['judul_sidebar'] = 'Dashboard';
         $data['admin'] = $this->AdminModel->asObject()->first();
         $data['pegawai'] = $this->PegawaiModel->asObject()->findAll();
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
@@ -79,7 +77,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         // Plugin Tambahan
@@ -87,8 +85,6 @@ class Admin extends BaseController
             
         ';
 
-        $data['judul_halaman'] = 'Profile Admin | Presensi By Abduloh Malela';
-        $data['judul_sidebar'] = 'Dashboard';
         $data['admin'] = $this->AdminModel->asObject()->first();
 
         return view('admin/profile', $data);
@@ -158,7 +154,7 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', "
             <script>
                 Swal.fire(
-                    'Berhasil!',
+                    'Berhasil!',jabatan
                     'Password Terupdate!',
                     'success'
                 )
@@ -184,7 +180,7 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
@@ -201,9 +197,6 @@ class Admin extends BaseController
             <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
             <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
-
-        // $data['judul_halaman'] = 'Data Pegawai';
-        // $data['judul_sidebar'] = 'Master Data';
 
         $data['pegawai'] = $this->PegawaiModel->getAll();
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
@@ -226,17 +219,14 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.css" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select-custom.js"></script>
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/bs-select/bs-select.css" />
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select-custom.js"></script>
         ';
-
-        $data['judul_halaman'] = 'Tambah Pegawai';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
         $data['admin'] = $this->AdminModel->asObject()->first();
@@ -495,26 +485,23 @@ class Admin extends BaseController
             'jabatan' => 'current-page',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
-
-        $data['judul_halaman'] = 'Data Jabatan';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
         $data['admin'] = $this->AdminModel->asObject()->first();
@@ -536,17 +523,15 @@ class Admin extends BaseController
             'jabatan' => 'current-page',
             'pengaturan_absen' => '',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.css" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/bs-select/bs-select-custom.js"></script>
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/bs-select/bs-select.css" />
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/bs-select/bs-select-custom.js"></script>
         ';
 
-        $data['judul_halaman'] = 'Tambah Jabatan';
-        $data['judul_sidebar'] = 'Master Data';
         $data['admin'] = $this->AdminModel->asObject()->first();
 
         return view('admin/pegawai/tambah-jabatan', $data);
@@ -560,10 +545,18 @@ class Admin extends BaseController
 
         $data_jabatan = [];
         $nama_jabatan = $this->request->getVar('nama_jabatan');
+        $gaji_pokok = $this->request->getVar('gaji_pokok');
+        $tunjangan = $this->request->getVar('tunjangan');
+        $jam_masuk = $this->request->getVar('jam_masuk');
+        $jam_keluar = $this->request->getVar('jam_keluar');
 
         foreach ($nama_jabatan as $nama) {
             array_push($data_jabatan, [
-                'nama_jabatan' => $nama
+                'nama_jabatan' => $nama,
+                'gaji_pokok' => $gaji_pokok,
+                'tunjangan' => $tunjangan,
+                'jam_masuk' => $jam_masuk,
+                'jam_keluar' => $jam_keluar
             ]);
         }
 
@@ -611,7 +604,11 @@ class Admin extends BaseController
 
         $this->JabatanModel->save([
             'id_jabatan' => $this->request->getVar('id_jabatan'),
-            'nama_jabatan' => $this->request->getVar('nama_jabatan')
+            'nama_jabatan' => $this->request->getVar('nama_jabatan'),
+            'gaji_pokok' => $this->request->getVar('gaji_pokok'),
+            'tunjangan' => $this->request->getVar('tunjangan'),
+            'jam_masuk' => $this->request->getVar('jam_masuk'),
+            'jam_keluar' => $this->request->getVar('jam_keluar')
         ]);
 
         session()->setFlashdata('pesan', "
@@ -644,13 +641,10 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => 'current-page',
             'absensi' => '',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '';
-
-        $data['judul_halaman'] = 'Setting Absensi';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
@@ -668,8 +662,6 @@ class Admin extends BaseController
 
         $this->PengaturanModel->save([
             'id_pengaturan_absen' => $this->request->getVar('id_pengaturan_absen'),
-            'jam_masuk' => $this->request->getVar('jam_masuk'),
-            'jam_keluar' => $this->request->getVar('jam_keluar'),
             'latitude' => $latitude_longitude[0],
             'longitude' => trim($latitude_longitude[1], ' '),
             'batas_jarak' => $this->request->getVar('batas_jarak'),
@@ -720,10 +712,6 @@ class Admin extends BaseController
             }
         }
 
-        // echo distance(32.9697, -96.80322, 29.46786, -98.53506, "M") . " Miles<br>";
-        // echo distance(32.9697, -96.80322, 29.46786, -98.53506, "K") . " Kilometers<br>";
-        // echo distance(32.9697, -96.80322, 29.46786, -98.53506, "N") . " Nautical Miles<br>";
-
         echo (ceil(distance(-6.299343650274825, 107.28533103878851, -6.205034529440262, 107.53736151406567, "K")) * 1000) . " Meter<br>";
     }
     // END::PENGATURAN ABSEN
@@ -744,26 +732,23 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
-
-        $data['judul_halaman'] = 'Data Absensi';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['absensi'] = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
         $data['riwayat_absen'] = $this->AbsenModel
@@ -773,51 +758,7 @@ class Admin extends BaseController
 
         return view('admin/absensi/data-absensi', $data);
     }
-    public function absen_hari_ini()
-    {
-        $absen_hari_ini = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
-        $pegawai = $this->PegawaiModel->asObject()->findAll();
 
-        if ($absen_hari_ini != null) {
-            // ABSEN SUDAH DIBUAT
-            session()->setFlashdata('pesan', "
-                <script>
-                    Swal.fire(
-                        'Error!',
-                        'Absen hari ini sudah pernah dibuat!',
-                        'error'
-                    );
-                </script>
-            ");
-            return redirect()->to('admin/absensi');
-        }
-
-        if ($pegawai == null) {
-            // BELUM ADA DATA PEGAWAI
-            session()->setFlashdata('pesan', "
-                <script>
-                    Swal.fire(
-                        'Error!',
-                        'Belum ada data pegawai, absen tidak bisa dibuat!',
-                        'error'
-                    );
-                </script>
-            ");
-            return redirect()->to('admin/absensi');
-        }
-
-        absen_hari_ini();;
-        session()->setFlashdata('pesan', "
-            <script>
-                Swal.fire(
-                    'Berhasil!',
-                    'Absen Dibuat!',
-                    'success'
-                )
-            </script>
-        ");
-        return redirect()->to('admin/absensi');
-    }
     public function absen($kode_absen)
     {
         if (session()->get('role') != 1) {
@@ -833,26 +774,23 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4.css" />
-            <link rel="stylesheet" href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bs4-custom.css" />
-            <link href="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/custom/custom-datatables.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/jszip.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/pdfmake.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/vfs_fonts.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/html5.min.js"></script>
-            <script src="' . base_url('assets/template/presensi-abdul') . '/vendor/datatables/buttons.print.min.js"></script>	
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
         ';
-
-        $data['judul_halaman'] = 'Detail Absensi';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['absensi'] = $this->AbsenModel->getByKode($kode_absen);
         $data['detail_absensi'] = $this->AbsenDetailModel->getAllByKodeAbsen($kode_absen);
@@ -875,19 +813,17 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
         ';
 
-        $data['judul_halaman'] = 'Data Absensi Pegawai';
-        $data['judul_sidebar'] = 'Master Data';
-
         $data['absensi'] = $this->AbsenModel->getByKode($kode_absen);
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, $id_pegawai);
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
         $data['admin'] = $this->AdminModel->asObject()->first();
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['detail_absensi']->id_jabatan)->first();
 
         return view('admin/absensi/detail-absensi-pegawai', $data);
     }
@@ -906,14 +842,11 @@ class Admin extends BaseController
             'jabatan' => '',
             'pengaturan_absen' => '',
             'absensi' => 'current-page',
-            'gaji'=>''
+            'gaji' => ''
         ];
 
         $data['plugin'] = '
         ';
-
-        $data['judul_halaman'] = 'Data Izin Absensi Pegawai';
-        $data['judul_sidebar'] = 'Master Data';
 
         $data['absensi'] = $this->AbsenModel->getByKode($kode_absen);
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, $id_pegawai);

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/template/img/logo-absenin-mini.png">
 
-    <title>Admin</title>
+    <title>Pegawai</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template/css/bootstrap.min.css">
@@ -53,7 +53,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 text-right">
-                    Copyright 2023 <a href="#">AbsenIn</a>
+                    &copy; <?php echo date('Y'); ?> <a>AbsenIn</a>
                 </div>
             </div>
         </div>

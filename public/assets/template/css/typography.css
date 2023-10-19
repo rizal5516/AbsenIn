@@ -756,8 +756,8 @@ loading
 }
 
 .page-item.active .page-link {
-  background-color: var(--iq-primary);
-  border-color: var(--iq-primary);
+  background-color: var(--second-color);
+  border-color: var(--second-color);
 }
 
 .page-link {
@@ -1469,9 +1469,9 @@ Buttons
   box-shadow: none !important;
 }
 
-.btn i {
+/* .btn i {
   margin-right: 5px;
-}
+} */
 
 .iq-sign-btn {
   display: inline-block;

@@ -1,6 +1,6 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
@@ -26,11 +26,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Gaji Pokok</label>
-                                                <input type="text" class="form-control" name="gaji-pokok"/>
+                                                <input type="text" class="form-control" name="gaji_pokok" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Tunjangan</label>
-                                                <input type="tetx" class="form-control" name="tunjangan"/>
+                                                <input type="text" class="form-control" name="tunjangan" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Jam Masuk</label>
+                                                <input type="time" class="form-control" name="jam_masuk" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Jam Keluar</label>
+                                                <input type="time" class="form-control" name="jam_keluar" />
                                             </div>
                                         </div>
                                     </div>
@@ -44,4 +52,4 @@
     </div>
 </div>
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>

@@ -30,7 +30,7 @@
     <script src="<?= base_url() ?>/assets/template/vendor/swal/sweetalert2.all.js"></script>
 
     <!-- PLUGIN -->
-    <!-- <?= $plugin; ?> -->
+    <?= $plugin; ?>
 
 </head>
 
@@ -53,7 +53,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 text-right">
-                    Copyright 2023 <a href="#">AbsenIn</a>
+                    &copy; <?php echo date('Y'); ?> <a>AbsenIn</a>
                 </div>
             </div>
         </div>
