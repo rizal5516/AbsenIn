@@ -48,8 +48,8 @@
                                         foreach ($jabatan as $j) : ?>
                                             <tr>
                                                 <td><?= $j->nama_jabatan; ?></td>
-                                                <td><?= $j->gaji_pokok; ?></td>
-                                                <td><?= $j->tunjangan; ?></td>
+                                                <td>Rp <?= $j->gaji_pokok; ?></td>
+                                                <td>Rp <?= $j->tunjangan; ?></td>
                                                 <td><?= $j->jam_masuk; ?> - <?= $j->jam_keluar; ?></td>
                                                 <td><?= $j->id_jabatan; ?></td>
                                                 <td>
