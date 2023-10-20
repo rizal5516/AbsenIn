@@ -150,9 +150,9 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                                         Absen</button></span>
                                                             <?php else : ?>
                                                                 <?php if ($ra->status_masuk == 0) : ?>
-                                                                    <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $ra->absen_masuk); ?></span>
+                                                                    <span><?= date('H : i', $ra->absen_masuk); ?></span>
                                                                 <?php else : ?>
-                                                                    <?= date('H : i', $ra->absen_masuk); ?>
+                                                                    <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $ra->absen_masuk); ?></span>
                                                                 <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php else : ?>

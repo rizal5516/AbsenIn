@@ -228,10 +228,6 @@
         </div>
         <!-- Content wrapper end -->
 
-        <!-- App Footer start -->
-        <div class="app-footer">© Presensi Pegawai By Abduloh Malela</div>
-        <!-- App footer end -->
-
     </div>
     <!-- Content wrapper scroll end -->
 
