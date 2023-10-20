@@ -54,7 +54,7 @@
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
                                                         <?php if ($absen->absen_masuk == 0) : ?>
-                                                            <span class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                            <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
                                                         <?php else : ?>
                                                             <?php if ($absen->status_masuk == 1) : ?>
                                                                 <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $absen->absen_masuk); ?></span>
@@ -70,7 +70,7 @@
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
                                                         <?php if ($absen->absen_keluar == 0) : ?>
-                                                            <span class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                            <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
                                                         <?php else : ?>
                                                             <?= date('H : i', $absen->absen_keluar); ?>
                                                         <?php endif; ?>

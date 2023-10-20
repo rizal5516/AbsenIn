@@ -18,9 +18,9 @@
                             <?= session()->getFlashdata('jarak'); ?>
                             <center>
                                 <div id="my_camera"></div>
+                                <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil
+                                    Gambar</button>
                             </center>
-                            <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil
-                                Gambar</button>
                         </div>
                     </div>
                 </div>
@@ -63,11 +63,11 @@
                                 <?= session()->getFlashdata('jarak'); ?>
                                 <center>
                                     <div id="my_camera"></div>
+                                    <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil Gambar</button>
+                                <?php else : ?>
+                                    <div class="alert text-white bg-danger">Belum saatnya absen pulang</div>
+                                <?php endif; ?>
                                 </center>
-                                <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil Gambar</button>
-                            <?php else : ?>
-                                <div class="alert text-white bg-danger">Belum saatnya absen pulang</div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

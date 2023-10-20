@@ -36,7 +36,8 @@ function absen_hari_ini()
         foreach ($pegawai as $p) {
             array_push($detail_absen, [
                 'kode_absensi' => $kode_absen,
-                'pegawai' => $p->id_pegawai
+                'pegawai' => $p->id_pegawai,
+                'jabatan' => $p->jabatan
             ]);
         }
 
