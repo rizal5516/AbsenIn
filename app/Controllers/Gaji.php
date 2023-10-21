@@ -115,6 +115,10 @@ class Gaji extends BaseController
     public function calculate_salary_()
     {
         $id_pegawai = $this->request->getVar('id_pegawai');
+        $detailPegawai = $this->PegawaiModel->getById($id_pegawai);
+        $jabatan = $this->JabatanModel->findById($detailPegawai->jabatan);
+        
+        
         $jumlahJamKerja = 0;
         $jumlahDenda = 0;
         $jumlahBonusSiswa = $this->request->getVar('jumlah_siswa');
@@ -138,16 +142,19 @@ class Gaji extends BaseController
 
             $absenMasuk = strtotime(date('H:i', $detail->absen_masuk));
             $absenKeluar = strtotime(date('H:i', $detail->absen_keluar));
-            $diff = floor(abs($absenMasuk - $absenKeluar) / 3600);
+            $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
             $jumlahJamKerja += $diff;
+        
         }
+        
 
         $pengaturan = $this->PengaturanModel->asObject()->first();
         $totalUpah = $jumlahJamKerja * $pengaturan->upah;
         $totalDenda = $jumlahDenda * $pengaturan->denda;
+        $tunjangan_jabatan = $jabatan->tunjangan;
         $totalBonusSiswa = $jumlahBonusSiswa * $pengaturan->bonus_siswa;
         $totalBonusAbsen = $jumlahBonusAbsen * $pengaturan->bonus_absen;
-        $gajiBersih = $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
+        $gajiBersih =  $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
         $gaji = [
             'pegawai_id' => $id_pegawai,
             'upah' => $pengaturan->upah,
@@ -163,6 +170,7 @@ class Gaji extends BaseController
             'total_denda' => $totalDenda,
             'total_bonus_siswa' => $totalBonusSiswa,
             'total_bonus_absen' => $totalBonusAbsen,
+            'tunjangan' => $tunjangan_jabatan,
             'gaji_bersih' => $gajiBersih
         ];
 
@@ -186,6 +194,7 @@ class Gaji extends BaseController
                 'total_denda' => $totalDenda,
                 'total_bonus_siswa' => $totalBonusSiswa,
                 'total_bonus_absen' => $totalBonusAbsen,
+                'tunjangan' => $tunjangan_jabatan,
                 'gaji_bersih' => $gajiBersih
             ]);
         }
@@ -217,7 +226,7 @@ class Gaji extends BaseController
         $data['judul_halaman'] = 'Dashboard Admin | Presensi By Abduloh Malela';
         $data['judul_sidebar'] = 'Upah Pegawai';
         $data['admin'] = $this->AdminModel->asObject()->first();
-        $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
+        $data['pegawai'] = $detailPegawai;
         $data['gaji'] = $gaji;
 
         return view('admin/gaji/upah-pegawai', $data);

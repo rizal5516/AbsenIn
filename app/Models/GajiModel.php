@@ -24,6 +24,7 @@ class GajiModel extends Model
         'total_denda',
         'total_bonus_siswa',
         'total_bonus_absen',
+        'jabatan',
         'gaji_bersih'
     ];
 
@@ -50,4 +51,6 @@ class GajiModel extends Model
             ->where('id', $id)
             ->get()->getRowObject();
     }
+
 }
+
