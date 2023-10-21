@@ -25,7 +25,7 @@
                         <li><a href="<?= base_url('admin/jabatan') ?>" class="<?= $menu['jabatan']; ?>"><i class="icon-briefcase"></i>Jabatan</a></li>
                         <li><a href="<?= base_url('admin/absensi') ?>" class="<?= $menu['absensi']; ?>"><i class="icon-date_range"></i>Data Absen</a></li>
                         <li><a href="<?= base_url('admin/pengaturan_absen') ?>" class="<?= $menu['pengaturan_absen']; ?>"><i class="icon-settings1"></i>Setting Absen & Gaji</a></li>
-                        <li><a href="<?= base_url('gaji/dataPenggajian') ?>"><i class="icon-attach_money"></i>Penggajian</a></li>
+                        <li><a href="<?= base_url('gaji/dataPenggajian') ?>"><i class="icon-attach_money"></i>Rekapitulasi Data</a></li>
                     </ul>
                 </li>
             </ul>

@@ -5114,3 +5114,8 @@ body.two-sidebar.sidebar-main .iq-sidebar {
   line-height: 38px;
   margin-right: 20px;
 }
+
+iq-btn-green {
+  background-color: green;
+  color: white;
+}
