@@ -152,9 +152,10 @@ class Gaji extends BaseController
         $totalUpah = $jumlahJamKerja * $pengaturan->upah;
         $totalDenda = $jumlahDenda * $pengaturan->denda;
         $tunjangan_jabatan = $jabatan->tunjangan;
+        $gajipokok_jabatan = $jabatan->gaji_pokok;
         $totalBonusSiswa = $jumlahBonusSiswa * $pengaturan->bonus_siswa;
         $totalBonusAbsen = $jumlahBonusAbsen * $pengaturan->bonus_absen;
-        $gajiBersih =  $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
+        $gajiBersih =  $gajipokok_jabatan + $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
         $gaji = [
             'pegawai_id' => $id_pegawai,
             'upah' => $pengaturan->upah,
@@ -171,6 +172,7 @@ class Gaji extends BaseController
             'total_bonus_siswa' => $totalBonusSiswa,
             'total_bonus_absen' => $totalBonusAbsen,
             'tunjangan' => $tunjangan_jabatan,
+            'gaji_pokok' => $gajipokok_jabatan,
             'gaji_bersih' => $gajiBersih
         ];
 
@@ -195,6 +197,7 @@ class Gaji extends BaseController
                 'total_bonus_siswa' => $totalBonusSiswa,
                 'total_bonus_absen' => $totalBonusAbsen,
                 'tunjangan' => $tunjangan_jabatan,
+                'gaji_pokok' => $gajipokok_jabatan,
                 'gaji_bersih' => $gajiBersih
             ]);
         }
