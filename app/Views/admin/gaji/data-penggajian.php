@@ -47,6 +47,7 @@
                                                 <td>
                                                     <a href="javascript:void(0);" class="btn iq-bg-warning btn-salary btn-rounded btn-sm my-0 mr-2" data-toggle="modal" data-target="#salaryModal" data-placement="top" data-original-title="Salary" data-id_pegawai="<?= $p->id_pegawai; ?>">
                                                         <i class="icon-open_in_new"></i>Hitung Gaji</a>
+                                                    <a href="<?= base_url('gaji/detailKehadiran'); ?>/<?= $p->id_pegawai; ?>" class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail Kehadiran</a>
                                                     <a href="<?= base_url('gaji/riwayatPenggajian'); ?>/<?= $p->id_pegawai; ?>" class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Riwayat Gaji</a>
                                                 </td>
                                             <?php endforeach; ?>

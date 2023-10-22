@@ -9,5 +9,5 @@ class PengaturanModel extends Model
     protected $table            = 'pengaturan_absen';
     protected $primaryKey       = 'id_pengaturan_absen';
     protected $protectFields    = true;
-    protected $allowedFields    = ['latitude', 'longitude', 'batas_jarak', 'upah', 'denda', 'bonus_siswa', 'bonus_absen'];
+    protected $allowedFields    = ['id_pengaturan_absen', 'latitude', 'longitude', 'batas_jarak', 'upah', 'denda', 'bonus_siswa', 'bonus_absen'];
 }

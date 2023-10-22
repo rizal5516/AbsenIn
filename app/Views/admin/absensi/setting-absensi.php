@@ -29,6 +29,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label>Garis Lintang Bujur</label>
                                     <div class="input-group">
+                                        <input class="form-control" type="hidden" name="id_pengaturan_absen" value="<?= $pengaturan->id_pengaturan_absen; ?>">
                                         <input type="text" class="form-control" aria-describedby="inputGroupPrepend2" name="latitude_longitude" value="<?= $pengaturan->latitude; ?>, <?= $pengaturan->longitude; ?>">
                                     </div>
                                     <p class="text-muted font-size-12">Latitude Longitude / Garis Lintang - Bujur</p>

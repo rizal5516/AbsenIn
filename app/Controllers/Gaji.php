@@ -243,4 +243,84 @@ class Gaji extends BaseController
         // run dompdf
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
+
+    public function detailKehadiran($id_pegawai)
+    {
+        if (session()->get('role') != 1) {
+            return redirect()->to('auth');
+        }
+        // absen_hari_ini();
+
+        $data['menu'] = [
+            'tab_home' => '',
+            'tab_master' => 'show active',
+            'dashboard' => '',
+            'pegawai' => '',
+            'jabatan' => '',
+            'pengaturan_absen' => '',
+            'absensi' => '',
+            'gaji' => 'current-page'
+        ];
+
+        $data['plugin'] = '
+                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+                <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
+            ';
+
+        $data['gaji'] = $this->GajiModel->findByPegawaiId($id_pegawai);
+        $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
+        $data['admin'] = $this->AdminModel->asObject()->first();
+
+        return view('admin/gaji/detail-kehadiran', $data);
+    }
+
+    public function dataDetailKehadiran($id_pegawai)
+    {
+        if (session()->get('role') != 1) {
+            return redirect()->to('auth');
+        }
+        // absen_hari_ini();
+
+        $data['menu'] = [
+            'tab_home' => '',
+            'tab_master' => 'show active',
+            'dashboard' => '',
+            'pegawai' => '',
+            'jabatan' => '',
+            'pengaturan_absen' => '',
+            'absensi' => '',
+            'gaji' => 'current-page'
+        ];
+
+        $data['plugin'] = '
+                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+                <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
+            ';
+
+        $data['gaji'] = $this->GajiModel->findByPegawaiId($id_pegawai);
+        $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
+        $data['admin'] = $this->AdminModel->asObject()->first();
+
+        return view('admin/gaji/data-detail-kehadiran', $data);
+    }
 }
