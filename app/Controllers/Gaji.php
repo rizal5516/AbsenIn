@@ -205,7 +205,7 @@ class Gaji extends BaseController
                 'denda' => $pengaturan->denda,
                 'bonus_siswa' => $pengaturan->bonus_siswa,
                 'bonus_absen' => $pengaturan->bonus_absen,
-                'bulan' => date('Y-m-d'),
+                'bulan' => date("Y-m-d", strtotime("-1 months")),
                 'jumlah_jam_kerja' => $jumlahJamKerja,
                 'jumlah_denda' => $jumlahDenda,
                 'jumlah_bonus_siswa' => $jumlahBonusSiswa,
