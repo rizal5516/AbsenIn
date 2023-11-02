@@ -140,10 +140,28 @@ class Gaji extends BaseController
                 $jumlahBonusAbsen++;
             }
 
-            $absenMasuk = strtotime(date('H:i', $detail->absen_masuk));
-            $absenKeluar = strtotime(date('H:i', $detail->absen_keluar));
-            $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+            $absenMasuk = $detail->absen_masuk;
+            $absenKeluar = $detail->absen_keluar;
+            if ($absenKeluar == NULL) {
+                $diff = 28800 / 60 ;
+            }
+            else{
+                $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+            }
             $jumlahJamKerja += $diff;
+            // $absenMasuk =  $detail->absen_masuk;
+            // $absenKeluar =  $detail->absen_keluar;
+            // $absenMasukhi = strtotime(date('H:i', strtotime($detail->absen_masuk)));
+            // $jabatanJamKeluar = strtotime($jabatan->jam_keluar);
+            // // $absenMasukhicok = strtotime($absenMasukhi);
+            // // $absenMasukdate = strtotime($jabatan->jam_masuk);
+            // if ($absenKeluar == NULL) {
+            //     $diff = floor(($jabatanJamKeluar - $absenMasuk) / 60);
+            // }
+            // else{
+            //     $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+            // }
+            // $jumlahJamKerja += $diff;
         
         }
         
