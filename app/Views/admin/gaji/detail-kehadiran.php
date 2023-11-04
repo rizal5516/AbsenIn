@@ -89,20 +89,32 @@
                                 class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
-                                        <th>Bulan</th>
-                                        <th>Action</th>
+                                        <th>Keterangan</th>
+                                        <th>Jam Masuk</th>
+                                        <th>Jam Keluar</th>
+                                        <th>Total Jam Kerja</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php if ($detail_absensi != null) : ?>
-                                        <?php foreach ($detail_absensi as $abs) : ?>
-                                            <tr>
-                                                <td><?= date('F', strtotime($abs->tgl_absen)); ?></td>
-                                                <td>
-                                                    <span class="table-remove"><a href="gaji/cekDetail" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail</a></span>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                    <?php foreach ($detail_absensi as $abs) : ?>
+                                    <tr>
+                                        <td><?= date('d F Y', strtotime($abs->tgl_absen)); ?></td>
+                                        <td><?= date('H:i', $abs->absen_masuk); ?></td>
+                                        <td><?= date('H:i', $abs->absen_keluar); ?></td>
+                                        <td>
+                                            <?php
+                                            $absenMasuk = $abs->absen_masuk;
+                                            $absenKeluar = $abs->absen_keluar;
+                                            $timeDiffSeconds = $absenKeluar - $absenMasuk;
+                                            $hours = floor($timeDiffSeconds / 3600);
+                                            $minutes = floor(($timeDiffSeconds % 3600) / 60);
+                                            $seconds = $timeDiffSeconds % 60;
+                                            echo "$hours jam $minutes menit $seconds detik";
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
