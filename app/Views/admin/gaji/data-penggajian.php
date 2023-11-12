@@ -102,7 +102,13 @@
         $("#salaryModal").on("hidden.bs.modal", function() {
             $("#jumlah_siswa").val("");
         });
-        if (error != "") alert(error)
+        if (error != "") {
+        Swal.fire(
+            'Gagal Menghitung Gaji!',
+            error,
+            'error'
+        )
+        }
     });
 
     $('#datatable_data-penggajian').DataTable({

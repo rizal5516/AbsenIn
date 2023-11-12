@@ -125,6 +125,7 @@ class Gaji extends BaseController
         $jumlahBonusAbsen = 0;
 
         $month = date("M-Y", strtotime("-1 months"));
+        $monthonly = date("F", strtotime("-1 months"));
         $absens = $this->AbsenModel->getByMonth($month);
         $kodeAbsens = array();
         foreach ($absens as $absen) {
@@ -132,7 +133,7 @@ class Gaji extends BaseController
         }
 
         if (count($kodeAbsens) == 0) {
-            return redirect()->back()->with("error","Tidak dapat dihitung ".$month);
+            return redirect()->back()->with("error","Data absen bulan ".$monthonly." kosong!");
         }
         $detailAbsens = $this->AbsenDetailModel->getByArrayKodeAndIdPegawai($kodeAbsens, $id_pegawai);
         
