@@ -131,7 +131,11 @@ class Gaji extends BaseController
             array_push($kodeAbsens, $absen->kode_absensi);
         }
 
+        if (count($kodeAbsens) == 0) {
+            return redirect()->back()->with("error","Tidak dapat dihitung ".$month);
+        }
         $detailAbsens = $this->AbsenDetailModel->getByArrayKodeAndIdPegawai($kodeAbsens, $id_pegawai);
+        
 
         foreach ($detailAbsens as $detail) {
             if ($detail->status_masuk == 1) {
@@ -205,7 +209,7 @@ class Gaji extends BaseController
                 'denda' => $pengaturan->denda,
                 'bonus_siswa' => $pengaturan->bonus_siswa,
                 'bonus_absen' => $pengaturan->bonus_absen,
-                'bulan' => date("Y-m-d", strtotime("-1 months")),
+                'bulan' => date('Y-m-d'),
                 'jumlah_jam_kerja' => $jumlahJamKerja,
                 'jumlah_denda' => $jumlahDenda,
                 'jumlah_bonus_siswa' => $jumlahBonusSiswa,

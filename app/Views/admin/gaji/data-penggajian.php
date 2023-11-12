@@ -23,12 +23,13 @@
                                     </div>
                                 </div>
                             </form>
+                            
                             <table id="datatable_data-penggajian" class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th>Pegawai</th>
                                         <th>Jabatan</th>
-                                        <th>Email</th>
+                                        <th>Email</th> 
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -90,6 +91,9 @@
 </div>
 
 <script>
+
+    var error="<?php if (session()->has('error')) echo session()->error; ?>"
+
     $('.btn-salary').click(function() {
         $('input[name=id_pegawai]').val($(this).data('id_pegawai'));
     });
@@ -98,6 +102,7 @@
         $("#salaryModal").on("hidden.bs.modal", function() {
             $("#jumlah_siswa").val("");
         });
+        if (error != "") alert(error)
     });
 
     $('#datatable_data-penggajian').DataTable({
