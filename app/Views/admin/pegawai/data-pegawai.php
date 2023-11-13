@@ -243,6 +243,7 @@
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
+        "pageLength": 5,
         dom: 'Bfrtip',
         buttons: [{
                 extend: 'excelHtml5',

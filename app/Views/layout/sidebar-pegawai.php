@@ -50,7 +50,7 @@
             </div>
             <ul class="navbar-list">
                 <li class="line-height">
-                    <a class="search-toggle iq-waves-effect d-flex align-items-center">
+                    <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
                         <img src="<?= base_url() ?>/assets/img/pegawai/<?= $pegawai->gambar ?>"" class=" img-fluid rounded mr-3" alt="user">
                         <div class="caption">
                             <h6 class="mb-0 line-height"><?= $pegawai->nama_pegawai ?></h6>

@@ -76,7 +76,7 @@
                     <!-- Field wrapper start -->
                     <div class="field-wrapper">
                         <input class="form-control" id="id_pegawai" type="hidden" name="id_pegawai" required>
-                        <input class="form-control" id="jumlah_siswa" type="number" name="jumlah_siswa" required>
+                        <input class="form-control" id="jumlah_siswa" type="number" name="jumlah_siswa" min="0" required>
                         <div class="field-placeholder">Jumlah Siswa <span class="text-danger">*</span></div>
                     </div>
                     <!-- Field wrapper end -->
@@ -107,7 +107,8 @@
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
-        dom: 'Bfrtip',
+        "pageLength": 5,
+        dom: 'lfrtip',
         buttons: [{
                 extend: 'excelHtml5',
                 title: 'Data Penggajian '

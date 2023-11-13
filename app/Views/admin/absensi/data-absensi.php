@@ -134,7 +134,8 @@
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
-        dom: 'Bfrtip',
+        "pageLength": 10,
+        dom: 'lfrtip',
         buttons: [{
                 extend: 'excelHtml5',
                 title: 'Riwayat Absensi'

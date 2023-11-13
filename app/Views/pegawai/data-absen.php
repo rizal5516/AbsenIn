@@ -40,7 +40,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                 <?php if ($detail_absen->izin == null) : ?>
                                                     <td>
                                                         <?php if ($detail_absen->absen_masuk == 0) : ?>
-                                                            <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                            <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                     Absen</button></span>
                                                         <?php else : ?>
                                                             <?php if ($detail_absen->status_masuk == 1) : ?>
@@ -52,7 +52,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                     </td>
                                                     <td>
                                                         <?php if ($detail_absen->absen_keluar == 0) : ?>
-                                                            <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                            <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                     Absen</button></span>
                                                         <?php else : ?>
                                                             <?= date('H : i', $detail_absen->absen_keluar); ?>
@@ -146,13 +146,13 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                     <td>
                                                         <?php if ($ra->izin == null) : ?>
                                                             <?php if ($ra->absen_masuk == 0) : ?>
-                                                                <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                         Absen</button></span>
                                                             <?php else : ?>
-                                                                <?php if ($ra->status_masuk == 0) : ?>
-                                                                    <span><?= date('H : i', $ra->absen_masuk); ?></span>
-                                                                <?php else : ?>
+                                                                <?php if ($ra->status_masuk == 1) : ?>
                                                                     <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $ra->absen_masuk); ?></span>
+                                                                <?php else : ?>
+                                                                    <?= date('H : i', $ra->absen_masuk); ?>
                                                                 <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php else : ?>
@@ -162,7 +162,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                     <td>
                                                         <?php if ($ra->izin == null) : ?>
                                                             <?php if ($ra->absen_keluar == 0) : ?>
-                                                                <span class="table-remove"><button class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                         Absen</button></span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $ra->absen_keluar); ?>
@@ -215,10 +215,17 @@ $AbsenDetailModel = new AbsenDetailModel();
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
+        "pageLength": 10,
         dom: 'lfrtip',
         "order": [
-            [4, "asc"]
-        ]
+            [0, "desc"]
+        ],
+        // New code:
+        "columnDefs": [{
+            "type": "date",
+            "targets": 0,
+            "orderSequence": ["desc", "asc"]
+        }]
     });
 
     // Ubah desain search field

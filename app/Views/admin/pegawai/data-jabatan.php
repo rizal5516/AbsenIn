@@ -147,6 +147,7 @@
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
+        "pageLength": 5,
     });
     var ordering = table.order();
 

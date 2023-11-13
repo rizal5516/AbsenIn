@@ -24,28 +24,48 @@ class GajiModel extends Model
         'total_denda',
         'total_bonus_siswa',
         'total_bonus_absen',
+        'jabatan',
         'gaji_bersih'
     ];
 
     public function findByPegawaiId($pegawaiId)
-    {   
+    {
         $date = date('Y-m-01');
         return $this
             ->where('pegawai_id', $pegawaiId)
-            ->where('bulan <',$date)
+            ->where('bulan <', $date)
+            ->get()->getResultObject();
+    }
+
+    public function findByPegawaiIdDay($pegawaiId)
+    {
+        $date = date('Y-m-01');
+        return $this
+            ->where('pegawai_id', $pegawaiId)
+            ->where('hari <', $date)
             ->get()->getResultObject();
     }
 
     public function findThisMonth($pegawaiId)
-    {   
+    {
         $date = date('Y-m-01');
         return $this
             ->where('pegawai_id', $pegawaiId)
-            ->where('bulan >=',$date)
+            ->where('bulan >=', $date)
             ->get()->getRowObject();
     }
 
-    public function findById($id){
+    public function findThisDay($pegawaiId)
+    {
+        $date = date('Y-m-01');
+        return $this
+            ->where('pegawai_id', $pegawaiId)
+            ->where('hari >=', $date)
+            ->get()->getRowObject();
+    }
+
+    public function findById($id)
+    {
         return $this
             ->where('id', $id)
             ->get()->getRowObject();

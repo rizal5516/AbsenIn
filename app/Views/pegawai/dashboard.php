@@ -71,7 +71,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <th>Masuk</th>
                                                         <td>
                                                             <?php if ($detail_absen->absen_masuk == 0) : ?>
-                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                     Absen</span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $detail_absen->absen_masuk); ?>
@@ -86,7 +86,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <th>Pulang</th>
                                                         <td>
                                                             <?php if ($detail_absen->absen_keluar == 0) : ?>
-                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                     Absen</span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $detail_absen->absen_keluar); ?>

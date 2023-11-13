@@ -115,6 +115,8 @@ class Gaji extends BaseController
     public function calculate_salary_()
     {
         $id_pegawai = $this->request->getVar('id_pegawai');
+        $detailPegawai = $this->PegawaiModel->getById($id_pegawai);
+        $jabatan = $this->JabatanModel->findById($detailPegawai->jabatan);
         $jumlahJamKerja = 0;
         $jumlahDenda = 0;
         $jumlahBonusSiswa = $this->request->getVar('jumlah_siswa');
@@ -122,6 +124,7 @@ class Gaji extends BaseController
 
         $month = date("M-Y", strtotime("-1 months"));
         $absens = $this->AbsenModel->getByMonth($month);
+        var_dump($month);
         $kodeAbsens = array();
         foreach ($absens as $absen) {
             array_push($kodeAbsens, $absen->kode_absensi);
@@ -138,23 +141,24 @@ class Gaji extends BaseController
 
             $absenMasuk = strtotime(date('H:i', $detail->absen_masuk));
             $absenKeluar = strtotime(date('H:i', $detail->absen_keluar));
-            $diff = floor(abs($absenMasuk - $absenKeluar) / 3600);
+            $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
             $jumlahJamKerja += $diff;
         }
 
         $pengaturan = $this->PengaturanModel->asObject()->first();
         $totalUpah = $jumlahJamKerja * $pengaturan->upah;
         $totalDenda = $jumlahDenda * $pengaturan->denda;
+        $tunjangan_jabatan = $jabatan->tunjangan;
         $totalBonusSiswa = $jumlahBonusSiswa * $pengaturan->bonus_siswa;
         $totalBonusAbsen = $jumlahBonusAbsen * $pengaturan->bonus_absen;
-        $gajiBersih = $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
+        $gajiBersih = $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
         $gaji = [
             'pegawai_id' => $id_pegawai,
             'upah' => $pengaturan->upah,
             'denda' => $pengaturan->denda,
             'bonus_siswa' => $pengaturan->bonus_siswa,
             'bonus_absen' => $pengaturan->bonus_absen,
-            'bulan' => date('Y-m-d'),
+            'bulan' => date('Y-m-d', strtotime("-1 months")),
             'jumlah_jam_kerja' => $jumlahJamKerja,
             'jumlah_denda' => $jumlahDenda,
             'jumlah_bonus_siswa' => $jumlahBonusSiswa,
@@ -163,6 +167,7 @@ class Gaji extends BaseController
             'total_denda' => $totalDenda,
             'total_bonus_siswa' => $totalBonusSiswa,
             'total_bonus_absen' => $totalBonusAbsen,
+            'tunjangan' => $tunjangan_jabatan,
             'gaji_bersih' => $gajiBersih
         ];
 
@@ -186,6 +191,7 @@ class Gaji extends BaseController
                 'total_denda' => $totalDenda,
                 'total_bonus_siswa' => $totalBonusSiswa,
                 'total_bonus_absen' => $totalBonusAbsen,
+                'tunjangan' => $tunjangan_jabatan,
                 'gaji_bersih' => $gajiBersih
             ]);
         }
@@ -214,10 +220,11 @@ class Gaji extends BaseController
                 <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
                 <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
             ';
-        $data['judul_halaman'] = 'Dashboard Admin | Presensi By Abduloh Malela';
+        $data['judul_halaman'] = 'Dashboard Admin';
         $data['judul_sidebar'] = 'Upah Pegawai';
         $data['admin'] = $this->AdminModel->asObject()->first();
         $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
+        $data['pegawai'] = $detailPegawai;
         $data['gaji'] = $gaji;
 
         return view('admin/gaji/upah-pegawai', $data);
@@ -277,50 +284,10 @@ class Gaji extends BaseController
                 <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
             ';
 
-        $data['gaji'] = $this->GajiModel->findByPegawaiId($id_pegawai);
+        $data['detail_absensi'] = $this->AbsenDetailModel->riwayatAbsen($id_pegawai);
         $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
         $data['admin'] = $this->AdminModel->asObject()->first();
 
         return view('admin/gaji/detail-kehadiran', $data);
-    }
-
-    public function dataDetailKehadiran($id_pegawai)
-    {
-        if (session()->get('role') != 1) {
-            return redirect()->to('auth');
-        }
-        // absen_hari_ini();
-
-        $data['menu'] = [
-            'tab_home' => '',
-            'tab_master' => 'show active',
-            'dashboard' => '',
-            'pegawai' => '',
-            'jabatan' => '',
-            'pengaturan_absen' => '',
-            'absensi' => '',
-            'gaji' => 'current-page'
-        ];
-
-        $data['plugin'] = '
-                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
-                <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
-                <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
-                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
-                <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
-            ';
-
-        $data['gaji'] = $this->GajiModel->findByPegawaiId($id_pegawai);
-        $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
-        $data['admin'] = $this->AdminModel->asObject()->first();
-
-        return view('admin/gaji/data-detail-kehadiran', $data);
     }
 }

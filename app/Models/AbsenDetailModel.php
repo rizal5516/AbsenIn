@@ -20,14 +20,18 @@ class AbsenDetailModel extends Model
             ->get()->getResultObject();
     }
 
-    public function riwayatAbsen($id_pegawai)
+    public function riwayatAbsen($id_pegawai, $month = NULL, $year = NULL)
     {
-        return $this
+        $riwayat = $this
             ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
             ->join('absensi', 'absensi.kode_absensi=detail_absensi.kode_absensi')
             ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
-            ->where('detail_absensi.pegawai', $id_pegawai)
-            ->orderBy('detail_absensi.id_detail_absensi', 'DESC')
+            ->where('detail_absensi.pegawai', $id_pegawai);
+        if (!is_null($month) && !is_null($year))
+            $riwayat = $riwayat->where('MONTH(FROM_UNIXTIME(`absen_masuk`))', $month)
+                ->where('YEAR(FROM_UNIXTIME(`absen_masuk`))', $year);
+        return $riwayat
+            ->orderBy('detail_absensi.id_detail_absensi', 'ASC')
             ->get()->getResultObject();
     }
 
@@ -48,6 +52,7 @@ class AbsenDetailModel extends Model
             ->whereIn('kode_absensi', $kode_absens)
             ->where('pegawai', $id_pegawai)
             ->where('absen_masuk !=', null)
+            ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
             ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->get()->getResultObject();
     }

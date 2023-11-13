@@ -81,17 +81,47 @@
                             <table id="datatable_detail-kehadiran" class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
-                                        <th>Bulan</th>
-                                        <th></th>
+                                        <th>Keterangan</th>
+                                        <th>Jam Masuk</th>
+                                        <th>Jam Keluar</th>
+                                        <th>Total Jam Kerja</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if ($gaji != null) : ?>
-                                        <?php foreach ($gaji as $g) : ?>
+                                    <?php if ($detail_absensi != null) : ?>
+                                        <?php foreach ($detail_absensi as $abs) : ?>
                                             <tr>
-                                                <td><?= date('F Y', strtotime($g->bulan)); ?></td>
+                                                <td><?= date('d F Y', strtotime($abs->tgl_absen)); ?></td>
+                                                <td><?php if ($abs->absen_masuk == 0) : ?>
+                                                        <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                    <?php else : ?>
+                                                        <?php if ($abs->status_masuk == 1) : ?>
+                                                            <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $abs->absen_masuk); ?></span>
+                                                        <?php else : ?>
+                                                            <?= date('H : i', $abs->absen_masuk); ?>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td><?php if ($abs->absen_keluar == 0) : ?>
+                                                        <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                    <?php else : ?>
+                                                        <?= date('H : i', $abs->absen_keluar); ?>
+                                                    <?php endif; ?>
+                                                </td>
                                                 <td>
-                                                    <span class="table-remove"><a href="<?= base_url('gaji/dataDetailKehadiran'); ?>/<?= $g->id; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail</a></span>
+                                                    <?php if ($abs->absen_keluar == 0) : ?>
+                                                        <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak Lengkap</span>
+                                                    <?php else : ?>
+                                                        <?php
+                                                        $absenMasuk = $abs->absen_masuk;
+                                                        $absenKeluar = $abs->absen_keluar;
+                                                        $timeDiffSeconds = $absenKeluar - $absenMasuk;
+                                                        $hours = floor($timeDiffSeconds / 3600);
+                                                        $minutes = floor(($timeDiffSeconds % 3600) / 60);
+                                                        $seconds = $timeDiffSeconds % 60;
+                                                        echo "$hours jam $minutes menit $seconds detik";
+                                                        ?>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -113,10 +143,31 @@
             [-1, 5, 10, 25, 50],
             ["All", 5, 10, 25, 50]
         ],
-        dom: 'frtip',
+        "pageLength": 31,
+        dom: 'Bfrtip',
+        buttons: [{
+                extend: 'excelHtml5',
+                title: 'Detail Kehadiran <?= $pegawai->nama_pegawai; ?>'
+            },
+            // 'csvHtml5',
+            {
+                extend: 'pdfHtml5',
+                title: 'Riwayat Absensi <?= $pegawai->nama_pegawai; ?>'
+            },
+            {
+                extend: 'print',
+                title: 'Riwayat Absensi <?= $pegawai->nama_pegawai; ?>'
+            }
+        ],
         "order": [
-            [0, 'asc']
-        ]
+            [0, "desc"]
+        ],
+        // New code:
+        "columnDefs": [{
+            "type": "date",
+            "targets": 0,
+            "orderSequence": ["desc", "asc"]
+        }]
     });
 
     // Ubah desain search field
