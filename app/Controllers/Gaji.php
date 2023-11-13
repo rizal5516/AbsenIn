@@ -148,10 +148,10 @@ class Gaji extends BaseController
             $absenMasuk = $detail->absen_masuk;
             $absenKeluar = $detail->absen_keluar;
             if ($absenKeluar == NULL) {
-                $diff = 28800 / 60 ;
+                $diff = 0 ;
             }
             else{
-                $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+                $diff = floor(abs($absenMasuk - $absenKeluar) / 3600);
             }
             $jumlahJamKerja += $diff;
             // $absenMasuk =  $detail->absen_masuk;
