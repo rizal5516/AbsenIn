@@ -283,7 +283,7 @@ class Gaji extends BaseController
                 <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
                 <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
             ';
-
+        $data['detail_bulan'] = $this->AbsenDetailModel->riwayatBulan($id_pegawai);
         $data['detail_absensi'] = $this->AbsenDetailModel->riwayatAbsen($id_pegawai);
         $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
         $data['admin'] = $this->AdminModel->asObject()->first();
