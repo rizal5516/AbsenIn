@@ -123,11 +123,16 @@ class Gaji extends BaseController
         $jumlahBonusAbsen = 0;
 
         $month = date("M-Y", strtotime("-1 months"));
+        $monthonly = date("F", strtotime("-1 months"));
         $absens = $this->AbsenModel->getByMonth($month);
         var_dump($month);
         $kodeAbsens = array();
         foreach ($absens as $absen) {
             array_push($kodeAbsens, $absen->kode_absensi);
+        }
+
+        if (count($kodeAbsens) == 0) {
+            return redirect()->back()->with("error", "Data absen bulan " . $monthonly . " kosong!");
         }
 
         $detailAbsens = $this->AbsenDetailModel->getByArrayKodeAndIdPegawai($kodeAbsens, $id_pegawai);
@@ -139,9 +144,13 @@ class Gaji extends BaseController
                 $jumlahBonusAbsen++;
             }
 
-            $absenMasuk = strtotime(date('H:i', $detail->absen_masuk));
-            $absenKeluar = strtotime(date('H:i', $detail->absen_keluar));
-            $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+            $absenMasuk = $detail->absen_masuk;
+            $absenKeluar = $detail->absen_keluar;
+            if ($absenKeluar == NULL) {
+                $diff = 0;
+            } else {
+                $diff = floor(abs($absenMasuk - $absenKeluar) / 3600);
+            }
             $jumlahJamKerja += $diff;
         }
 
@@ -149,9 +158,10 @@ class Gaji extends BaseController
         $totalUpah = $jumlahJamKerja * $pengaturan->upah;
         $totalDenda = $jumlahDenda * $pengaturan->denda;
         $tunjangan_jabatan = $jabatan->tunjangan;
+        $gajipokok_jabatan = $jabatan->gaji_pokok;
         $totalBonusSiswa = $jumlahBonusSiswa * $pengaturan->bonus_siswa;
         $totalBonusAbsen = $jumlahBonusAbsen * $pengaturan->bonus_absen;
-        $gajiBersih = $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
+        $gajiBersih = $gajipokok_jabatan + $tunjangan_jabatan + $totalUpah + $totalBonusSiswa + $totalBonusAbsen - $totalDenda;
         $gaji = [
             'pegawai_id' => $id_pegawai,
             'upah' => $pengaturan->upah,
@@ -168,6 +178,7 @@ class Gaji extends BaseController
             'total_bonus_siswa' => $totalBonusSiswa,
             'total_bonus_absen' => $totalBonusAbsen,
             'tunjangan' => $tunjangan_jabatan,
+            'gaji_pokok' => $gajipokok_jabatan,
             'gaji_bersih' => $gajiBersih
         ];
 
@@ -192,6 +203,7 @@ class Gaji extends BaseController
                 'total_bonus_siswa' => $totalBonusSiswa,
                 'total_bonus_absen' => $totalBonusAbsen,
                 'tunjangan' => $tunjangan_jabatan,
+                'gaji_pokok' => $gajipokok_jabatan,
                 'gaji_bersih' => $gajiBersih
             ]);
         }
@@ -284,6 +296,7 @@ class Gaji extends BaseController
                 <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>	
             ';
 
+        $data['detail_bulan'] = $this->AbsenDetailModel->riwayatBulan($id_pegawai);
         $data['detail_absensi'] = $this->AbsenDetailModel->riwayatAbsen($id_pegawai);
         $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
         $data['admin'] = $this->AdminModel->asObject()->first();

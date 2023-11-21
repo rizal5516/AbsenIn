@@ -50,6 +50,22 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-3">
+                                <h6 class="text-secondary">Gaji Pokok</h6>
+                            </div>
+                            <div class="col-lg-7">
+                                <h6 class="text-secondary">: <?= "Rp. " . number_format($gaji['gaji_pokok'], 0, ',', '.'); ?></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <h6 class="text-secondary">Tunjangan Jabatan</h6>
+                            </div>
+                            <div class="col-lg-7">
+                                <h6 class="text-secondary">: <?= "Rp. " . number_format($gaji['tunjangan'], 0, ',', '.'); ?></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
                                 <h6 class="text-secondary">Upah per jam</h6>
                             </div>
                             <div class="col-lg-7">

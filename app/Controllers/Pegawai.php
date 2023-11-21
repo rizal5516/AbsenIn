@@ -314,8 +314,10 @@ class Pegawai extends BaseController
     public function absen_pulang()
     {
         $kode_absensi = $this->request->getVar('kode_absensi');
+        $pegawai = $this->PegawaiModel->getByEmail(session()->get('email'));
         $absensi = $this->AbsenModel->getByKode($kode_absensi);
         $pengaturan_absen = $this->PengaturanModel->asObject()->first();
+        $jabatan = $this->JabatanModel->asObject()->where('id_jabatan', $pegawai->id_jabatan)->first();
         $latitude = $this->request->getVar('latitude');
         $longitude = $this->request->getVar('longitude');
         $image_tag = $this->request->getVar('image_tag');
@@ -363,6 +365,13 @@ class Pegawai extends BaseController
             return redirect()->to('pegawai/absen' . '/' . $kode_absensi);
         }
 
+        // CEK APAKAH DIA TERLAMBAT
+        if (strtotime($waktu_absen) > strtotime($jabatan->jam_keluar) + 900) {
+            $terlambat = 1; // 1 Berarti Telambat
+        } else {
+            $terlambat = 0; // 0 Berarti tidak terlambat
+        }
+
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 
         //UPLOAD-GAMBAR
@@ -373,6 +382,7 @@ class Pegawai extends BaseController
 
         $this->AbsenDetailModel
             ->set('absen_keluar', time())
+            ->set('status_keluar', $terlambat)
             ->set('latitude_keluar', $latitude)
             ->set('longitude_keluar', $longitude)
             ->set('bukti_keluar', $filename)

@@ -91,6 +91,8 @@
 </div>
 
 <script>
+    $error = "<?php if (session()->has('error')) echo session()->error; ?>"
+
     $('.btn-salary').click(function() {
         $('input[name=id_pegawai]').val($(this).data('id_pegawai'));
     });
@@ -99,6 +101,13 @@
         $("#salaryModal").on("hidden.bs.modal", function() {
             $("#jumlah_siswa").val("");
         });
+        if (error != "") {
+            Swal.fire(
+                'Gagal Menghitung Gaji!',
+                error,
+                'error'
+            )
+        }
     });
 
     $('#datatable_data-penggajian').DataTable({
