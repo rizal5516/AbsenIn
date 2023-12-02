@@ -94,17 +94,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if ($gaji != null) : ?>
-                                    <?php foreach ($gaji as $g) : ?>
-                                    <tr>
-                                        <td><?= date('F Y', strtotime($g->bulan)); ?></td>
-                                        <td>
-                                            <span class="table-remove"><a href="<?= base_url('gaji/cekDetail'); ?>/<?= $g->id; ?>
-                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">
-                                                    <i class="icon-open_in_new"></i>Cek Detail</a></span>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
+                                    <?php if ($detail_absensi != null) : ?>
+                                        <?php foreach ($detail_absensi as $abs) : ?>
+                                            <tr>
+                                                <td><?= date('F', strtotime($abs->tgl_absen)); ?></td>
+                                                <td>
+                                                    <span class="table-remove"><a href="gaji/cekDetail" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2"> <i class="icon-open_in_new"></i>Detail</a></span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     <?php endif; ?>
                                 </tbody>
                             </table>

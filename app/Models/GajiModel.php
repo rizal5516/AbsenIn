@@ -69,4 +69,5 @@ class GajiModel extends Model
             ->where('id', $id)
             ->get()->getRowObject();
     }
+    
 }

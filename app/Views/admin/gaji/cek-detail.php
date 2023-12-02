@@ -35,18 +35,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (isset($attendanceData)) : ?>
-                                        <?php foreach ($attendanceData as $attendance) : ?>
-                                            <tr>
-                                                <td><?= $attendance->keterangan; ?></td>
-                                                <td><?= $attendance->nama; ?></td>
-                                                <td><?= $attendance->jam_masuk; ?></td>
-                                                <td><?= $attendance->jam_keluar; ?></td>
-                                                <td><?= $attendance->total_jam; ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                    <?php if ($gaji != null) : ?>
+                                    <?php foreach ($gaji as $g) : ?>
+                                    <tr>
+                                        <td><?= date('Y-M-01', strtotime($g->bulan)); ?></td>
+                                        <td>
+                                            <span class="table-remove">
+                                                <a href="<?= base_url('gaji/cekDetail') . '/' . $g->id; ?>"
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">
+                                                    <i class="icon-open_in_new"></i>Cek Detail
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                     <?php endif; ?>
-                                </tbody>
+                                    </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -65,9 +70,9 @@
         ],
         dom: 'Bfrtip',
         buttons: [{
-            extend: 'excelHtml5',
-            title: 'Data Penggajian'
-        },
+                extend: 'excelHtml5',
+                title: 'Data Penggajian'
+            },
             {
                 extend: 'pdfHtml5',
                 title: 'Data Penggajian',

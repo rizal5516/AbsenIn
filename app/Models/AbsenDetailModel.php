@@ -31,7 +31,7 @@ class AbsenDetailModel extends Model
                 $riwayat=$riwayat->where('MONTH(FROM_UNIXTIME(`absen_masuk`))', $month)
                 ->where('YEAR(FROM_UNIXTIME(`absen_masuk`))', $year);
         return $riwayat
-            ->orderBy('detail_absensi.id_detail_absensi', 'DESC')
+            ->orderBy('detail_absensi.id_detail_absensi', 'ASC')
             ->get()->getResultObject();
     }
 
