@@ -15,12 +15,16 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <?= session()->getFlashdata('jarak'); ?>
-                            <center>
-                                <div id="my_camera"></div>
-                                <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil
-                                    Gambar</button>
-                            </center>
+                            <?php if (strtotime(date('H:i', time())) >= strtotime($jabatan->jam_masuk)) : ?>
+                                <?= session()->getFlashdata('jarak'); ?>
+                                <center>
+                                    <div id="my_camera"></div>
+                                    <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil
+                                        Gambar</button>
+                                <?php else : ?>
+                                    <div class="alert text-white bg-danger">Belum saatnya absen pulang</div>
+                                <?php endif; ?>
+                                </center>
                         </div>
                     </div>
                 </div>
