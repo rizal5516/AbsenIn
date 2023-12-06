@@ -34,7 +34,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-3">
-                                <h6 class="text-secondary">NIP</h6>
+                                <h6 class="text-secondary">NIK</h6>
                             </div>
                             <div class="col-lg-7">
                                 <h6 class="text-secondary">: <?= $pegawai->nip; ?></h6>

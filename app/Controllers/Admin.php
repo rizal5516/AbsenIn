@@ -259,6 +259,7 @@ class Admin extends BaseController
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
+            'tunjangan' => $this->request->getVar(('tunjangan')),
             'password' => $this->request->getVar('nip'),
             'gambar' => $nama_gambar,
             'is_active' => 1,
@@ -321,6 +322,7 @@ class Admin extends BaseController
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
+            'tunjangan' => $this->request->getVar('tunjangan'),
             'password' => $this->request->getVar('password'),
             'gambar' => $nama_gambar,
             'is_active' => $this->request->getVar('is_active'),
@@ -405,6 +407,7 @@ class Admin extends BaseController
                         'jenis_kelamin' => $kolom[2],
                         'jabatan' => $kolom[3],
                         'email' => $kolom[4],
+                        'tunjangan' => $kolom[5],
                         'password' => $kolom[0],
                         'gambar' => 'default.jpg',
                         'is_active' => 1,
@@ -546,7 +549,6 @@ class Admin extends BaseController
         $data_jabatan = [];
         $nama_jabatan = $this->request->getVar('nama_jabatan');
         $gaji_pokok = $this->request->getVar('gaji_pokok');
-        $tunjangan = $this->request->getVar('tunjangan');
         $jam_masuk = $this->request->getVar('jam_masuk');
         $jam_keluar = $this->request->getVar('jam_keluar');
 
@@ -554,7 +556,6 @@ class Admin extends BaseController
             array_push($data_jabatan, [
                 'nama_jabatan' => $nama,
                 'gaji_pokok' => $gaji_pokok,
-                'tunjangan' => $tunjangan,
                 'jam_masuk' => $jam_masuk,
                 'jam_keluar' => $jam_keluar
             ]);
@@ -606,7 +607,6 @@ class Admin extends BaseController
             'id_jabatan' => $this->request->getVar('id_jabatan'),
             'nama_jabatan' => $this->request->getVar('nama_jabatan'),
             'gaji_pokok' => $this->request->getVar('gaji_pokok'),
-            'tunjangan' => $this->request->getVar('tunjangan'),
             'jam_masuk' => $this->request->getVar('jam_masuk'),
             'jam_keluar' => $this->request->getVar('jam_keluar')
         ]);

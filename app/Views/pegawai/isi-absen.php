@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <?php if (strtotime(date('H:i', time())) >= strtotime($jabatan->jam_masuk)) : ?>
+                            <?php if (strtotime(date('H:i', time())) >= strtotime($jabatan->jam_masuk) - 3600) : ?>
                                 <?= session()->getFlashdata('jarak'); ?>
                                 <center>
                                     <div id="my_camera"></div>
