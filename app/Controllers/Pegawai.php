@@ -269,6 +269,8 @@ class Pegawai extends BaseController
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 
         // CEK APAKAH DIA TERLAMBAT
+
+        
         if (strtotime($waktu_absen) > strtotime($jabatan->jam_masuk) + 900) {
             $terlambat = 1; // 1 Berarti Telambat
         } else {

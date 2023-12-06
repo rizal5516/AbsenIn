@@ -34,6 +34,7 @@
                                     <tr>
                                         <th>Nama Pegawai</th>
                                         <th>Jabatan</th>
+                                        <th>Tunjangan</th>
                                         <th>Status</th>
                                         <th>Email</th>
                                         <th></th>
@@ -55,6 +56,7 @@
                                                     </div>
                                                 </td>
                                                 <td><?= $p->nama_jabatan; ?></td>
+                                                <td>Rp <?= $p->tunjangan; ?></td>
                                                 <td>
                                                     <?php if ($p->is_active == 1) : ?>
                                                         <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Active</button></span>
@@ -128,6 +130,12 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
+                                                    <label>Tunjangan</label>
+                                                    <input type="text" class="form-control" name="tunjangan" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
                                                     <label>Email</label>
                                                     <input type="email" class="form-control" id="email" name="email" required />
                                                 </div>
@@ -192,13 +200,14 @@
             },
             url: "<?= base_url('admin/edit_pegawai') ?>",
             success: function(data) {
-                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email,
+                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan,tunjangan, email,
                     password, gambar, is_active, role) {
                     $("#id_pegawai").val(data.id_pegawai);
                     $("#nip").val(data.nip);
                     $("#nama_pegawai").val(data.nama_pegawai);
                     $("#jenis_kelamin").val(data.jenis_kelamin);
                     $("#jabatan").val(data.jabatan);
+                    $('input[name=tunjangan]').val($(this).data('tunjangan'));
                     $("#email").val(data.email);
                     $("#password").val(data.password);
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data

@@ -9,7 +9,7 @@ class PegawaiModel extends Model
     protected $table            = 'pegawai';
     protected $primaryKey       = 'id_pegawai';
     protected $protectFields    = true;
-    protected $allowedFields    = ['nip', 'nama_pegawai', 'jenis_kelamin', 'jabatan', 'email', 'password', 'gambar', 'is_active', 'role'];
+    protected $allowedFields    = ['nip', 'nama_pegawai', 'jenis_kelamin', 'jabatan', 'tunjangan', 'email', 'password', 'gambar', 'is_active', 'role'];
 
     public function getAll()
     {

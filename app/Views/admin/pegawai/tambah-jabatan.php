@@ -29,10 +29,6 @@
                                                 <input type="text" class="form-control" name="gaji_pokok" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Tunjangan</label>
-                                                <input type="text" class="form-control" name="tunjangan" />
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Jam Masuk</label>
                                                 <input type="time" class="form-control" name="jam_masuk" />
                                             </div>

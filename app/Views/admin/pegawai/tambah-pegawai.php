@@ -32,7 +32,7 @@
                                                 <input type="text" class="form-control" name="nama_pegawai" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Jenis Kelamin</label>
                                                 <select class="form-control" id="exampleFormControlSelect1" name="jenis_kelamin" title="Select Product Category" data-live-search="true" required>
@@ -41,7 +41,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect2">Jabatan</label>
                                                 <select class="form-control" id="exampleFormControlSelect2" name="jabatan" title="Select Product Category" data-live-search="true" required>
@@ -51,12 +51,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control" name="email" required/>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                                <label>Tunjangan</label>
+                                                <input type="text" class="form-control" name="tunjangan" />
+                                            </div>
                                         <div class="col-md-3">
                                             <div class="iq-card justify-content-center align-items-center">
                                                 <div class="iq-card-body">
