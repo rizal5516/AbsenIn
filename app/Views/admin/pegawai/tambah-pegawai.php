@@ -1,6 +1,6 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 <?= session()->getFlashdata('pesan'); ?>
 
 <!-- Page Content  -->
@@ -20,16 +20,16 @@
                             <fieldset>
                                 <div class="form-card text-left">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input type="text" class="form-control" name="nip" required/>
+                                                <input type="text" class="form-control" name="nip" required />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" name="nama_pegawai" required/>
+                                                <input type="text" class="form-control" name="nama_pegawai" required />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -54,14 +54,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control" name="email" required/>
+                                                <input type="email" class="form-control" name="email" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tunjangan</label>
+                                                <input type="text" class="form-control" name="tunjangan" required />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="iq-card justify-content-center align-items-center">
                                                 <div class="iq-card-body">
-                                                    <img src="<?= base_url('assets/img/pegawai'); ?>/default.jpg"
-                                                        class="img-thumbnail foto-pegawai" alt="Foto Pegawai">
+                                                    <img src="<?= base_url('assets/img/pegawai'); ?>/default.jpg" class="img-thumbnail foto-pegawai" alt="Foto Pegawai">
                                                 </div>
                                             </div>
                                         </div>
@@ -69,11 +74,10 @@
                                             <div class="col-md-12 form-group input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroupFileAddon01">Gambar
-                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01"
-                                                        aria-describedby="inputGroupFileAddon01" onchange="previewImg();" accept=".jpg, .jpeg, .png">
+                                                    <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="previewImg();" accept=".jpg, .jpeg, .png">
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose
                                                         file</label>
                                                 </div>
@@ -106,4 +110,4 @@
     }
 </script>
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>
