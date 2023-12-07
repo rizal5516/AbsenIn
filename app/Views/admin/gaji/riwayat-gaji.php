@@ -90,6 +90,8 @@
                                         <th>Jumlah denda</th>
                                         <th>Jumlah bonus siswa</th>
                                         <th>Jumlah bonus absen</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Tunjangan</th>
                                         <th>Total upah</th>
                                         <th>Total denda</th>
                                         <th>Total bonus siswa</th>
@@ -111,6 +113,8 @@
                                                 <td><?= $g->jumlah_denda; ?></td>
                                                 <td><?= $g->jumlah_bonus_siswa; ?></td>
                                                 <td><?= $g->jumlah_bonus_absen; ?></td>
+                                                <td><?= "Rp. " . number_format($g->gaji_pokok, 0, ',', '.'); ?></td>
+                                                <td><?= "Rp. " . number_format($g->tunjangan, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_upah, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_denda, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_bonus_siswa, 0, ',', '.'); ?></td>
