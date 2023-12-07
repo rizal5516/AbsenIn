@@ -107,6 +107,7 @@ class Gaji extends BaseController
 
         $data['gaji'] = $this->GajiModel->findByPegawaiId($id_pegawai);
         $data['pegawai'] = $this->PegawaiModel->getById($id_pegawai);
+        $data['jabatan'] = $this->JabatanModel->asObject()->where('id_jabatan', $data['pegawai']->id_jabatan)->first();
         $data['admin'] = $this->AdminModel->asObject()->first();
 
         return view('admin/gaji/riwayat-gaji', $data);
@@ -168,7 +169,7 @@ class Gaji extends BaseController
             'denda' => $pengaturan->denda,
             'bonus_siswa' => $pengaturan->bonus_siswa,
             'bonus_absen' => $pengaturan->bonus_absen,
-            'bulan' => date('Y-m-d', strtotime("-1 months")),
+            'bulan' => date('Y-m-d'),
             'jumlah_jam_kerja' => $jumlahJamKerja,
             'jumlah_denda' => $jumlahDenda,
             'jumlah_bonus_siswa' => $jumlahBonusSiswa,
@@ -248,10 +249,12 @@ class Gaji extends BaseController
 
         $gaji = $this->GajiModel->findById($id);
         $pegawai = $this->PegawaiModel->getById($gaji->pegawai_id);
+        $jabatan = $this->JabatanModel->asObject()->where('id_jabatan', $pegawai->id_jabatan)->first();
 
         $data['title_pdf'] = 'Laporan Gaji ' . $pegawai->nama_pegawai . ' Bulan ' . date('F Y', strtotime($gaji->bulan));
         $data['gaji'] = $gaji;
         $data['pegawai'] = $pegawai;
+        $data['jabatan'] = $jabatan;
 
         $file_pdf = 'laporan_gaji_' . $pegawai->nama_pegawai . '_' . date('F Y', strtotime($gaji->bulan));
         $paper = 'A4';

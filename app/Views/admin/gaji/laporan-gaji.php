@@ -78,6 +78,14 @@
                     <td><?= $pegawai->nama_jabatan; ?></td>
                 </tr>
                 <tr>
+                    <td scope="row">Gaji Pokok :</td>
+                    <td><?= "Rp. " . number_format($jabatan->gaji_pokok, 0, ',', '.'); ?></td>
+                </tr>
+                <tr>
+                    <td scope="row">Tunjangan :</td>
+                    <td><?= "Rp. " . number_format($pegawai->tunjangan, 0, ',', '.'); ?></td>
+                </tr>
+                <tr>
                     <td scope="row">Upah Per Jam :</td>
                     <td><?= "Rp. " . number_format($gaji->upah, 0, ',', '.'); ?></td>
                 </tr>

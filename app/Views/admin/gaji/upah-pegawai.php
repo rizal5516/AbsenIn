@@ -58,7 +58,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-3">
-                                <h6 class="text-secondary">Tunjangan Jabatan</h6>
+                                <h6 class="text-secondary">Tunjangan Pegawai</h6>
                             </div>
                             <div class="col-lg-7">
                                 <h6 class="text-secondary">: <?= "Rp. " . number_format($gaji['tunjangan'], 0, ',', '.'); ?></h6>

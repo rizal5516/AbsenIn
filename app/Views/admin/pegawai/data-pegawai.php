@@ -64,7 +64,7 @@
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $p->email; ?></td>
-                                                <td><?= $p->tunjangan; ?></td>
+                                                <td>Rp <?= $p->tunjangan; ?></td>
                                                 <td>
                                                     <a href="javascript:void(0);" class="table-remove btn-edit" data-placement="top" data-original-title="Edit" data-id_pegawai="<?= $p->id_pegawai; ?>"><button class="btn iq-bg-primary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#editModal"><i class="icon-edit"></i></button></a>
                                                     <a href="<?= base_url('admin/hapus_pegawai'); ?>/<?= $p->id_pegawai; ?>" class="table-remove btn-hapus" data-placement="top" title="" data-original-title="Delete"><button class="btn iq-bg-danger btn-rounded btn-sm my-0"><i class="icon-delete"></i></button></a>

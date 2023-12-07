@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Hitung</button>
+                    <button type="submit" class="btn user-bg-color text-white">Hitung</button>
                 </div>
             </form>
         </div>
@@ -91,7 +91,7 @@
 </div>
 
 <script>
-    $error = "<?php if (session()->has('error')) echo session()->error; ?>"
+    var error = "<?php if (session()->has('error')) echo session()->error; ?>"
 
     $('.btn-salary').click(function() {
         $('input[name=id_pegawai]').val($(this).data('id_pegawai'));
