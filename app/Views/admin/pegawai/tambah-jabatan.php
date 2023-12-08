@@ -22,19 +22,19 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Jabatan</label>
-                                                <input type="text" class="form-control" name="nama_jabatan[]" />
+                                                <input type="text" class="form-control" name="nama_jabatan[]" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Gaji Pokok</label>
-                                                <input type="text" class="form-control" name="gaji_pokok" />
+                                                <label>Tunjangan</label>
+                                                <input type="text" class="form-control" name="tunjangan" required />
                                             </div>
                                             <div class="form-group">
                                                 <label>Jam Masuk</label>
-                                                <input type="time" class="form-control" name="jam_masuk" />
+                                                <input type="time" class="form-control" name="jam_masuk" required />
                                             </div>
                                             <div class="form-group">
                                                 <label>Jam Keluar</label>
-                                                <input type="time" class="form-control" name="jam_keluar" />
+                                                <input type="time" class="form-control" name="jam_keluar" required />
                                             </div>
                                         </div>
                                     </div>

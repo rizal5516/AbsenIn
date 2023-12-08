@@ -34,7 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>Jabatan</th>
-                                        <th>Gaji Pokok</th>
+                                        <th>Tunjangan</th>
                                         <th>Jam Masuk - Jam Keluar</th>
                                         <th>Id Jabatan</th>
                                         <th></th>
@@ -47,11 +47,11 @@
                                         foreach ($jabatan as $j) : ?>
                                             <tr>
                                                 <td><?= $j->nama_jabatan; ?></td>
-                                                <td>Rp <?= $j->gaji_pokok; ?></td>
+                                                <td>Rp <?= $j->tunjangan; ?></td>
                                                 <td><?= $j->jam_masuk; ?> - <?= $j->jam_keluar; ?></td>
                                                 <td><?= $j->id_jabatan; ?></td>
                                                 <td>
-                                                    <a href="javascript:void(0);" class="table-remove btn-edit" data-placement="top" data-original-title="Edit" data-id_jabatan="<?= $j->id_jabatan; ?>" data-nama_jabatan="<?= $j->nama_jabatan; ?>" data-gaji_pokok="<?= $j->gaji_pokok; ?>" data-jam_masuk="<?= $j->jam_masuk; ?>" data-jam_keluar="<?= $j->jam_keluar; ?>"><button class="btn iq-bg-primary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#jabatanModal">
+                                                    <a href="javascript:void(0);" class="table-remove btn-edit" data-placement="top" data-original-title="Edit" data-id_jabatan="<?= $j->id_jabatan; ?>" data-nama_jabatan="<?= $j->nama_jabatan; ?>" data-tunjangan="<?= $j->tunjangan; ?>" data-jam_masuk="<?= $j->jam_masuk; ?>" data-jam_keluar="<?= $j->jam_keluar; ?>"><button class="btn iq-bg-primary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#jabatanModal">
                                                             <i class="icon-edit"></i></button></a>
                                                     <a href="<?= base_url('admin/hapus_jabatan'); ?>/<?= $j->id_jabatan; ?>" class="table-remove btn-hapus" data-placement="top" data-original-title="Delete"><button class="btn iq-bg-danger btn-rounded btn-sm my-0"><i class="icon-delete"></i></button></a>
                                                 </td>
@@ -94,8 +94,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Gaji Pokok</label>
-                                                    <input type="text" class="form-control" name="gaji_pokok" required />
+                                                    <label>Tunjangan</label>
+                                                    <input type="text" class="form-control" name="tunjangan" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -126,7 +126,6 @@
     $('.btn-edit').click(function() {
         $('input[name=id_jabatan]').val($(this).data('id_jabatan'));
         $('input[name=nama_jabatan]').val($(this).data('nama_jabatan'));
-        $('input[name=gaji_pokok]').val($(this).data('gaji_pokok'));
         $('input[name=tunjangan]').val($(this).data('tunjangan'));
         $('input[name=jam_masuk]').val($(this).data('jam_masuk'));
         $('input[name=jam_keluar]').val($(this).data('jam_keluar'));

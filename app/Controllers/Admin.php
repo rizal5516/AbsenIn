@@ -259,7 +259,7 @@ class Admin extends BaseController
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
-            'tunjangan' => $this->request->getVar(('tunjangan')),
+            'gaji_pokok' => $this->request->getVar(('gaji_pokok')),
             'password' => $this->request->getVar('nip'),
             'gambar' => $nama_gambar,
             'is_active' => 1,
@@ -322,7 +322,7 @@ class Admin extends BaseController
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
-            'tunjangan' => $this->request->getVar('tunjangan'),
+            'gaji_pokok' => $this->request->getVar('gaji_pokok'),
             'password' => $this->request->getVar('password'),
             'gambar' => $nama_gambar,
             'is_active' => $this->request->getVar('is_active'),
@@ -407,7 +407,7 @@ class Admin extends BaseController
                         'jenis_kelamin' => $kolom[2],
                         'jabatan' => $kolom[3],
                         'email' => $kolom[4],
-                        'tunjangan' => $kolom[5],
+                        'gaji_pokok' => $kolom[5],
                         'password' => $kolom[0],
                         'gambar' => 'default.jpg',
                         'is_active' => 1,
@@ -548,14 +548,14 @@ class Admin extends BaseController
 
         $data_jabatan = [];
         $nama_jabatan = $this->request->getVar('nama_jabatan');
-        $gaji_pokok = $this->request->getVar('gaji_pokok');
+        $tunjangan = $this->request->getVar('tunjangan');
         $jam_masuk = $this->request->getVar('jam_masuk');
         $jam_keluar = $this->request->getVar('jam_keluar');
 
         foreach ($nama_jabatan as $nama) {
             array_push($data_jabatan, [
                 'nama_jabatan' => $nama,
-                'gaji_pokok' => $gaji_pokok,
+                'tunjangan' => $tunjangan,
                 'jam_masuk' => $jam_masuk,
                 'jam_keluar' => $jam_keluar
             ]);
@@ -582,17 +582,33 @@ class Admin extends BaseController
         }
         // absen_hari_ini();
 
+        // $jabatan_used = $this->PegawaiModel->where('id_jabatan', $id)->countAllResults();
+
+        // if ($jabatan_used > 0) {
+        //     session()->setFlashdata('pesan', "
+        //         <script>
+        //             Swal.fire(
+        //                 'Gagal!',
+        //                 'Tidak dapat menghapus jabatan karena terdapat pegawai dengan jabatan ini.',
+        //                 'error'
+        //             )
+        //         </script>
+        //     ");
+
+        //     return redirect()->to('admin/jabatan');
+        // }
+
         $this->JabatanModel->delete($id);
 
         session()->setFlashdata('pesan', "
-            <script>
-                Swal.fire(
-                    'Berhasil!',
-                    'Data Berhasil Di Hapus!',
-                    'success'
-                )
-            </script>
-        ");
+                <script>
+                    Swal.fire(
+                        'Berhasil!',
+                        'Data Berhasil Di Hapus!',
+                        'success'
+                    )
+                </script>
+            ");
 
         return redirect()->to('admin/jabatan');
     }
@@ -606,7 +622,7 @@ class Admin extends BaseController
         $this->JabatanModel->save([
             'id_jabatan' => $this->request->getVar('id_jabatan'),
             'nama_jabatan' => $this->request->getVar('nama_jabatan'),
-            'gaji_pokok' => $this->request->getVar('gaji_pokok'),
+            'tunjangan' => $this->request->getVar('tunjangan'),
             'jam_masuk' => $this->request->getVar('jam_masuk'),
             'jam_keluar' => $this->request->getVar('jam_keluar')
         ]);

@@ -59,8 +59,8 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Tunjangan</label>
-                                                <input type="text" class="form-control" name="tunjangan" required />
+                                                <label>Gaji Pokok</label>
+                                                <input type="text" class="form-control" name="gaji_pokok" required />
                                             </div>
                                         </div>
                                         <div class="col-md-3">

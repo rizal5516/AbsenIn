@@ -36,7 +36,7 @@
                                         <th>Jabatan</th>
                                         <th>Status</th>
                                         <th>Email</th>
-                                        <th>Tunjangan</th>
+                                        <th>Gaji Pokok</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -64,7 +64,7 @@
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $p->email; ?></td>
-                                                <td>Rp <?= $p->tunjangan; ?></td>
+                                                <td>Rp <?= $p->gaji_pokok; ?></td>
                                                 <td>
                                                     <a href="javascript:void(0);" class="table-remove btn-edit" data-placement="top" data-original-title="Edit" data-id_pegawai="<?= $p->id_pegawai; ?>"><button class="btn iq-bg-primary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#editModal"><i class="icon-edit"></i></button></a>
                                                     <a href="<?= base_url('admin/hapus_pegawai'); ?>/<?= $p->id_pegawai; ?>" class="table-remove btn-hapus" data-placement="top" title="" data-original-title="Delete"><button class="btn iq-bg-danger btn-rounded btn-sm my-0"><i class="icon-delete"></i></button></a>
@@ -136,8 +136,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Tunjangan</label>
-                                                    <input type="text" class="form-control" id="tunjangan" name="tunjangan" required />
+                                                    <label>Gaji Pokok</label>
+                                                    <input type="text" class="form-control" id="gaji_pokok" name="gaji_pokok" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -200,14 +200,14 @@
             },
             url: "<?= base_url('admin/edit_pegawai') ?>",
             success: function(data) {
-                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, tunjangan, password, gambar, is_active, role) {
+                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active, role) {
                     $("#id_pegawai").val(data.id_pegawai);
                     $("#nip").val(data.nip);
                     $("#nama_pegawai").val(data.nama_pegawai);
                     $("#jenis_kelamin").val(data.jenis_kelamin);
                     $("#jabatan").val(data.jabatan);
                     $("#email").val(data.email);
-                    $("#tunjangan").val(data.tunjangan);
+                    $("#gaji_pokok").val(data.gaji_pokok);
                     $("#password").val(data.password);
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
                         .gambar +

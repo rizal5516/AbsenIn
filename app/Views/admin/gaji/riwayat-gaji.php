@@ -113,8 +113,8 @@
                                                 <td><?= $g->jumlah_denda; ?></td>
                                                 <td><?= $g->jumlah_bonus_siswa; ?></td>
                                                 <td><?= $g->jumlah_bonus_absen; ?></td>
-                                                <td><?= "Rp. " . number_format($jabatan->gaji_pokok, 0, ',', '.'); ?></td>
-                                                <td><?= "Rp. " . number_format($pegawai->tunjangan, 0, ',', '.'); ?></td>
+                                                <td><?= "Rp. " . number_format($pegawai->gaji_pokok, 0, ',', '.'); ?></td>
+                                                <td><?= "Rp. " . number_format($jabatan->tunjangan, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_upah, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_denda, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->total_bonus_siswa, 0, ',', '.'); ?></td>
@@ -162,7 +162,7 @@
             }
         ],
         "order": [
-            [7, 'desc']
+            [8, 'desc']
         ]
     });
 

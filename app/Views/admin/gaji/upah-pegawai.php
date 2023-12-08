@@ -101,7 +101,7 @@
                                 <h6 class="text-secondary">Bulan</h6>
                             </div>
                             <div class="col-lg-7">
-                                <h6 class="text-secondary">: <?= date('F Y', strtotime($gaji['bulan'])); ?></h6>
+                                <h6 class="text-secondary">: <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></h6>
                             </div>
                         </div>
                         <div class="row">
