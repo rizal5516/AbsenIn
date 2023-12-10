@@ -580,37 +580,39 @@ class Admin extends BaseController
         if (session()->get('role') != 1) {
             return redirect()->to('auth');
         }
-        // absen_hari_ini();
 
-        // $jabatan_used = $this->PegawaiModel->where('id_jabatan', $id)->countAllResults();
-
-        // if ($jabatan_used > 0) {
-        //     session()->setFlashdata('pesan', "
-        //         <script>
-        //             Swal.fire(
-        //                 'Gagal!',
-        //                 'Tidak dapat menghapus jabatan karena terdapat pegawai dengan jabatan ini.',
-        //                 'error'
-        //             )
-        //         </script>
-        //     ");
-
-        //     return redirect()->to('admin/jabatan');
-        // }
+        if ($this->pakeJabatan($id)) {
+            session()->setFlashdata('pesan', "
+        <script>
+            Swal.fire (
+                'Gagal!',
+                'Data Sedang Digunakan, Cek Kembali Pada Halaman Pegawai',
+                'error'
+                )
+                </script>
+        ");
+            return redirect()->to('admin/jabatan');
+        }
 
         $this->JabatanModel->delete($id);
 
         session()->setFlashdata('pesan', "
-                <script>
-                    Swal.fire(
-                        'Berhasil!',
-                        'Data Berhasil Di Hapus!',
-                        'success'
-                    )
-                </script>
-            ");
+        <script>
+            Swal.fire(
+                'Berhasil!',
+                'Data Berhasil Di Hapus!',
+                'success'
+            )
+        </script>
+    ");
 
         return redirect()->to('admin/jabatan');
+    }
+
+    private function pakeJabatan($id)
+    {
+        $jumlahPenggunaan = $this->PegawaiModel->where('jabatan', $id)->countAllResults();
+        return $jumlahPenggunaan > 0;
     }
     public function edit_jabatan()
     {

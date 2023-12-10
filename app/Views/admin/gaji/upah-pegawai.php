@@ -21,35 +21,37 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
+            <div class="col-sm-12">
                 <div class="iq-card">
                     <div class="iq-card-body">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Nama:</b> <?= $pegawai->nama_pegawai; ?></li>
-                            <li class="list-group-item"><b>NIK:</b> <?= $pegawai->nip; ?></li>
-                            <li class="list-group-item"><b>Jabatan:</b> <?= $pegawai->nama_jabatan; ?></li>
-                            <li class="list-group-item"><b>Gaji Pokok:</b> <?= "Rp. " . number_format($gaji['gaji_pokok'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Tunjangan Pegawai:</b> <?= "Rp. " . number_format($gaji['tunjangan'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Upah per jam:</b> <?= "Rp. " . number_format($gaji['upah'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Denda Absen:</b> <?= "Rp. " . number_format($gaji['denda'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Bonus Siswa:</b> <?= "Rp. " . number_format($gaji['bonus_siswa'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Bonus Absen:</b> <?= "Rp. " . number_format($gaji['bonus_absen'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Bulan:</b> <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></li>
-                            <li class="list-group-item"><b>Jumlah Jam Kerja:</b> <?= $gaji['jumlah_jam_kerja']; ?></li>
-                            <li class="list-group-item"><b>Jumlah Bonus Siswa:</b> <?= $gaji['jumlah_bonus_siswa']; ?></li>
-                            <li class="list-group-item"><b>Jumlah Bonus Absen:</b> <?= $gaji['jumlah_bonus_absen']; ?></li>
-                            <li class="list-group-item"><b>Total Upah:</b> <?= "Rp. " . number_format($gaji['total_upah'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Total Denda:</b> <?= "Rp. " . number_format($gaji['total_denda'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Total Bonus Siswa:</b> <?= "Rp. " . number_format($gaji['total_bonus_siswa'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Total Bonus Absen:</b> <?= "Rp. " . number_format($gaji['total_bonus_absen'], 0, ',', '.'); ?></li>
-                            <li class="list-group-item"><b>Gaji Bersih:</b> <?= "Rp. " . number_format($gaji['gaji_bersih'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Nama:</b> <?= $pegawai->nama_pegawai; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">NIK:</b> <?= $pegawai->nip; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jabatan:</b> <?= $pegawai->nama_jabatan; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Gaji Pokok:</b> <?= "Rp. " . number_format($gaji['gaji_pokok'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Tunjangan Pegawai:</b> <?= "Rp. " . number_format($gaji['tunjangan'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Upah per jam:</b> <?= "Rp. " . number_format($gaji['upah'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Denda Absen:</b> <?= "Rp. " . number_format($gaji['denda'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Bonus Siswa:</b> <?= "Rp. " . number_format($gaji['bonus_siswa'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Bonus Absen:</b> <?= "Rp. " . number_format($gaji['bonus_absen'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Bulan:</b> <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jumlah Jam Kerja:</b> <?= $gaji['jumlah_jam_kerja']; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Siswa:</b> <?= $gaji['jumlah_bonus_siswa']; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Absen:</b> <?= $gaji['jumlah_bonus_absen']; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Total Upah:</b> <?= "Rp. " . number_format($gaji['total_upah'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Total Denda:</b> <?= "Rp. " . number_format($gaji['total_denda'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Total Bonus Siswa:</b> <?= "Rp. " . number_format($gaji['total_bonus_siswa'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Total Bonus Absen:</b> <?= "Rp. " . number_format($gaji['total_bonus_absen'], 0, ',', '.'); ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Gaji Bersih:</b> <?= "Rp. " . number_format($gaji['gaji_bersih'], 0, ',', '.'); ?></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Content wrapper end -->
+</div>
+</div>
+<!-- Content wrapper end -->
 
 </div>
 <!-- Content wrapper scroll end -->

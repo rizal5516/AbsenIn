@@ -118,6 +118,7 @@ class Gaji extends BaseController
         $id_pegawai = $this->request->getVar('id_pegawai');
         $detailPegawai = $this->PegawaiModel->getById($id_pegawai);
         $jabatan = $this->JabatanModel->findById($detailPegawai->jabatan);
+
         $jumlahJamKerja = 0;
         $jumlahDenda = 0;
         $jumlahBonusSiswa = $this->request->getVar('jumlah_siswa');
