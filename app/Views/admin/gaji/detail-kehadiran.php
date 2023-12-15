@@ -124,22 +124,22 @@
                                     class="table table-bordered table-responsive-md table-striped text-center">
                                     <thead>
                                         <tr>
-                                            <th>Keterangan</th>
+                                            <th rowspan="2">Keterangan</th>
                                             <th colspan="3">Jam Masuk</th>
                                             <th colspan="3">Jam Keluar</th>
-                                            <th>Total Jam Kerja</th>
+                                            <th rowspan="2">Total Jam Kerja</th>
                                         </tr>
                                         <tr>
-                                            <th></th>
                                             <th>Jam</th>
                                             <th>Menit</th>
                                             <th>Status</th>
                                             <th>Jam</th>
                                             <th>Menit</th>
                                             <th>Status</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
+
+
                                     <tbody>
                                         <?php if ($detail_absensi != null) : ?>
                                         <?php foreach ($detail_absensi as $abs) : ?>
