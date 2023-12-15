@@ -11,7 +11,8 @@
                     <h4 class="card-title">Detail Kehadiran Bulanan <?= $pegawai->nama_pegawai; ?></h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i
+                            class="icon-arrow_back"><span class="pl-1">Back
                             </span></i>
                     </a>
                 </span>
@@ -21,7 +22,8 @@
             <div class="col-sm-3 col-lg-3">
                 <div class="iq-card">
                     <div class="iq-card-body">
-                        <img src="<?= base_url('assets/img/pegawai'); ?>/<?= $pegawai->gambar; ?>" class="img-fluid" alt="Responsive image">
+                        <img src="<?= base_url('assets/img/pegawai'); ?>/<?= $pegawai->gambar; ?>" class="img-fluid"
+                            alt="Responsive image">
                     </div>
                 </div>
             </div>
@@ -39,19 +41,22 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Nama</label>
-                                                            <input type="text" class="form-control" name="nama" value="<?= $pegawai->nama_pegawai; ?>" />
+                                                            <input type="text" class="form-control" name="nama"
+                                                                value="<?= $pegawai->nama_pegawai; ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>NIK</label>
-                                                            <input type="number" class="form-control" name="nik" value="<?= $pegawai->nip; ?>" />
+                                                            <input type="number" class="form-control" name="nik"
+                                                                value="<?= $pegawai->nip; ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Jabatan</label>
-                                                            <input type="text" class="form-control" name="jabatan" value="<?= $pegawai->nama_jabatan; ?>" />
+                                                            <input type="text" class="form-control" name="jabatan"
+                                                                value="<?= $pegawai->nama_jabatan; ?>" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,50 +112,135 @@
                             <div id="table-excel-pdf" class="table-editable">
                                 <form class="search-form mb-3 col-md-4 float-right">
                                     <div class="input-group">
-                                        <input type="text" id="filter_detail-kehadiran" class="form-control" placeholder="Search...">
+                                        <input type="text" id="filter_detail-kehadiran" class="form-control"
+                                            placeholder="Search...">
                                         <div class="input-group-append">
-                                            <button type="button" id="filter_detail-kehadiran" class="btn user-bg-color text-white">Search</button>
+                                            <button type="button" id="filter_detail-kehadiran"
+                                                class="btn user-bg-color text-white">Search</button>
                                         </div>
                                     </div>
                                 </form>
-                                <table id="datatable_detail-kehadiran" class="table table-bordered table-responsive-md table-striped text-center">
+                                <table id="datatable_detail-kehadiran"
+                                    class="table table-bordered table-responsive-md table-striped text-center">
                                     <thead>
                                         <tr>
                                             <th>Keterangan</th>
-                                            <th>Jam Masuk</th>
-                                            <th>Jam Keluar</th>
+                                            <th colspan="3">Jam Masuk</th>
+                                            <th colspan="3">Jam Keluar</th>
                                             <th>Total Jam Kerja</th>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th>Jam</th>
+                                            <th>Menit</th>
+                                            <th>Status</th>
+                                            <th>Jam</th>
+                                            <th>Menit</th>
+                                            <th>Status</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php if ($detail_absensi != null) : ?>
-                                            <?php foreach ($detail_absensi as $abs) : ?>
-                                                <tr>
-                                                    <td><?= date('d F Y', strtotime($abs->tgl_absen)); ?></td>
-                                                    <td><?php if ($abs->absen_masuk == 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
-                                                        <?php else : ?>
-                                                            <?php if ($abs->status_masuk == 1) : ?>
-                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $abs->absen_masuk); ?></span>
-                                                            <?php else : ?>
-                                                                <?= date('H : i', $abs->absen_masuk); ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td><?php if ($abs->absen_keluar == 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
-                                                        <?php else : ?>
-                                                            <?= date('H : i', $abs->absen_keluar); ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php if ($abs->absen_keluar == 0) : ?>
-                                                            <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak Lengkap</span>
-                                                        <?php else : ?>
-                                                            <?php if ($abs->status_keluar == 1) : ?>
-                                                                <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Telat Absen Pulang</span>
-                                                            <?php else : ?>
-                                                                <?php
+                                        <?php foreach ($detail_absensi as $abs) : ?>
+
+                                        <tr>
+                                            <!-- Jam Masuk  -->
+                                            <td><?= date('d F Y', strtotime($abs->tgl_absen)); ?></td>
+                                            <td><?php if ($abs->absen_masuk == 0) : ?>
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">-</span>
+                                                <?php else : ?>
+
+                                                <?php if ($abs->status_masuk == 1) : ?>
+                                                <span
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk); ?></span>
+                                                <?php else : ?>
+                                                <?= date('H', $abs->absen_masuk); ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <!-- Menit Masuk  -->
+                                            <td>
+                                                <?php if ($abs->absen_masuk == 0) : ?>
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">-</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->status_masuk == 1) : ?>
+                                                <span
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('i', $abs->absen_masuk); ?></span>
+                                                <?php else : ?>
+                                                <?= date('i', $abs->absen_masuk); ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <!-- Status Masuk -->
+                                            <td>
+                                                <?php if ($abs->absen_masuk !=0) : ?>
+                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sudah
+                                                    Absen</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->absen_masuk == 0) : ?>
+                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                    Absen</span>
+                                                <?php else : ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+
+                                            <!-- Jam Keluar -->
+                                            <td>
+                                                <?php if ($abs->absen_keluar == 0) : ?>
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">-</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->status_keluar == 1) : ?>
+                                                <span
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_keluar); ?></span>
+                                                <?php else : ?>
+                                                <?= date('H', $abs->absen_keluar); ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <!-- Menit Keluar -->
+                                            <td>
+                                                <?php if ($abs->absen_keluar == 0) : ?>
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">-</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->status_keluar == 1) : ?>
+                                                <span
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('i', $abs->absen_keluar); ?></span>
+                                                <?php else : ?>
+                                                <?= date('i', $abs->absen_keluar); ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <!-- Status Keluar -->
+                                            <td>
+                                                <?php if ($abs->absen_keluar !=0) : ?>
+                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sudah
+                                                    Absen</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->absen_keluar == 0) : ?>
+                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                    Absen</span>
+                                                <?php else : ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if ($abs->absen_keluar == 0) : ?>
+                                                <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak
+                                                    Lengkap</span>
+                                                <?php else : ?>
+                                                <?php if ($abs->status_keluar == 1) : ?>
+                                                <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Telat Absen
+                                                    Pulang</span>
+                                                <?php else : ?>
+                                                <?php
                                                                 $absenMasuk = $abs->absen_masuk;
                                                                 $absenKeluar = $abs->absen_keluar;
                                                                 $timeDiffSeconds = $absenKeluar - $absenMasuk;
@@ -159,11 +249,11 @@
                                                                 $seconds = $timeDiffSeconds % 60;
                                                                 echo "$hours jam $minutes menit $seconds detik";
                                                                 ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
                                         <?php endif; ?>
                                     </tbody>
                                 </table>
@@ -179,13 +269,16 @@
                             <div id="table-excel-pdf" class="table-editable">
                                 <form class="search-form mb-3 col-md-4 float-right">
                                     <div class="input-group">
-                                        <input type="text" id="filter_detail-bulan" class="form-control" placeholder="Search...">
+                                        <input type="text" id="filter_detail-bulan" class="form-control"
+                                            placeholder="Search...">
                                         <div class="input-group-append">
-                                            <button type="button" id="filter_detail-bulan" class="btn user-bg-color text-white">Search</button>
+                                            <button type="button" id="filter_detail-bulan"
+                                                class="btn user-bg-color text-white">Search</button>
                                         </div>
                                     </div>
                                 </form>
-                                <table id="datatable_detail-bulan" class="table table-bordered table-responsive-md table-striped text-center">
+                                <table id="datatable_detail-bulan"
+                                    class="table table-bordered table-responsive-md table-striped text-center">
                                     <thead>
                                         <tr>
                                             <th>Keterangan</th>
@@ -196,13 +289,13 @@
                                     </thead>
                                     <tbody>
                                         <?php if ($detail_bulan != null) : ?>
-                                            <?php foreach ($detail_bulan as $bln) : ?>
-                                                <tr>
-                                                    <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
-                                                    <td><?= $bln->onTimeIn; ?></td>
-                                                    <td><?= $bln->onTimeOut; ?></td>
-                                                    <td>
-                                                        <?php
+                                        <?php foreach ($detail_bulan as $bln) : ?>
+                                        <tr>
+                                            <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
+                                            <td><?= $bln->onTimeIn; ?></td>
+                                            <td><?= $bln->onTimeOut; ?></td>
+                                            <td>
+                                                <?php
                                                         // Tampilkan total jam kerja
                                                         $totalJamKerja = $bln->totalJamKerja ?? 0;
                                                         $totalHours = floor($totalJamKerja / 3600);
@@ -210,9 +303,9 @@
                                                         $totalSeconds = $totalJamKerja % 60;
                                                         echo "$totalHours jam $totalMinutes menit $totalSeconds detik";
                                                         ?>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
                                         <?php endif; ?>
                                     </tbody>
                                 </table>
@@ -293,13 +386,13 @@
     });
 
     // Ubah desain search field
-    $('#filter_detail-kehadiran').on('keyup', function() {
+    $('#filter_detail-kehadiran').on('keyup', function () {
         // Aktifkan fungsi search
         $('#datatable_detail-kehadiran').DataTable().search($('#filter_detail-kehadiran').val()).draw();
     });
 
     // Ubah desain search field
-    $('#filter_detail-bulan').on('keyup', function() {
+    $('#filter_detail-bulan').on('keyup', function () {
         // Aktifkan fungsi search
         $('#datatable_detail-bulan').DataTable().search($('#filter_detail-bulan').val()).draw();
     });
