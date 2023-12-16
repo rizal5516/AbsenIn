@@ -218,6 +218,7 @@
                                                         <?php endif; ?>
                                                     </td>
 
+                                                    <!-- Total Jam Kerja -->
                                                     <td>
                                                         <?php if ($abs->absen_keluar == 0) : ?>
                                                             <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak Lengkap</span>
@@ -229,12 +230,16 @@
                                                                 $absenMasuk = $abs->absen_masuk;
                                                                 $absenKeluar = $abs->absen_keluar;
                                                                 $timeDiffSeconds = $absenKeluar - $absenMasuk;
+                                                                $hours = floor($timeDiffSeconds / 3600);
+                                                                $minutes = floor(($timeDiffSeconds % 3600) / 60);
                                                                 $seconds = $timeDiffSeconds % 60;
                                                                 echo "$hours jam $minutes menit $seconds detik";
                                                                 ?>
                                                             <?php endif; ?>
                                                         <?php endif; ?>
                                                     </td>
+
+                                                    
                                                 </tr>
                                             <?php endforeach; ?>
                                         <?php endif; ?>
