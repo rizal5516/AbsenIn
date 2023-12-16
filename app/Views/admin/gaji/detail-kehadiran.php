@@ -130,16 +130,14 @@
                                             <th rowspan="2">Total Jam Kerja</th>
                                         </tr>
                                         <tr>
-                                            <th>Jam</th>
-                                            <th>Menit</th>
-                                            <th>Status</th>
-                                            <th>Jam</th>
-                                            <th>Menit</th>
-                                            <th>Status</th>
+                                            <th>Jam Masuk</th>
+                                            <th>Menit Masuk</th>
+                                            <th>Status Masuk</th>
+                                            <th>Jam Keluar</th>
+                                            <th>Menit Keluar</th>
+                                            <th>Status Keluar</th>
                                         </tr>
                                     </thead>
-
-
                                     <tbody>
                                         <?php if ($detail_absensi != null) : ?>
                                         <?php foreach ($detail_absensi as $abs) : ?>
@@ -153,9 +151,12 @@
 
                                                 <?php if ($abs->status_masuk == 1) : ?>
                                                 <span
-                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk); ?></span>
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk); ?>:00</span>
                                                 <?php else : ?>
-                                                <?= date('H', $abs->absen_masuk); ?>
+                                                <span
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk);?>
+                                                    :00
+                                                </span>
                                                 <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
@@ -169,7 +170,9 @@
                                                 <span
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('i', $abs->absen_masuk); ?></span>
                                                 <?php else : ?>
-                                                <?= date('i', $abs->absen_masuk); ?>
+                                                <span
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('i', $abs->absen_masuk);?>
+                                                </span>
                                                 <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
@@ -177,11 +180,11 @@
                                             <!-- Status Masuk -->
                                             <td>
                                                 <?php if ($abs->absen_masuk !=0) : ?>
-                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sudah
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah
                                                     Absen</span>
                                                 <?php else : ?>
                                                 <?php if ($abs->absen_masuk == 0) : ?>
-                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                     Absen</span>
                                                 <?php else : ?>
                                                 <?php endif; ?>
@@ -198,7 +201,10 @@
                                                 <span
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_keluar); ?></span>
                                                 <?php else : ?>
-                                                <?= date('H', $abs->absen_keluar); ?>
+                                                <span
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_keluar);?>
+                                                    :00
+                                                </span>
                                                 <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
@@ -212,7 +218,9 @@
                                                 <span
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('i', $abs->absen_keluar); ?></span>
                                                 <?php else : ?>
-                                                <?= date('i', $abs->absen_keluar); ?>
+                                                <span
+                                                    class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_keluar);?>
+                                                </span>
                                                 <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
@@ -220,11 +228,11 @@
                                             <!-- Status Keluar -->
                                             <td>
                                                 <?php if ($abs->absen_keluar !=0) : ?>
-                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sudah
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah
                                                     Absen</span>
                                                 <?php else : ?>
                                                 <?php if ($abs->absen_keluar == 0) : ?>
-                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Belum
+                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                     Absen</span>
                                                 <?php else : ?>
                                                 <?php endif; ?>
