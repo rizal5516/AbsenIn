@@ -151,7 +151,7 @@
 
                                                 <?php if ($abs->status_masuk == 1) : ?>
                                                 <span
-                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk); ?>:00</span>
+                                                    class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?=date('H', $abs->absen_masuk); ?>:00</span>
                                                 <?php else : ?>
                                                 <span
                                                     class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2"><?= date('H', $abs->absen_masuk);?>
@@ -179,17 +179,15 @@
 
                                             <!-- Status Masuk -->
                                             <td>
-                                                <?php if ($abs->absen_masuk !=0) : ?>
+                                                <?php if ($abs->absen_masuk != 0) : ?>
                                                 <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah
                                                     Absen</span>
-                                                <?php else : ?>
-                                                <?php if ($abs->absen_masuk == 0) : ?>
+                                                <?php elseif ($abs->absen_masuk == 0) : ?>
                                                 <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                     Absen</span>
-                                                <?php else : ?>
-                                                <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
+
 
 
                                             <!-- Jam Keluar -->
@@ -227,39 +225,25 @@
 
                                             <!-- Status Keluar -->
                                             <td>
-                                                <?php if ($abs->absen_keluar !=0) : ?>
-                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah
-                                                    Absen</span>
-                                                <?php else : ?>
-                                                <?php if ($abs->absen_keluar == 0) : ?>
-                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                    Absen</span>
-                                                <?php else : ?>
-                                                <?php endif; ?>
-                                                <?php endif; ?>
-                                            </td>
-
-                                            <td>
                                                 <?php if ($abs->absen_keluar == 0) : ?>
                                                 <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak
                                                     Lengkap</span>
-                                                <?php else : ?>
-                                                <?php if ($abs->status_keluar == 1) : ?>
+                                                <?php elseif ($abs->status_keluar == 1) : ?>
                                                 <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Telat Absen
                                                     Pulang</span>
                                                 <?php else : ?>
                                                 <?php
-                                                                $absenMasuk = $abs->absen_masuk;
-                                                                $absenKeluar = $abs->absen_keluar;
-                                                                $timeDiffSeconds = $absenKeluar - $absenMasuk;
-                                                                $hours = floor($timeDiffSeconds / 3600);
-                                                                $minutes = floor(($timeDiffSeconds % 3600) / 60);
-                                                                $seconds = $timeDiffSeconds % 60;
-                                                                echo "$hours jam $minutes menit $seconds detik";
-                                                                ?>
-                                                <?php endif; ?>
+        $absenMasuk = $abs->absen_masuk;
+        $absenKeluar = $abs->absen_keluar;
+        $timeDiffSeconds = $absenKeluar - $absenMasuk;
+        $hours = floor($timeDiffSeconds / 3600);
+        $minutes = floor(($timeDiffSeconds % 3600) / 60);
+        $seconds = $timeDiffSeconds % 60;
+        echo "$hours jam $minutes menit $seconds detik";
+        ?>
                                                 <?php endif; ?>
                                             </td>
+
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php endif; ?>
