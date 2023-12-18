@@ -30,7 +30,7 @@
 
 <body>
     <div class="loginBox">
-        <img class="logo" src="<?= base_url() ?>/assets/template/img/logo-absenin-mini.png" alt="AbsenInLogo" height="100px" width="100px">
+        <img class="logo" src="<?= base_url() ?>/assets/template/img/logo-absenin-mini.png" alt="AbsenInLogo" height="45px" width="175px">
         <h3>Log In Here</h3>
         <form action="<?= base_url() ?>auth/login" method="POST">
             <div class="form-group mb-4">
