@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/template/img/logo-absenin-mini.png">
-    <title>Sign In - AbsenIn</title>
+    <title>Log In - Attendify</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template/css/bootstrap.min.css">
