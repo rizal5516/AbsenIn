@@ -13,7 +13,7 @@
                     <h4 class="card-title">Detail Gaji <?= $pegawai->nama_pegawai ?> Bulan <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('gaji/dataPenggajian'); ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                    <a href="<?= base_url('gaji/dataPenggajian'); ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">
                             </span></i>
                     </a>
                 </span>
@@ -73,6 +73,13 @@
                         </ul>
                     </div>
                 </div>
+                <button onclick="printContent()" class="btn btn-sm btn-primary">Print</button>
+                    <script>
+    function printContent() {
+        // Panggil fungsi print pada window saat ini
+        window.print();
+    }
+</script>
             </div>
         </div>
     </div>
