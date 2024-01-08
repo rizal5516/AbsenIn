@@ -51,7 +51,7 @@
                             <li class="list-group-item text-right"><b class="float-left">Bonus Siswa:</b> <?= "Rp. " . number_format($gaji['bonus_siswa'], 0, ',', '.'); ?></li>
                             <li class="list-group-item text-right"><b class="float-left">Bonus Absen:</b> <?= "Rp. " . number_format($gaji['bonus_absen'], 0, ',', '.'); ?></li>
                             <li class="list-group-item text-right"><b class="float-left">Bulan:</b> <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></li>
-                            <li class="list-group-item text-right"><b class="float-left">Jumlah Jam Kerja:</b> <?= $gaji['jumlah_jam_kerja']; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jumlah Jam Kerja:</b> <?= $gaji['jumlah_jam_kerja']; ?> Jam</li>
                             <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Siswa:</b> <?= $gaji['jumlah_bonus_siswa']; ?></li>
                             <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Absen:</b> <?= $gaji['jumlah_bonus_absen']; ?></li>
                         </ul>
@@ -73,13 +73,19 @@
                         </ul>
                     </div>
                 </div>
-                <button onclick="printContent()" class="btn btn-sm btn-primary">Print</button>
-                    <script>
-    function printContent() {
-        // Panggil fungsi print pada window saat ini
-        window.print();
-    }
-</script>
+                    <button onclick="printContent()" class="btn user-bg-color text-white print-button">Print</button>
+                <script>
+                    function printContent() {
+                        window.print();
+                    }
+                </script>
+                <style>
+                    .print-button {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                    }
+                </style>
             </div>
         </div>
     </div>
