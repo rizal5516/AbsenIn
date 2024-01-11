@@ -366,7 +366,7 @@ class Pegawai extends BaseController
         }
 
         // CEK APAKAH DIA TERLAMBAT
-        if (strtotime($waktu_absen) > strtotime($jabatan->jam_keluar) + 9000) {
+        if (strtotime($waktu_absen) > strtotime($jabatan->jam_keluar) + 10800) {
             $terlambat = 1; // 1 Berarti Telambat
         } else {
             $terlambat = 0; // 0 Berarti tidak terlambat

@@ -200,7 +200,7 @@
                                                             <?php if ($abs->status_keluar == 1) : ?>
                                                                 <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">00:<?= date('i', $abs->absen_keluar); ?></span>
                                                             <?php else : ?>
-                                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">00:<?= date('H', $abs->absen_keluar); ?>
+                                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">00:<?= date('i', $abs->absen_keluar); ?>
                                                                 </span>
                                                             <?php endif; ?>
                                                         <?php endif; ?>
