@@ -117,17 +117,5 @@
         </div>
     </div>
 </div>
-</div>
-<!-- Content wrapper end -->
-</div>
-</div>
-</div>
-</div>
-
-<script>
-    function printPage() {
-        window.print();
-    }
-</script>
 
 <?= $this->endSection(); ?>
