@@ -100,14 +100,7 @@
                         </ul>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class="iq-card print">
-                    <div class="iq-card-body" style="overflow: auto;">
-                        <button onclick="printPage()" class="btn user-bg-color text-white float-right">Print</button>
-                    </div>
-                </div>
-=======
-                    <button onclick="printContent()" class="btn user-bg-color text-white print-button">Print</button>
+                <button onclick="printContent()" class="btn user-bg-color text-white print-button">Print</button>
                 <script>
                     function printContent() {
                         window.print();
@@ -120,7 +113,6 @@
                         right: 20px;
                     }
                 </style>
->>>>>>> 1310acf6477864c4686ce9289eabee1ec71bc343
             </div>
         </div>
     </div>
