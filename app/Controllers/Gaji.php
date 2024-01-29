@@ -151,16 +151,17 @@ class Gaji extends BaseController
 
             $absenMasuk = $detail->absen_masuk;
             $absenKeluar = $detail->absen_keluar;
-            if ($absenKeluar == NULL) {
+            if ($absenKeluar == NULL || $detail->status_keluar == 1 ) {
                 $diff = 0;
             } else {
-                $diff = floor(abs($absenMasuk - $absenKeluar) / 3600);
+                $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
             }
             $jumlahJamKerja += $diff;
+            $totaljamkerja = floor($jumlahJamKerja / 60);
         }
 
         $pengaturan = $this->PengaturanModel->asObject()->first();
-        $totalUpah = $jumlahJamKerja * $pengaturan->upah;
+        $totalUpah = $totaljamkerja * $pengaturan->upah;
         $totalDenda = $jumlahDenda * $pengaturan->denda;
         $tunjangan_jabatan = $jabatan->tunjangan;
         $gajipokok_pegawai = $detailPegawai->gaji_pokok;
@@ -174,7 +175,7 @@ class Gaji extends BaseController
             'bonus_siswa' => $pengaturan->bonus_siswa,
             'bonus_absen' => $pengaturan->bonus_absen,
             'bulan' => date('Y-m-d'),
-            'jumlah_jam_kerja' => $jumlahJamKerja,
+            'jumlah_jam_kerja' => $totaljamkerja,
             'jumlah_denda' => $jumlahDenda,
             'jumlah_bonus_siswa' => $jumlahBonusSiswa,
             'jumlah_bonus_absen' => $jumlahBonusAbsen,
