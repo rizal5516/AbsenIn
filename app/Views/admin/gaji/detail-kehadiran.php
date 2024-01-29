@@ -65,54 +65,20 @@
                 </div>
             </div>
         </div>
-        <div>
-            <!-- <div class="iq-card">
-                <div class="iq-card-body">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group col-12">
-                                <label for="bulanDetailKehadiran">Bulan</label>
-                                <select class="form-control" id="bulanDetailKehadiran">
-                                    <option selected="" disabled="">Pilih Bulan</option>
-                                    <?php
-                                    for ($i = 0; $i <= 12; $i++) {
-                                        $monthName = date('F', strtotime("2023-$i-01"));
-                                        echo "<option value='$i'>" . $monthName . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group col-12">
-                                <label for="tahunDetailKehadiran">Tahun</label>
-                                <select class="form-control" id="tahunDetailKehadiran">
-                                    <option selected="" disabled="">Pilih Tahun</option>
-                                    <?php
-                                    $currentYear = date('Y');
-                                    for ($i = $currentYear - 5; $i <= $currentYear; $i++) {
-                                        echo "<option value='$i'>" . $i . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="iq-card">
-                        <div class="iq-card-body">
-                            <div id="table-excel-pdf" class="table-editable">
-                                <form class="search-form mb-3 col-md-4 float-right">
-                                    <div class="input-group">
-                                        <input type="text" id="filter_detail-kehadiran" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <button type="button" id="filter_detail-kehadiran" class="btn user-bg-color text-white">Search</button>
-                                        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="iq-card">
+                    <div class="iq-card-body">
+                        <div id="table-excel-pdf" class="table-editable">
+                            <form class="search-form mb-3 col-md-4 float-right">
+                                <div class="input-group">
+                                    <input type="text" id="filter_detail-kehadiran" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <button type="button" id="filter_detail-kehadiran" class="btn user-bg-color text-white">Search</button>
                                     </div>
-                                </form>
+                                </div>
+                            </form>
+                            <div class="table-responsive">
                                 <table id="datatable_detail-kehadiran" class="table table-bordered table-responsive-md table-striped text-center">
                                     <thead>
                                         <tr>
@@ -238,8 +204,6 @@
                                                             <?php endif; ?>
                                                         <?php endif; ?>
                                                     </td>
-
-                                                    
                                                 </tr>
                                             <?php endforeach; ?>
                                         <?php endif; ?>
@@ -250,51 +214,52 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="iq-card">
-                        <div class="iq-card-body">
-                            <div id="table-excel-pdf" class="table-editable">
-                                <form class="search-form mb-3 col-md-4 float-right">
-                                    <div class="input-group">
-                                        <input type="text" id="filter_detail-bulan" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <button type="button" id="filter_detail-bulan" class="btn user-bg-color text-white">Search</button>
-                                        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="iq-card">
+                    <div class="iq-card-body">
+                        <div id="table-excel-pdf" class="table-editable">
+                            <form class="search-form mb-3 col-md-4 float-right">
+                                <div class="input-group">
+                                    <input type="text" id="filter_detail-bulan" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <button type="button" id="filter_detail-bulan" class="btn user-bg-color text-white">Search</button>
                                     </div>
-                                </form>
-                                <table id="datatable_detail-bulan" class="table table-bordered table-responsive-md table-striped text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>Keterangan</th>
-                                            <th>OnTime CheckIn</th>
-                                            <th>OnTime CheckOut</th>
-                                            <th>Total Jam Kerja</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php if ($detail_bulan != null) : ?>
-                                            <?php foreach ($detail_bulan as $bln) : ?>
-                                                <tr>
-                                                    <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
-                                                    <td><?= $bln->onTimeIn; ?></td>
-                                                    <td><?= $bln->onTimeOut; ?></td>
-                                                    <td>
-                                                        <?php
-                                                        // Tampilkan total jam kerja
-                                                        $totalJamKerja = $bln->totalJamKerja ?? 0;
-                                                        $totalHours = floor($totalJamKerja / 3600);
-                                                        $totalMinutes = floor(($totalJamKerja % 3600) / 60);
-                                                        $totalSeconds = $totalJamKerja % 60;
-                                                        echo "$totalHours jam $totalMinutes menit $totalSeconds detik";
-                                                        ?>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                </div>
+                            </form>
+                            <table id="datatable_detail-bulan" class="table table-bordered table-responsive-md table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Keterangan</th>
+                                        <th>OnTime CheckIn</th>
+                                        <th>OnTime CheckOut</th>
+                                        <th>Total Jam Kerja</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if ($detail_bulan != null) : ?>
+                                        <?php foreach ($detail_bulan as $bln) : ?>
+                                            <tr>
+                                                <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
+                                                <td><?= $bln->onTimeIn; ?></td>
+                                                <td><?= $bln->onTimeOut; ?></td>
+                                                <td>
+                                                    <?php
+                                                    // Tampilkan total jam kerja
+                                                    $totalJamKerja = $bln->totalJamKerja ?? 0;
+                                                    $totalHours = floor($totalJamKerja / 3600);
+                                                    $totalMinutes = floor(($totalJamKerja % 3600) / 60);
+                                                    $totalSeconds = $totalJamKerja % 60;
+                                                    echo "$totalHours jam $totalMinutes menit $totalSeconds detik";
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

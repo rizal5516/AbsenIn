@@ -3,6 +3,33 @@
 <?= $this->include('layout/sidebar-admin'); ?>
 <?= session()->getFlashdata('pesan'); ?>
 
+<style>
+    @media print {
+
+        .print {
+            display: none !important;
+        }
+
+        .table-add {
+            display: none !important;
+        }
+
+        .iq-footer {
+            display: none !important;
+        }
+
+        .akumulasi {
+            padding-top: 125px;
+        }
+
+        @page {
+            size: auto;
+            margin: 0;
+        }
+
+    }
+</style>
+
 <!-- Content wrapper scroll start -->
 <div id="content-page" class="content-page">
     <!-- Content wrapper start -->
@@ -13,7 +40,7 @@
                     <h4 class="card-title">Detail Gaji <?= $pegawai->nama_pegawai ?> Bulan <?= date('F Y', strtotime('-1 month', strtotime($gaji['bulan']))); ?></h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('gaji/dataPenggajian'); ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                    <a href="<?= base_url('gaji/dataPenggajian'); ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">
                             </span></i>
                     </a>
                 </span>
@@ -57,7 +84,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="iq-card">
+                <div class="iq-card akumulasi">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
                             <h4 class="card-title">Akumulasi</h4>
@@ -73,14 +100,26 @@
                         </ul>
                     </div>
                 </div>
+                <div class="iq-card print">
+                    <div class="iq-card-body" style="overflow: auto;">
+                        <button onclick="printPage()" class="btn user-bg-color text-white float-right">Print</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-<!-- Content wrapper end -->
-
+<!-- Content wrapper end -->
 </div>
-<!-- Content wrapper scroll end -->
+</div>
+</div>
+</div>
+
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
 
 <?= $this->endSection(); ?>
