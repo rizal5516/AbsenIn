@@ -18,14 +18,12 @@
             display: none !important;
         }
 
-        .akumulasi {
-            padding-top: 125px;
-        }
+        /* .akumulasi {9 */
 
-        @page {
+        /* @page {
             size: auto;
             margin: 0;
-        }
+        } */
 
     }
 </style>
@@ -100,19 +98,16 @@
                         </ul>
                     </div>
                 </div>
-                <button onclick="printContent()" class="btn user-bg-color text-white print-button">Print</button>
+                <div class="iq-card">
+                    <div class="iq-card-body" style="overflow: auto;">
+                        <button onclick="printContent()" class="btn user-bg-color text-white float-right">Print</button>
+                    </div>
+                </div>
                 <script>
                     function printContent() {
                         window.print();
                     }
                 </script>
-                <style>
-                    .print-button {
-                        position: fixed;
-                        bottom: 20px;
-                        right: 20px;
-                    }
-                </style>
             </div>
         </div>
     </div>
