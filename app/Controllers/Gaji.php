@@ -256,12 +256,12 @@ class Gaji extends BaseController
         $pegawai = $this->PegawaiModel->getById($gaji->pegawai_id);
         $jabatan = $this->JabatanModel->asObject()->where('id_jabatan', $pegawai->id_jabatan)->first();
 
-        $data['title_pdf'] = 'Laporan Gaji ' . $pegawai->nama_pegawai . ' Bulan ' . date('F Y', strtotime($gaji->bulan));
+        $data['title_pdf'] = 'Laporan Gaji ' . $pegawai->nama_pegawai . ' Bulan ' . date('F Y',strtotime("-1 months", strtotime($gaji->bulan)));
         $data['gaji'] = $gaji;
         $data['pegawai'] = $pegawai;
         $data['jabatan'] = $jabatan;
 
-        $file_pdf = 'laporan_gaji_' . $pegawai->nama_pegawai . '_' . date('F Y', strtotime($gaji->bulan));
+        $file_pdf = 'laporan_gaji_' . $pegawai->nama_pegawai . '_' . date('F Y',strtotime("-1 months", strtotime($gaji->bulan)));
         $paper = 'A4';
         $orientation = "portrait";
 

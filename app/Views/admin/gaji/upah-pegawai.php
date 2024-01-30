@@ -73,26 +73,22 @@
                         </ul>
                     </div>
                 </div>
-                    <button onclick="printContent()" class="btn user-bg-color text-white print-button">Print</button>
+                <div class="iq-card" > 
+                    <div class="iq-card-body" style="overflow: auto;" >
+                        <button onclick="printContent()" class="btn user-bg-color text-white float-right">Print</button>
+                    </div>
+                </div>
                 <script>
                     function printContent() {
                         window.print();
                     }
                 </script>
-                <style>
-                    .print-button {
-                        position: fixed;
-                        bottom: 20px;
-                        right: 20px;
-                    }
-                </style>
             </div>
         </div>
     </div>
 </div>
 </div>
 <!-- Content wrapper end -->
-
 </div>
 <!-- Content wrapper scroll end -->
 

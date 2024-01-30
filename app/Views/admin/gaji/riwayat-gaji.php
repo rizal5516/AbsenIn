@@ -108,8 +108,8 @@
                                                 <td><?= "Rp. " . number_format($g->denda, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->bonus_siswa, 0, ',', '.'); ?></td>
                                                 <td><?= "Rp. " . number_format($g->bonus_absen, 0, ',', '.'); ?></td>
-                                                <td><?= date('F Y', strtotime("-1 months"($g->bulan))); ?></td>
-                                                <td><?= $g->jumlah_jam_kerja; ?> Jam</td>
+                                                <td><?= date('F Y', strtotime("-1 months", strtotime($g->bulan))); ?></td>
+                                                <td><?= floor($g->jumlah_jam_kerja/60); ?> Jam</td>
                                                 <td><?= $g->jumlah_denda; ?></td>
                                                 <td><?= $g->jumlah_bonus_siswa; ?></td>
                                                 <td><?= $g->jumlah_bonus_absen; ?></td>
