@@ -264,7 +264,7 @@
             },
             {
                 extend: 'print',
-                title: 'Data Pegawai'
+                title: 'Data Pegawai',
             }
         ],
     });

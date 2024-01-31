@@ -18,12 +18,33 @@
             display: none !important;
         }
 
-        /* .akumulasi {9 */
+        .iq-sidebar {
+            display: none !important;
+        }
 
-        /* @page {
-            size: auto;
+        body {
+            transform: scale(0.88);
+        }
+
+        /* Force each section to start on a new page */
+        html,
+        body {
+            height: 50%;
+            /* Ensure full height of the page */
             margin: 0;
-        } */
+            /* Reset default margins */
+            padding: 0;
+            /* Reset default padding */
+        }
+
+        /* Ensure container fits into a single page */
+        .container-fluid {
+            width: 100%;
+            height: 100%;
+            page-break-inside: avoid;
+        }
+
+
 
     }
 </style>
@@ -31,7 +52,7 @@
 <!-- Content wrapper scroll start -->
 <div id="content-page" class="content-page">
     <!-- Content wrapper start -->
-    <div class="container-fluid">
+    <div class="container-fluid print-con">
         <div class="iq-card">
             <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
@@ -79,6 +100,7 @@
                             <li class="list-group-item text-right"><b class="float-left">Jumlah Jam Kerja:</b> <?= $gaji['jumlah_jam_kerja']; ?> Jam</li>
                             <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Siswa:</b> <?= $gaji['jumlah_bonus_siswa']; ?></li>
                             <li class="list-group-item text-right"><b class="float-left">Jumlah Bonus Absen:</b> <?= $gaji['jumlah_bonus_absen']; ?></li>
+                            <li class="list-group-item text-right"><b class="float-left">Jumlah Denda:</b> <?= $gaji['jumlah_denda']; ?></li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +120,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="iq-card">
+                <div class="iq-card print">
                     <div class="iq-card-body" style="overflow: auto;">
                         <button onclick="printContent()" class="btn user-bg-color text-white float-right">Print</button>
                     </div>
@@ -112,5 +134,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>

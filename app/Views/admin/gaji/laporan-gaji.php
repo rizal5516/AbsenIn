@@ -103,11 +103,11 @@
                 </tr>
                 <tr>
                     <td scope="row">Bulan :</td>
-                    <td><?= date('F Y', strtotime($gaji->bulan)); ?></td>
+                    <td><?= date('F Y', strtotime("-1 months", strtotime($gaji->bulan))); ?></td>
                 </tr>
                 <tr>
                     <td scope="row">Jumlah Jam Kerja :</td>
-                    <td><?= $gaji->jumlah_jam_kerja; ?></td>
+                    <td><?= floor($gaji->jumlah_jam_kerja / 60); ?> Jam</td>
                 </tr>
                 <tr>
                     <td scope="row">Jumlah Denda :</td>

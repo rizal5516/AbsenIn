@@ -288,7 +288,7 @@
             },
             {
                 extend: 'print',
-                title: 'Riwayat Absensi <?= $pegawai->nama_pegawai; ?>'
+                title: 'Riwayat Absensi <?= $pegawai->nama_pegawai; ?>',
             }
         ],
         "order": [
