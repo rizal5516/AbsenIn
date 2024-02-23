@@ -1,12 +1,12 @@
-<?= $this->extend('layout/admin') ;?>
-<?= $this->section('content') ;?>
-<?= $this->include('layout/sidebar-admin') ;?>
+<?= $this->extend('layout/admin'); ?>
+<?= $this->section('content'); ?>
+<?= $this->include('layout/sidebar-admin'); ?>
 
 <!-- Page Content  -->
 <div id="content-page" class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-12">
                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                     <div class="iq-card-body iq-box-relative">
                         <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-12">
                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                     <div class="iq-card-body iq-box-relative">
                         <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-danger">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-12">
                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                     <div class="iq-card-body iq-box-relative">
                         <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-success">
@@ -49,4 +49,4 @@
     </div>
 </div>
 
-<?= $this->endSection() ;?>
+<?= $this->endSection(); ?>

@@ -1412,8 +1412,16 @@ NOTE: This file contains the styling for responsive Template.
 		height: 150px !important;
 	}
 
+	.container-fluid {
+		padding-top: 25px;
+	}
+
+	.iq-sidebar-menu {
+		padding-top: 25px;
+	}
+
 	.iq-card-body {
-		padding: 15px;
+		padding: 25px;
 	}
 
 	.iq-sidebar-logo a span {
@@ -1534,6 +1542,32 @@ NOTE: This file contains the styling for responsive Template.
 	.iq-show .search-box {
 		right: -150px;
 	}
+
+	.iq .navbar-expand {
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-ms-flex-pack: start;
+		justify-content: flex-start
+	}
+
+	.navbar {
+		padding-right: 0;
+		padding-left: 0;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		position: absolute;
+		padding-right: .5rem;
+		padding-left: .5rem;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		overflow: visible;
+		display: -ms-flexbox !important;
+		display: flex !important;
+		-ms-flex-preferred-size: auto;
+		flex-basis: auto;
+		display: none;
+	}
+
 }
 
 @media(max-width:359px) {}

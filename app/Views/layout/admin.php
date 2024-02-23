@@ -50,13 +50,13 @@
 
     <!-- Footer -->
     <footer class="iq-footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 text-right">
-                    &copy; <?php echo date('Y'); ?> <a>Attendify</a>
-                </div>
+        <!-- <div class="container-fluid"> -->
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                &copy; <?php echo date('Y'); ?> <a>Attendify</a>
             </div>
         </div>
+        <!-- </div> -->
     </footer>
     <!-- Footer END -->
 

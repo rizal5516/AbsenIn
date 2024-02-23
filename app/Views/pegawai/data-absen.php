@@ -114,11 +114,6 @@ $AbsenDetailModel = new AbsenDetailModel();
                     </div>
                     <div class="iq-card-body">
                         <div class="table-editable">
-                            <!-- <span class="table-add float-right mb-3 mr-2">
-                                <a href="<?= base_url('admin/tambahDataPegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
-                                            New</span></i>
-                                </a>
-                            </span> -->
                             <form class="search-form mb-3 col-md-4 float-right">
                                 <div class="input-group">
                                     <input type="text" id="filter_riwayat-absensi" class="form-control" placeholder="Search...">
