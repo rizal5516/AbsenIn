@@ -72,14 +72,14 @@ class AbsenDetailModel extends Model
             ->get()->getRowObject();
     }
 
-    public function getByArrayKodeAndIdPegawai($kode_absens, $id_pegawai)
-    {
-        return $this
-            ->whereIn('kode_absensi', $kode_absens)
-            ->where('pegawai', $id_pegawai)
-            ->where('absen_masuk !=', null)
-            ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
-            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
-            ->get()->getResultObject();
-    }
+    // public function getByArrayKodeAndIdPegawai($kode_absens, $id_pegawai)
+    // {
+    //     return $this
+    //         ->whereIn('kode_absensi', $kode_absens)
+    //         ->where('pegawai', $id_pegawai)
+    //         ->where('absen_masuk !=', null)
+    //         ->join('pegawai', 'pegawai.id_pegawai=detail_absensi.pegawai')
+    //         ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
+    //         ->get()->getResultObject();
+    // }
 }

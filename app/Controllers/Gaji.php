@@ -130,17 +130,12 @@ class Gaji extends BaseController
         $yearangka = date("Y", strtotime("-1 months"));
         $absens = $this->AbsenDetailModel->riwayatAbsen($id_pegawai, $monthangka, $yearangka);
         var_dump($month);
-        // dd ($absens);
-        // $kodeAbsens = array();
-        // foreach ($absens as $absen) {
-        //     array_push($kodeAbsens, $absen->kode_absensi);
-        // }
-
+        
         if (count($absens) == 0) {
             return redirect()->back()->with("error", "Data absen bulan " . $monthonly . " kosong!");
         }
 
-        // $detailAbsens = $this->AbsenDetailModel->getByArrayKodeAndIdPegawai($kodeAbsens, $id_pegawai);
+       
 
         foreach ($absens as $detail) {
             if ($detail->status_masuk == 1) {

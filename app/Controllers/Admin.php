@@ -435,7 +435,8 @@ class Admin extends BaseController
         if (session()->get('role') != 1) {
             return redirect()->to('auth');
         }
-        // absen_hari_ini();
+
+
 
         $pegawai = $this->PegawaiModel->asObject()->find($id);
 
@@ -453,6 +454,20 @@ class Admin extends BaseController
             return redirect()->to('admin/pegawai');
         }
 
+        if ($pegawai->is_active==1) {
+            session()->setFlashdata ('pesan', "
+            <script>
+                Swal.fire (
+                    'Error!',
+                    'Pegawai Sedang Aktif, Ubah Status Pegawai Terlebih Dahulu!',
+                    'error'
+                    )
+                    </script>
+            ");
+            return redirect()->to('admin/pegawai');
+        }
+
+        
         if ($pegawai->gambar != 'default.jpg') {
             unlink('assets/img/pegawai/' . $pegawai->gambar);
         }
@@ -614,6 +629,7 @@ class Admin extends BaseController
         $jumlahPenggunaan = $this->PegawaiModel->where('jabatan', $id)->countAllResults();
         return $jumlahPenggunaan > 0;
     }
+
     public function edit_jabatan()
     {
         if (session()->get('role') != 1) {
@@ -740,7 +756,6 @@ class Admin extends BaseController
         if (session()->get('role') != 1) {
             return redirect()->to('auth');
         }
-        // absen_hari_ini();
 
         $data['menu'] = [
             'tab_home' => '',
@@ -921,3 +936,5 @@ class Admin extends BaseController
     }
     // END::ABSENSI
 }
+
+

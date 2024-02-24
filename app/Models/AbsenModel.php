@@ -23,18 +23,4 @@ class AbsenModel extends Model
             ->where('kode_absensi', $kode_absensi)
             ->get()->getRowObject();
     }
-    public function getByMonth($month)
-    {
-        return $this
-            ->like('tgl_absen', $month)
-            ->get()->getResultObject();
-    }
-
-    public function getByDay($day)
-    {
-        return $this
-            ->like('(tgl_absen', $day)
-            ->get()
-            ->getResultObject();
-    }
 }
