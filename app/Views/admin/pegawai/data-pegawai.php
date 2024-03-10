@@ -150,7 +150,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Password</label>
+                                                    <label>Reset Password</label>
                                                     <input type="text" class="form-control" id="password" name="password" placeholder="Masukan Password Baru" required />
                                                 </div>
                                             </div>
