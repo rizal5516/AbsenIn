@@ -143,7 +143,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="text" class="form-control" id="password" name="password" required />
+                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Masukan Password Baru" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -198,6 +198,7 @@
             data: {
                 id_pegawai: id_pegawai,
             },
+
             url: "<?= base_url('admin/edit_pegawai') ?>",
             success: function(data) {
                 $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active, role) {
@@ -207,8 +208,10 @@
                     $("#jenis_kelamin").val(data.jenis_kelamin);
                     $("#jabatan").val(data.jabatan);
                     $("#email").val(data.email);
+                    var hashedPW = data.password;
+                    var longPassword = hashedPW.substring(0, 10);
                     $("#gaji_pokok").val(data.gaji_pokok);
-                    $("#password").val(data.password);
+                    $("#password").val(longPassword).attr('type', 'password').attr('placeholder', 'Masukkan Password Baru');
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
                         .gambar +
                         `" class="img-thumbnail foto-pegawai" alt="Foto Pegawai" style="width: 90%;">`;

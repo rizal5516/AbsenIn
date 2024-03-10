@@ -36,15 +36,6 @@ class GajiModel extends Model
             ->get()->getResultObject();
     }
 
-    public function findByPegawaiIdDay($pegawaiId)
-    {
-        $date = date('Y-m-01');
-        return $this
-            ->where('pegawai_id', $pegawaiId)
-            ->where('hari <', $date)
-            ->get()->getResultObject();
-    }
-
     public function findThisMonth($pegawaiId)
     {
         $date = date('Y-m-01');
@@ -54,14 +45,6 @@ class GajiModel extends Model
             ->get()->getRowObject();
     }
 
-    public function findThisDay($pegawaiId)
-    {
-        $date = date('Y-m-01');
-        return $this
-            ->where('pegawai_id', $pegawaiId)
-            ->where('hari >=', $date)
-            ->get()->getRowObject();
-    }
 
     public function findById($id)
     {

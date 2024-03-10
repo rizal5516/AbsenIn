@@ -39,6 +39,8 @@ class Auth extends BaseController
         // Cari Data Admin Berdasarkan email
         $admin = $this->AdminModel->getAdminByEmail($email);
         // CEK APAKAH ADA ADMIN
+
+
         if ($admin != null) {
             // CEK APAKAH PASSWORD BENAR
             if ($admin->password != $password) {
@@ -78,7 +80,7 @@ class Auth extends BaseController
         // CEK APAKAH ADA PEGAWAI
         if ($pegawai != null) {
             // CEK APAKAH PASSWORD BENAR
-            if ($pegawai->password != $password) {
+            if (!password_verify($password, $pegawai->password)) {
                 session()->setFlashdata('pesan', "
                     <script>
                         Swal.fire(
@@ -90,6 +92,7 @@ class Auth extends BaseController
                 ");
                 return redirect()->to('auth')->withInput();
             }
+            
 
             $data_pegawai = [
                 'id_pegawai' => $pegawai->id_pegawai,
@@ -116,7 +119,7 @@ class Auth extends BaseController
             <script>
                 Swal.fire(
                     'Error!',
-                    'Akun Tidak Ditemukan!',
+                    'Akun Tidak Ditemukan! Periksa Kembali Format Email',
                     'error'
                 )
             </script>
@@ -124,55 +127,6 @@ class Auth extends BaseController
 
         return redirect()->to('auth')->withInput();
     }
-
-    // public function install()
-    // {
-    //     $admin = $this->AdminModel->asObject()->first();
-    //     if ($admin != null) {
-    //         return redirect()->to('auth');
-    //     }
-
-    //     return view('auth/install');
-    // }
-    // public function install_()
-    // {
-    //     $password = $this->request->getVar('password');
-    //     $confirm_password = $this->request->getVar('confirm_password');
-
-    //     if ($password != $confirm_password) {
-    //         session()->setFlashdata('pesan', "
-    //             <script>
-    //                 Swal.fire(
-    //                     'Error!',
-    //                     'Password Tidak Sama!',
-    //                     'error'
-    //                 )
-    //             </script>
-    //         ");
-
-    //         return redirect()->to('auth/install')->withInput();
-    //     }
-
-    //     $this->AdminModel->save([
-    //         'nama_admin' => $this->request->getVar('nama_admin'),
-    //         'email' => $this->request->getVar('email'),
-    //         'password' => $password,
-    //         'gambar' => 'default.jpg',
-    //         'role' => 1
-    //     ]);
-
-    //     session()->setFlashdata('pesan', "
-    //         <script>
-    //             Swal.fire(
-    //                 'Sukses!',
-    //                 'Admin Disimpan!',
-    //                 'success'
-    //             )
-    //         </script>
-    //     ");
-
-    //     return redirect()->to('auth');
-    // }
 
     public function logout()
     {

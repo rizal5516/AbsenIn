@@ -120,8 +120,9 @@ class Pegawai extends BaseController
 
         $current_password = $this->request->getVar('current_password');
         $new_password = $this->request->getVar('new_password');
+        $hashNP = password_hash ($new_password, PASSWORD_DEFAULT);
 
-        if ($current_password != $pegawai->password) {
+        if (!password_verify($current_password, $pegawai->password)) {
             session()->setFlashdata('pesan', "
                 <script>
                     Swal.fire(
@@ -136,7 +137,7 @@ class Pegawai extends BaseController
         }
 
         $this->PegawaiModel
-            ->set('password', $new_password)
+            ->set('password', $hashNP)
             ->where('id_pegawai', session()->get('id_pegawai'))
             ->update();
 

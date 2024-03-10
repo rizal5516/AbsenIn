@@ -36,6 +36,7 @@
             <div class="form-group mb-4">
                 <label for="inputEmail">Email address</label>
                 <input type="email" name="email" class="form-control mb-0" id="inputEmail" placeholder="Enter email" value="<?= old('email'); ?>" autofocus required>
+                
             </div>
             <div class="form-group mb-4">
                 <label for="inputPassword">Password</label>

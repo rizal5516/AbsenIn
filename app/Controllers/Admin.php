@@ -68,7 +68,6 @@ class Admin extends BaseController
             return redirect()->to('auth');
         }
         // absen_hari_ini();
-
         $data['menu'] = [
             'tab_home' => 'show active',
             'tab_master' => '',
@@ -81,8 +80,7 @@ class Admin extends BaseController
         ];
 
         // Plugin Tambahan
-        $data['plugin'] = '
-            
+        $data['plugin'] = ' 
         ';
 
         $data['admin'] = $this->AdminModel->asObject()->first();
@@ -253,6 +251,9 @@ class Admin extends BaseController
             $fileGambar->move('assets/img/pegawai', $nama_gambar);
         }
 
+        $nip = $this->request->getVar('nip');
+        $hashedNIP = password_hash($nip, PASSWORD_DEFAULT);
+
         $data_pegawai = [
             'nip' => $this->request->getVar('nip'),
             'nama_pegawai' => $this->request->getVar('nama_pegawai'),
@@ -260,7 +261,7 @@ class Admin extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
             'gaji_pokok' => $this->request->getVar(('gaji_pokok')),
-            'password' => $this->request->getVar('nip'),
+            'password' => $hashedNIP,
             'gambar' => $nama_gambar,
             'is_active' => 1,
             'role' => 2
@@ -316,6 +317,8 @@ class Admin extends BaseController
             }
         }
 
+        $password = $this->request->getVar('password');
+        $hashedPW = password_hash($password, PASSWORD_DEFAULT);
         $this->PegawaiModel->save([
             'id_pegawai' => $this->request->getVar('id_pegawai'),
             'nama_pegawai' => $this->request->getVar('nama_pegawai'),
@@ -323,7 +326,7 @@ class Admin extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
             'gaji_pokok' => $this->request->getVar('gaji_pokok'),
-            'password' => $this->request->getVar('password'),
+            'password' => $hashedPW,
             'gambar' => $nama_gambar,
             'is_active' => $this->request->getVar('is_active'),
         ]);
@@ -356,6 +359,20 @@ class Admin extends BaseController
                     Swal.fire(
                         'Error!',
                         'Data Pegawai Tidak ditemukan!',
+                        'error'
+                    )
+                </script>
+            ");
+
+            return redirect()->to('admin/pegawai');
+        }
+
+        if ($pegawai-> is_active==1) {
+            session()->setFlashdata('pesan', "
+                <script>
+                    Swal.fire(
+                        'Error!',
+                        'Data Pegawai Sedang Aktif, Ubah Keterangan Pegawai Terlebih Dahulu!',
                         'error'
                     )
                 </script>

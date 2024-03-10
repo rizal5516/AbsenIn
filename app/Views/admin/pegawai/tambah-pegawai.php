@@ -23,7 +23,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input type="text" class="form-control" name="nip" required />
+                                                <input type="text" class="form-control" name="nip" pattern="[0-9]*" required />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -60,7 +60,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Gaji Pokok</label>
-                                                <input type="text" class="form-control" name="gaji_pokok" required />
+                                                <input type="text" class="form-control" name="gaji_pokok"  pattern="[0-9]*" required />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -78,14 +78,13 @@
                                                 </div>
                                                 <div class="custom-file">
                                                     <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="previewImg();" accept=".jpg, .jpeg, .png">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose
-                                                        file</label>
+                                                    <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Add</button>
+                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Tambah</button>
                         </form>
                     </div>
                 </div>
