@@ -269,7 +269,8 @@ class Pegawai extends BaseController
 
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 
-        // CEK APAKAH DIA TERLAMBAT
+        // Cek Status Keterlambatan
+
         if (strtotime($waktu_absen) > strtotime($jabatan->jam_masuk) + 900) {
             $terlambat = 1; // 1 Berarti Telambat
         } else {
@@ -366,12 +367,26 @@ class Pegawai extends BaseController
             return redirect()->to('pegawai/absen' . '/' . $kode_absensi);
         }
 
-        // CEK APAKAH DIA TERLAMBAT
-        if (strtotime($waktu_absen) > strtotime($jabatan->jam_keluar) + 10800) {
-            $terlambat = 1; // 1 Berarti Telambat
+        // CEK APAKAH DIA TERLAMBAT dan Lembur
+
+        if ($pegawai->lembur == 1) {
+            $jam_lembur = strtotime($jabatan->jam_keluar) + 7200; // Menambah 2 jam (7200 detik)
+            if (strtotime($waktu_absen) > $jam_lembur) {
+                $terlambat = 1; // 1 Berarti Telambat
+            } else {
+                $terlambat = 0; // 0 Berarti tidak terlambat
+            }
         } else {
-            $terlambat = 0; // 0 Berarti tidak terlambat
+            $jam_lembur = strtotime($jabatan->jam_keluar) + 1800; // Menambah 30 menit (1800 detik)
+            if (strtotime($waktu_absen) > $jam_lembur) {
+                $terlambat = 1; // 1 Berarti Telambat
+            } else {
+                $terlambat = 0; // 0 Berarti tidak terlambat
+            }
         }
+        
+
+
 
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 

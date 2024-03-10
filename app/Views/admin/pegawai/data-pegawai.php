@@ -35,6 +35,7 @@
                                         <th>Nama Pegawai</th>
                                         <th>Jabatan</th>
                                         <th>Status</th>
+                                        <th>Lembur</th>
                                         <th>Email</th>
                                         <th>Gaji Pokok</th>
                                         <th></th>
@@ -61,6 +62,13 @@
                                                         <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Active</button></span>
                                                     <?php else : ?>
                                                         <span class="table-remove"><button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Deactive</button></span>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($p->lembur == 1) : ?>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Ya</button></span>
+                                                    <?php else : ?>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Tidak</button></span>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $p->email; ?></td>
@@ -156,6 +164,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="lembur">Lembur</label>
+                                                    <select class="form-control" id="lembur" name="lembur" title="Select Product Category" data-live-search="true" required>
+                                                        <option value="1">Ya</option>
+                                                        <option value="0">Tidak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <div class="iq-card justify-content-center align-items-center">
                                                     <div class="iq-card-body">
                                                         <div class="gambar"></div>
@@ -201,23 +218,22 @@
 
             url: "<?= base_url('admin/edit_pegawai') ?>",
             success: function(data) {
-                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active, role) {
+                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active,lembur, role) {
                     $("#id_pegawai").val(data.id_pegawai);
                     $("#nip").val(data.nip);
                     $("#nama_pegawai").val(data.nama_pegawai);
                     $("#jenis_kelamin").val(data.jenis_kelamin);
                     $("#jabatan").val(data.jabatan);
                     $("#email").val(data.email);
-                    var hashedPW = data.password;
-                    var longPassword = hashedPW.substring(0, 10);
                     $("#gaji_pokok").val(data.gaji_pokok);
-                    $("#password").val(longPassword).attr('type', 'password').attr('placeholder', 'Masukkan Password Baru');
+                    $("#password").prop('type', 'password');
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
                         .gambar +
                         `" class="img-thumbnail foto-pegawai" alt="Foto Pegawai" style="width: 90%;">`;
                     $(".gambar").html(gambar);
                     $("#gambar_lama").val(data.gambar);
                     $("#is_active").val(data.is_active);
+                    $("#lembur").val(data.lembur);
                 });
             }
         })

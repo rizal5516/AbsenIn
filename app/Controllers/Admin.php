@@ -264,6 +264,7 @@ class Admin extends BaseController
             'password' => $hashedNIP,
             'gambar' => $nama_gambar,
             'is_active' => 1,
+            'lembur' => 0,
             'role' => 2
         ];
 
@@ -328,6 +329,7 @@ class Admin extends BaseController
             'gaji_pokok' => $this->request->getVar('gaji_pokok'),
             'password' => $hashedPW,
             'gambar' => $nama_gambar,
+            'lembur' => $this->request->getVar('lembur'),
             'is_active' => $this->request->getVar('is_active'),
         ]);
 
