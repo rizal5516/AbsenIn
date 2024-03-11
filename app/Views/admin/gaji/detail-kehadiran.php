@@ -243,7 +243,8 @@
                                     <?php if ($detail_bulan != null) : ?>
                                         <?php foreach ($detail_bulan as $bln) : ?>
                                             <tr>
-                                                <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
+                                            <td><?= date('F Y', strtotime($bln->tanggalKeterangan)); ?></td>
+
                                                 <td><?= $bln->onTimeIn; ?></td>
                                                 <td><?= $bln->onTimeOut; ?></td>
                                                 <td><?= $bln->lateTimeIn; ?></td>
