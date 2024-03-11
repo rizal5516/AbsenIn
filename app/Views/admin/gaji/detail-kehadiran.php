@@ -235,6 +235,7 @@
                                         <th>Keterangan</th>
                                         <th>OnTime CheckIn</th>
                                         <th>OnTime CheckOut</th>
+                                        <th>Denda</th>
                                         <th>Total Jam Kerja</th>
                                     </tr>
                                 </thead>
@@ -245,6 +246,7 @@
                                                 <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
                                                 <td><?= $bln->onTimeIn; ?></td>
                                                 <td><?= $bln->onTimeOut; ?></td>
+                                                <td><?= $bln->lateTimeIn; ?></td>
                                                 <td>
                                                     <?php
                                                     // Tampilkan total jam kerja
