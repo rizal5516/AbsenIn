@@ -51,14 +51,26 @@ class Admin extends BaseController
             'gaji' => ''
         ];
 
-        // Plugin Tambahan
         $data['plugin'] = '
-            
-        ';
+        <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4.css" />
+            <link rel="stylesheet" href="' . base_url('assets/template') . '/vendor/datatables/dataTables.bs4-custom.css" />
+            <link href="' . base_url('assets/template') . '/vendor/datatables/buttons.bs.css" rel="stylesheet" />
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/custom/custom-datatables.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/jszip.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/pdfmake.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/vfs_fonts.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/html5.min.js"></script>
+            <script src="' . base_url('assets/template') . '/vendor/datatables/buttons.print.min.js"></script>
+            ';
 
         $data['admin'] = $this->AdminModel->asObject()->first();
         $data['pegawai'] = $this->PegawaiModel->asObject()->findAll();
         $data['jabatan'] = $this->JabatanModel->asObject()->findAll();
+        $data['absensi'] = $this->AbsenModel->getByTanggal(date('d-M-Y', time()));
+        $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
 
         return view('admin/dashboard', $data);
     }
@@ -80,10 +92,7 @@ class Admin extends BaseController
             'gaji' => ''
         ];
 
-        // Plugin Tambahan
-        $data['plugin'] = '
-            
-        ';
+        $data['plugin'] = '';
 
         $data['admin'] = $this->AdminModel->asObject()->first();
 
@@ -253,6 +262,9 @@ class Admin extends BaseController
             $fileGambar->move('assets/img/pegawai', $nama_gambar);
         }
 
+        $nip = $this->request->getVar('nip');
+        $hashedNIP = password_hash($nip, PASSWORD_DEFAULT);
+
         $data_pegawai = [
             'nip' => $this->request->getVar('nip'),
             'nama_pegawai' => $this->request->getVar('nama_pegawai'),
@@ -260,9 +272,10 @@ class Admin extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
             'gaji_pokok' => $this->request->getVar(('gaji_pokok')),
-            'password' => $this->request->getVar('nip'),
+            'password' => $hashedNIP,
             'gambar' => $nama_gambar,
             'is_active' => 1,
+            'lembur' => 0,
             'role' => 2
         ];
 
@@ -316,6 +329,9 @@ class Admin extends BaseController
             }
         }
 
+        $password = $this->request->getVar('password');
+        $hashedPW = password_hash($password, PASSWORD_DEFAULT);
+
         $this->PegawaiModel->save([
             'id_pegawai' => $this->request->getVar('id_pegawai'),
             'nama_pegawai' => $this->request->getVar('nama_pegawai'),
@@ -323,8 +339,9 @@ class Admin extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
             'gaji_pokok' => $this->request->getVar('gaji_pokok'),
-            'password' => $this->request->getVar('password'),
+            'password' => $hashedPW,
             'gambar' => $nama_gambar,
+            'lembur' => $this->request->getVar('lembur'),
             'is_active' => $this->request->getVar('is_active'),
         ]);
 
@@ -356,6 +373,20 @@ class Admin extends BaseController
                     Swal.fire(
                         'Error!',
                         'Data Pegawai Tidak ditemukan!',
+                        'error'
+                    )
+                </script>
+            ");
+
+            return redirect()->to('admin/pegawai');
+        }
+
+        if ($pegawai->is_active == 1) {
+            session()->setFlashdata('pesan', "
+                <script>
+                    Swal.fire(
+                        'Error!',
+                        'Data Pegawai Sedang Aktif, Ubah Keterangan Pegawai Terlebih Dahulu!',
                         'error'
                     )
                 </script>
@@ -745,8 +776,7 @@ class Admin extends BaseController
             'gaji' => ''
         ];
 
-        $data['plugin'] = '
-        ';
+        $data['plugin'] = '';
 
         $data['absensi'] = $this->AbsenModel->getByKode($kode_absen);
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, $id_pegawai);
@@ -774,8 +804,7 @@ class Admin extends BaseController
             'gaji' => ''
         ];
 
-        $data['plugin'] = '
-        ';
+        $data['plugin'] = '';
 
         $data['absensi'] = $this->AbsenModel->getByKode($kode_absen);
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, $id_pegawai);

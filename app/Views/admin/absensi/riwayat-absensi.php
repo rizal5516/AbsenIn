@@ -10,7 +10,7 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Riwayat Absensi
+                            <h4 class="card-title">Riwayat Presensi
                                 <?= $absensi->tgl_absen; ?></h4>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                         <div class="table-editable">
                             <div class="search-form mb-3 col-md-4 float-right">
                                 <span class="table-add float-right mb-3">
-                                    <a href="<?= base_url('admin/absensi') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                                    <a href="<?= base_url('admin/absensi') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Kembali
                                             </span></i>
                                     </a>
                                 </span>
@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <th>Pegawai</th>
-                                        <th>Absen Masuk</th>
-                                        <th>Absen Pulang</th>
+                                        <th>Presensi Masuk</th>
+                                        <th>Presensi Pulang</th>
                                         <th>Total Jam Kerja</th>
                                         <th>Izin</th>
                                         <th></th>
@@ -54,7 +54,7 @@
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
                                                         <?php if ($absen->absen_masuk == 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Presensi</span>
                                                         <?php else : ?>
                                                             <?php if ($absen->status_masuk == 1) : ?>
                                                                 <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $absen->absen_masuk); ?></span>
@@ -70,7 +70,7 @@
                                                 <td>
                                                     <?php if ($absen->izin == null) : ?>
                                                         <?php if ($absen->absen_keluar == 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Presensi</span>
                                                         <?php else : ?>
                                                             <?= date('H : i', $absen->absen_keluar); ?>
                                                         <?php endif; ?>

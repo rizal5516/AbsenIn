@@ -11,7 +11,7 @@
                     <?php if ($detail_absensi->izin == null) : ?>
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Form Permohonan Izin Absensi</h4>
+                                <h4 class="card-title">Form Permohonan Izin Presensi</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
@@ -19,7 +19,7 @@
                                 <input type="hidden" name="kode_absen" value="<?= $detail_absensi->kode_absensi; ?>">
                                 <div class="mb-3">
                                     <label for="validationTextarea">Alasan</label>
-                                    <textarea name="alasan" class="form-control is-invalid" id="validationTextarea" placeholder="Masukkan Alasan Izin Absensi" cols="30" rows="10" required></textarea>
+                                    <textarea name="alasan" class="form-control is-invalid" id="validationTextarea" placeholder="Masukkan Alasan Izin Presensi" cols="30" rows="10" required></textarea>
                                 </div>
                                 <label>Bukti</label>
                                 <div class="custom-file">
@@ -32,7 +32,7 @@
                         <?php else : ?>
                             <div class="iq-card-header d-flex justify-content-between">
                                 <div class="iq-header-title">
-                                    <h4 class="card-title">Data Permohonan Izin Absensi</h4>
+                                    <h4 class="card-title">Data Permohonan Izin Presensi</h4>
                                 </div>
                             </div>
                             <div class="iq-card-body">

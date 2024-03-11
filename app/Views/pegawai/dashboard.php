@@ -17,7 +17,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Welcome <?= $pegawai->nama_pegawai ?></h4>
+                            <h4 class="card-title">Selamat Datang <?= $pegawai->nama_pegawai ?></h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -64,7 +64,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                         <a href="<?= base_url('pegawai/absensi'); ?>">
                                             <table class="table">
                                                 <tr>
-                                                    <th>Absen Hari Ini</th>
+                                                    <th>Presensi Hari Ini</th>
                                                     <td><?= $detail_absen->tgl_absen; ?></td>
 
                                                     <?php if ($detail_absen->status_izin == 0) : ?>
@@ -72,7 +72,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <td>
                                                             <?php if ($detail_absen->absen_masuk == 0) : ?>
                                                                 <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                    Absen</span>
+                                                                    Presensi</span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $detail_absen->absen_masuk); ?>
                                                                 <?php if ($detail_absen->status_masuk == 1) : ?>
@@ -87,9 +87,12 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <td>
                                                             <?php if ($detail_absen->absen_keluar == 0) : ?>
                                                                 <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                    Absen</span>
+                                                                    Presensi</span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $detail_absen->absen_keluar); ?>
+                                                                <?php if ($detail_absen->status_keluar == 1) : ?>
+                                                                    <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Terlambat</span>
+                                                                <?php endif; ?>
                                                             <?php endif; ?>
                                                         </td>
                                                     <?php endif; ?>
@@ -142,7 +145,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Jadwal Absen</h4>
+                            <h4 class="card-title">Jadwal Presensi</h4>
                         </div>
                     </div>
                     <div class="card">

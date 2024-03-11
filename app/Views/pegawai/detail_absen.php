@@ -9,7 +9,7 @@
             <div class="iq-card col-md-6">
                 <div class="iq-card-header d-flex justify-content-between">
                     <div class="iq-header-title">
-                        <h4 class="card-title">Absen Masuk</h4>
+                        <h4 class="card-title">Presensi Masuk</h4>
                     </div>
                 </div>
                 <div class="iq-card-body">
@@ -34,9 +34,9 @@
                                                 <li class="list-group-item"><span>Jadwal
                                                         Masuk:</span><?= $jabatan->jam_masuk; ?>
                                                 </li>
-                                                <li class="list-group-item"><span>Absen Masuk:</span>
+                                                <li class="list-group-item"><span>Presensi Masuk:</span>
                                                     <?= date('H:i', $detail_absen->absen_masuk); ?></li>
-                                                <li class="list-group-item"><span>Status Absen:</span>
+                                                <li class="list-group-item"><span>Status Presensi:</span>
                                                     <?php if ($detail_absen->status_masuk == 0) : ?>
                                                         <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sukses</span>
                                                     <?php else : ?>
@@ -46,7 +46,7 @@
                                             </ul>
                                         </div>
                                     <?php else : ?>
-                                        <div class="alert alert-danger">Belum Absen Masuk</div>
+                                        <div class="alert alert-danger">Belum Presensi Masuk</div>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -59,7 +59,7 @@
         <div class="iq-card col-md-6">
             <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
-                    <h4 class="card-title">Absen Pulang</h4>
+                    <h4 class="card-title">Presensi Pulang</h4>
                 </div>
             </div>
             <div class="iq-card-body">
@@ -84,17 +84,17 @@
                                             <li class="list-group-item"><span>Jadwal Pulang:</span>
                                                 <?= $jabatan->jam_keluar; ?>
                                             </li>
-                                            <li class="list-group-item"><span>Absen Pulang:</span>
+                                            <li class="list-group-item"><span>Presensi Pulang:</span>
                                                 <?= date('H:i', $detail_absen->absen_keluar); ?>
                                             <li class="list-group-item">
-                                                <span>Status Absen: </span>
+                                                <span>Status Presensi: </span>
                                                 <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sukses</span>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             <?php else : ?>
-                                <div class="alert alert-danger">Belum Absen Pulang</div>
+                                <div class="alert alert-danger">Belum Presensi Pulang</div>
                             <?php endif; ?>
                         </div>
                     </div>

@@ -23,7 +23,7 @@
                             Master</span><i class="icon-arrow-right iq-arrow-right"></i></a>
                     <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="<?= base_url('pegawai/absensi') ?>" class="<?= $menu['absensi']; ?>"><i class="icon-date_range"></i>Data
-                                Absen</a></li>
+                                Presensi</a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,8 +61,8 @@
                         <div class="iq-card shadow-none m-0">
                             <div class="iq-card-body p-0 ">
                                 <div class="user-bg-color p-3">
-                                    <h5 class="mb-0 text-white line-height">Hello <?= $pegawai->nama_pegawai ?></h5>
-                                    <span class="text-white font-size-12">Available</span>
+                                    <h5 class="mb-0 text-white line-height">Halo <?= $pegawai->nama_pegawai ?></h5>
+                                    <span class="text-white font-size-12">Tersedia</span>
                                 </div>
                                 <a href="<?= base_url('pegawai/profile') ?>" class="iq-sub-card iq-bg-primary-hover">
                                     <div class="media align-items-center">
@@ -70,14 +70,13 @@
                                             <i class="icon-user"></i>
                                         </div>
                                         <div class="media-body ml-3">
-                                            <h6 class="mb-0 ">My Profile</h6>
-                                            <p class="mb-0 font-size-12">View personal profile details.</p>
+                                            <h6 class="mb-0 ">Profil Saya</h6>
+                                            <p class="mb-0 font-size-12">Melihat detail profil pribadi.</p>
                                         </div>
                                     </div>
                                 </a>
                                 <div class="d-inline-block w-100 text-center p-3">
-                                    <a class="user-bg-color iq-sign-btn text-white" href="<?= base_url() ?>auth/logout" role="button">Sign
-                                        out<i class="icon-exit_to_app ml-2"></i></a>
+                                    <a class="user-bg-color iq-sign-btn text-white" href="<?= base_url() ?>auth/logout" role="button">Keluar<i class="icon-exit_to_app ml-2"></i></a>
                                 </div>
                             </div>
                         </div>

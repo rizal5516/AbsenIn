@@ -18,7 +18,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Absensi Hari Ini</h4>
+                            <h4 class="card-title">Presensi Hari Ini</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -41,7 +41,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                     <td>
                                                         <?php if ($detail_absen->absen_masuk == 0) : ?>
                                                             <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                    Absen</button></span>
+                                                                    Presensi</button></span>
                                                         <?php else : ?>
                                                             <?php if ($detail_absen->status_masuk == 1) : ?>
                                                                 <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $detail_absen->absen_masuk); ?></span>
@@ -53,9 +53,13 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                     <td>
                                                         <?php if ($detail_absen->absen_keluar == 0) : ?>
                                                             <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                    Absen</button></span>
+                                                                    Presensi</button></span>
                                                         <?php else : ?>
-                                                            <?= date('H : i', $detail_absen->absen_keluar); ?>
+                                                            <?php if ($detail_absen->status_keluar == 0) : ?>
+                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $detail_absen->absen_keluar); ?></span>
+                                                            <?php else : ?>
+                                                                <?= date('H : i', $detail_absen->absen_keluar); ?>
+                                                            <?php endif; ?>
                                                         <?php endif; ?>
                                                     </td>
                                                 <?php else : ?>
@@ -78,7 +82,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                 <td>
                                                     <?php if ($detail_absen->absen_masuk == null || $detail_absen->absen_keluar == null || $detail_absen->izin == null) : ?>
                                                         <?php if ($detail_absen->izin == null && $detail_absen->absen_keluar == null) : ?>
-                                                            <span class="table-remove"><a href="<?= base_url('pegawai/absen') ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-warning btn-rounded btn-sm my-0 mr-2">Absen</a></span>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/absen') ?>/<?= $detail_absen->kode_absensi; ?>" class="btn btn-danger btn-rounded btn-sm my-0 mr-2">Presensi</a></span>
                                                         <?php endif; ?>
 
                                                         <?php if ($detail_absen->absen_masuk != null && $detail_absen->absen_keluar != null) : ?>
@@ -86,7 +90,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <?php endif; ?>
 
                                                         <?php if ($detail_absen->absen_masuk == null && $detail_absen->absen_keluar == null && $detail_absen->izin == null) : ?>
-                                                            <span class="table-remove"><a href="<?= base_url('pegawai/izin_absen'); ?>/<?= $detail_absen->kode_absensi; ?>" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Izin</a></span>
+                                                            <span class="table-remove"><a href="<?= base_url('pegawai/izin_absen'); ?>/<?= $detail_absen->kode_absensi; ?>" class="btn btn-success btn-rounded btn-sm my-0 mr-2">Izin</a></span>
                                                         <?php endif; ?>
 
                                                         <?php if ($detail_absen->absen_masuk == null && $detail_absen->absen_keluar == null && $detail_absen->izin != null) : ?>
@@ -109,7 +113,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Riwayat Absensi</h4>
+                            <h4 class="card-title">Riwayat Presensi</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -142,7 +146,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <?php if ($ra->izin == null) : ?>
                                                             <?php if ($ra->absen_masuk == 0) : ?>
                                                                 <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                        Absen</button></span>
+                                                                        Presensi</button></span>
                                                             <?php else : ?>
                                                                 <?php if ($ra->status_masuk == 1) : ?>
                                                                     <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $ra->absen_masuk); ?></span>
@@ -158,9 +162,13 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                         <?php if ($ra->izin == null) : ?>
                                                             <?php if ($ra->absen_keluar == 0) : ?>
                                                                 <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
-                                                                        Absen</button></span>
+                                                                        Presensi</button></span>
                                                             <?php else : ?>
-                                                                <?= date('H : i', $ra->absen_keluar); ?>
+                                                                <?php if ($detail_absen->status_keluar == 1) : ?>
+                                                                    <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $detail_absen->absen_keluar); ?></span>
+                                                                <?php else : ?>
+                                                                    <?= date('H : i', $detail_absen->absen_keluar); ?>
+                                                                <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php else : ?>
                                                             IZIN

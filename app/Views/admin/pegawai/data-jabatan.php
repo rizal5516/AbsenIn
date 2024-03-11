@@ -18,8 +18,7 @@
                         <div class="table-editable">
                             <div class="search-form mb-3 col-md-4 float-right">
                                 <span class="table-add float-right mb-3">
-                                    <a href="<?= base_url('admin/tambah_jabatan') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
-                                                New</span></i>
+                                    <a href="<?= base_url('admin/tambah_jabatan') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Tambah Baru</span></i>
                                     </a>
                                 </span>
                                 <div class="input-group">
@@ -76,7 +75,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Edit Data Jabatan</h4>
+                                <h4 class="card-title">Ubah Data Jabatan</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">

@@ -67,9 +67,7 @@ class Pegawai extends BaseController
         ];
 
         // Plugin Tambahan
-        $data['plugin'] = '
-            
-        ';
+        $data['plugin'] = '';
 
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['pengaturan'] = $this->PengaturanModel->asObject()->first();
@@ -120,8 +118,9 @@ class Pegawai extends BaseController
 
         $current_password = $this->request->getVar('current_password');
         $new_password = $this->request->getVar('new_password');
+        $hashNP = password_hash($new_password, PASSWORD_DEFAULT);
 
-        if ($current_password != $pegawai->password) {
+        if (!password_verify($current_password, $pegawai->password)) {
             session()->setFlashdata('pesan', "
                 <script>
                     Swal.fire(
@@ -136,7 +135,7 @@ class Pegawai extends BaseController
         }
 
         $this->PegawaiModel
-            ->set('password', $new_password)
+            ->set('password', $hashNP)
             ->where('id_pegawai', session()->get('id_pegawai'))
             ->update();
 
@@ -268,7 +267,7 @@ class Pegawai extends BaseController
 
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 
-        // CEK APAKAH DIA TERLAMBAT
+        // Cek Status Keterlambatan
         if (strtotime($waktu_absen) > strtotime($jabatan->jam_masuk) + 900) {
             $terlambat = 1; // 1 Berarti Telambat
         } else {
@@ -366,10 +365,19 @@ class Pegawai extends BaseController
         }
 
         // CEK APAKAH DIA TERLAMBAT
-        if (strtotime($waktu_absen) > strtotime($jabatan->jam_keluar) + 10800) {
-            $terlambat = 1; // 1 Berarti Telambat
-        } else {
-            $terlambat = 0; // 0 Berarti tidak terlambat
+        if ($pegawai->lembur == 1) {
+            $jam_lembur = strtotime($jabatan->jam_keluar) + 7200; // Menambah 2 jam (7200 detik)
+            if (strtotime($waktu_absen) > $jam_lembur) {
+                $terlambat = 1; // 1 Berarti Telambat
+            } else {
+                $terlambat = 0; // 0 Berarti tidak terlambat
+            }
+            $jam_lembur = strtotime($jabatan->jam_keluar) + 1800; // Menambah 30 menit (1800 detik)
+            if (strtotime($waktu_absen) > $jam_lembur) {
+                $terlambat = 1; // 1 Berarti Telambat
+            } else {
+                $terlambat = 0; // 0 Berarti tidak terlambat
+            }
         }
 
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
@@ -421,9 +429,7 @@ class Pegawai extends BaseController
         ];
 
         // Plugin Tambahan
-        $data['plugin'] = '
-            
-        ';
+        $data['plugin'] = '';
 
         $data['pegawai'] = $this->PegawaiModel->getByEmail(session()->get('email'));
         $data['detail_absensi'] = $this->AbsenDetailModel->getByKodeAndIdPegawai($kode_absen, session()->get('id_pegawai'));

@@ -12,6 +12,11 @@
                         <div class="iq-header-title">
                             <h4 class="card-title">Tambah Data Jabatan</h4>
                         </div>
+                        <span class="table-add float-right mb-3 m-3 ">
+                            <a href="<?= base_url('admin/jabatan') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Kembali
+                                    </span></i>
+                            </a>
+                        </span>
                     </div>
                     <div class="iq-card-body">
                         <form action="<?= base_url('admin/tambah_jabatan_'); ?>" method="POST" class="text-center mt-4">
@@ -39,7 +44,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Add</button>
+                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Tambah</button>
                         </form>
                     </div>
                 </div>

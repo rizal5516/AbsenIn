@@ -9,7 +9,7 @@ class PegawaiModel extends Model
     protected $table            = 'pegawai';
     protected $primaryKey       = 'id_pegawai';
     protected $protectFields    = true;
-    protected $allowedFields    = ['nip', 'nama_pegawai', 'jenis_kelamin', 'jabatan', 'email', 'gaji_pokok', 'password', 'gambar', 'is_active', 'role'];
+    protected $allowedFields    = ['nip', 'nama_pegawai', 'jenis_kelamin', 'jabatan', 'email', 'gaji_pokok', 'password', 'gambar', 'is_active', 'lembur', 'role'];
 
     public function getAll()
     {
@@ -39,6 +39,14 @@ class PegawaiModel extends Model
         return $this
             ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
             ->where('pegawai.is_active', '1')
+            ->get()->getResultObject();
+    }
+
+    public function getLemburPegawai()
+    {
+        return $this
+            ->join('jabatan', 'jabatan.id_jabatan=pegawai.jabatan')
+            ->where('pegawai.lembur', '1')
             ->get()->getResultObject();
     }
 

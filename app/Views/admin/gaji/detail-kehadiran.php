@@ -11,7 +11,7 @@
                     <h4 class="card-title">Detail Kehadiran Bulanan <?= $pegawai->nama_pegawai; ?></h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Kembali
                             </span></i>
                     </a>
                 </span>
@@ -134,10 +134,10 @@
                                                     <!-- Status Masuk -->
                                                     <td>
                                                         <?php if ($abs->absen_masuk != 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah Absen</span>
+                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah Presensi</span>
                                                         <?php else : ?>
                                                             <?php if ($abs->absen_masuk == 0) : ?>
-                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Presensi</span>
                                                             <?php else : ?>
                                                             <?php endif; ?>
                                                         <?php endif; ?>
@@ -175,10 +175,10 @@
                                                     <!-- Status Keluar -->
                                                     <td>
                                                         <?php if ($abs->absen_keluar != 0) : ?>
-                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah Absen</span>
+                                                            <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Sudah Presensi</span>
                                                         <?php else : ?>
                                                             <?php if ($abs->absen_keluar == 0) : ?>
-                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Absen</span>
+                                                                <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Presensi</span>
                                                             <?php else : ?>
                                                             <?php endif; ?>
                                                         <?php endif; ?>
@@ -190,7 +190,7 @@
                                                             <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Data Tidak Lengkap</span>
                                                         <?php else : ?>
                                                             <?php if ($abs->status_keluar == 1) : ?>
-                                                                <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Telat Absen Pulang</span>
+                                                                <span class="btn iq-bg-info btn-rounded btn-sm my-0 mr-2">Telat Presensi Pulang</span>
                                                             <?php else : ?>
                                                                 <?php
                                                                 $absenMasuk = $abs->absen_masuk;
@@ -235,6 +235,7 @@
                                         <th>Keterangan</th>
                                         <th>OnTime CheckIn</th>
                                         <th>OnTime CheckOut</th>
+                                        <th>Denda</th>
                                         <th>Total Jam Kerja</th>
                                     </tr>
                                 </thead>
@@ -242,9 +243,10 @@
                                     <?php if ($detail_bulan != null) : ?>
                                         <?php foreach ($detail_bulan as $bln) : ?>
                                             <tr>
-                                                <td><?= date('F Y', strtotime($bln->bulanSaja)); ?></td>
+                                                <td><?= date('F Y', strtotime($bln->tanggalKeterangan)); ?></td>
                                                 <td><?= $bln->onTimeIn; ?></td>
                                                 <td><?= $bln->onTimeOut; ?></td>
+                                                <td><?= $bln->lateTimeIn; ?></td>
                                                 <td>
                                                     <?php
                                                     // Tampilkan total jam kerja

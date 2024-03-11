@@ -13,6 +13,11 @@
                         <div class="iq-header-title">
                             <h4 class="card-title">Tambah Data Pegawai</h4>
                         </div>
+                        <span class="table-add float-right mb-3 m-3 ">
+                            <a href="<?= base_url('admin/pegawai') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Kembali
+                                    </span></i>
+                            </a>
+                        </span>
                     </div>
                     <div class="iq-card-body">
                         <form action="<?= base_url('admin/tambah_pegawai_'); ?>" method="POST" enctype="multipart/form-data" class="text-center mt-4">
@@ -23,7 +28,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input type="text" class="form-control" name="nip" required />
+                                                <input type="text" class="form-control" name="nip" pattern="[0-9]*" required />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -60,7 +65,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Gaji Pokok</label>
-                                                <input type="text" class="form-control" name="gaji_pokok" required />
+                                                <input type="text" class="form-control" name="gaji_pokok" pattern="[0-9]*" required />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -78,14 +83,13 @@
                                                 </div>
                                                 <div class="custom-file">
                                                     <input type="file" name="gambar" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="previewImg();" accept=".jpg, .jpeg, .png">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose
-                                                        file</label>
+                                                    <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Add</button>
+                                <button class="btn user-bg-color text-white next action-button float-left mt-4">Tambah</button>
                         </form>
                     </div>
                 </div>

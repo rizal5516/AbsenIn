@@ -10,10 +10,10 @@
                 <div class="iq-card py-4">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Setting Absen & Gaji</h4>
+                            <h4 class="card-title">Pengaturan Presensi & Gaji</h4>
                             <p class="card-title text-muted">Atur Lokasi Kantor</p>
                             <p class="card-title text-muted">Atur Upah per Jam</p>
-                            <p class="card-title text-muted">Atur Bonus Siswa dan Absen</p>
+                            <p class="card-title text-muted">Atur Bonus Siswa dan Presensi</p>
                             <p class="card-title text-muted">Atur Denda</p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                     <p class="text-muted font-size-12">Bonus per Siswa</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label>Bonus Absen</label>
+                                    <label>Bonus Presensi</label>
                                     <input type="number" class="form-control" name="bonus_absen" value="<?= $pengaturan->bonus_absen; ?>">
                                     <p class="text-muted font-size-12">Bonus Tepat Waktu</p>
                                 </div>

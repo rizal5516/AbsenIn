@@ -18,8 +18,7 @@
                         <div class="table-editable">
                             <div class="search-form mb-3 col-md-4 float-right">
                                 <span class="table-add float-right mb-3">
-                                    <a href="<?= base_url('admin/tambah_pegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Add
-                                                New</span></i>
+                                    <a href="<?= base_url('admin/tambah_pegawai') ?>" class="btn btn-sm iq-bg-info"><i class="icon-plus1"><span class="pl-1">Tambah Baru</span></i>
                                     </a>
                                 </span>
                                 <div class="input-group">
@@ -35,6 +34,7 @@
                                         <th>Nama Pegawai</th>
                                         <th>Jabatan</th>
                                         <th>Status</th>
+                                        <th>Lembur</th>
                                         <th>Email</th>
                                         <th>Gaji Pokok</th>
                                         <th></th>
@@ -58,9 +58,16 @@
                                                 <td><?= $p->nama_jabatan; ?></td>
                                                 <td>
                                                     <?php if ($p->is_active == 1) : ?>
-                                                        <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Active</button></span>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Aktif</button></span>
                                                     <?php else : ?>
-                                                        <span class="table-remove"><button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Deactive</button></span>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Tidak Aktif</button></span>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($p->lembur == 1) : ?>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Ya</button></span>
+                                                    <?php else : ?>
+                                                        <span class="table-remove"><button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Tidak</button></span>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?= $p->email; ?></td>
@@ -91,7 +98,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Edit Data Pegawai</h4>
+                                <h4 class="card-title">Ubah Data Pegawai</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
@@ -142,16 +149,25 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="text" class="form-control" id="password" name="password" required />
+                                                    <label>Reset Password</label>
+                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Masukan Password Baru" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="is_active">Status</label>
-                                                    <select class="form-control" id="is_active" name="is_active" title="Select Product Category" data-live-search="true" required>
-                                                        <option value="1">Active</option>
-                                                        <option value="0">Deactive</option>
+                                                    <select class="form-control" id="is_active" name="is_active" title="Pilih" data-live-search="true" required>
+                                                        <option value="1">Aktif</option>
+                                                        <option value="0">Tidak Aktif</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="lembur">Lembur</label>
+                                                    <select class="form-control" id="lembur" name="lembur" title="Pilih" data-live-search="true" required>
+                                                        <option value="1">Ya</option>
+                                                        <option value="0">Tidak</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -165,13 +181,13 @@
                                             <div class="col-md-12">
                                                 <div class="col-md-12 form-group input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputFotoPegawai">Choose
+                                                        <span class="input-group-text" id="inputFotoPegawai">Pilih
                                                             File</span>
                                                     </div>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" aria-describedby="inputFotoPegawai" name="gambar" id="input-foto" onchange="previewImg();" accept=".jpg, .jpeg, .png">
-                                                        <label class="custom-file-label" for="input-foto">Choose
-                                                            file</label>
+                                                        <label class="custom-file-label" for="input-foto">Pilih
+                                                            File</label>
                                                     </div>
                                                     <input type="hidden" name="gambar_lama" id="gambar_lama">
                                                 </div>
@@ -200,7 +216,7 @@
             },
             url: "<?= base_url('admin/edit_pegawai') ?>",
             success: function(data) {
-                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active, role) {
+                $.each(data, function(id_pegawai, nip, nama_pegawai, jenis_kelamin, jabatan, email, gaji_pokok, password, gambar, is_active, lembur, role) {
                     $("#id_pegawai").val(data.id_pegawai);
                     $("#nip").val(data.nip);
                     $("#nama_pegawai").val(data.nama_pegawai);
@@ -215,6 +231,7 @@
                     $(".gambar").html(gambar);
                     $("#gambar_lama").val(data.gambar);
                     $("#is_active").val(data.is_active);
+                    $("#lembur").val(data.lembur);
                 });
             }
         })

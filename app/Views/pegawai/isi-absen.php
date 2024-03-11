@@ -11,7 +11,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Absen Masuk</h4>
+                                <h4 class="card-title">Presensi Masuk</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
@@ -22,7 +22,7 @@
                                     <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil
                                         Gambar</button>
                                 <?php else : ?>
-                                    <div class="alert text-white bg-danger">Belum saatnya absen pulang</div>
+                                    <div class="alert text-white bg-danger">Belum saatnya presensi pulang</div>
                                 <?php endif; ?>
                                 </center>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Absen Pulang</h4>
+                                <h4 class="card-title">Presensi Pulang</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
@@ -69,7 +69,7 @@
                                     <div id="my_camera"></div>
                                     <button type="button" class="user-bg-color btn btn-secondary mt-2" onclick="take_picture();">Ambil Gambar</button>
                                 <?php else : ?>
-                                    <div class="alert text-white bg-danger">Belum saatnya absen pulang</div>
+                                    <div class="alert text-white bg-danger">Belum saatnya presensi pulang</div>
                                 <?php endif; ?>
                                 </center>
                         </div>

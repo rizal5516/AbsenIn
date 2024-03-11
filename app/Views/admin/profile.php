@@ -11,7 +11,7 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Account Settings</h4>
+                            <h4 class="card-title">Pengaturan Akun</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -34,17 +34,15 @@
                                             </div>
                                             <div class="col-md-12 form-group input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="changeAvatar">Choose File</span>
+                                                    <span class="input-group-text" id="changeAvatar">Pilih File</span>
                                                 </div>
                                                 <div class="custom-file">
                                                     <input type="hidden" class="form-control" name="gambar_lama" value="<?= $admin->gambar; ?>">
                                                     <input type="file" name="gambar" class="custom-file-input" id="changeAvatar" aria-describedby="changeAvatar">
-                                                    <label class="custom-file-label" for="changeAvatar">Choose
-                                                        file</label>
+                                                    <label class="custom-file-label" for="changeAvatar">Pilih File</label>
                                                 </div>
                                             </div>
-                                            <button class="btn user-bg-color mt-2 ml-3 p-2 text-white">Save
-                                                Settings</button>
+                                            <button class="btn user-bg-color mt-2 ml-3 p-2 text-white">Simpan Pengaturan</button>
                                         </div>
                                     </form>
                                 </div>
@@ -58,7 +56,7 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Password Settings</h4>
+                            <h4 class="card-title">Pengaturan Password</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -73,13 +71,13 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>New Password</label>
-                                            <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
+                                            <label>Password Baru</label>
+                                            <input type="password" class="form-control" name="new_password" placeholder="Password Baru" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn user-bg-color mt-3 ml-3 p-2 text-white">Save Settings</button>
+                            <button class="btn user-bg-color mt-3 ml-3 p-2 text-white">Simpan Pengaturan</button>
                         </form>
                     </div>
                 </div>

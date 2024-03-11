@@ -11,7 +11,7 @@
                     <h4 class="card-title">Riwayat Gaji</h4>
                 </div>
                 <span class="table-add float-right mb-3 m-3 ">
-                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Back
+                    <a href="<?= base_url('gaji/dataPenggajian') ?>" class="btn btn-sm iq-bg-danger"><i class="icon-arrow_back"><span class="pl-1">Kembali
                             </span></i>
                     </a>
                 </span>
@@ -82,20 +82,20 @@
                                 <thead>
                                     <tr>
                                         <th>Upah per jam</th>
-                                        <th>Denda absen</th>
+                                        <th>Denda presensi</th>
                                         <th>Bonus siswa</th>
                                         <th>Bonus denda</th>
                                         <th>Bulan</th>
                                         <th>Jumlah jam kerja</th>
                                         <th>Jumlah denda</th>
                                         <th>Jumlah bonus siswa</th>
-                                        <th>Jumlah bonus absen</th>
+                                        <th>Jumlah bonus presensi</th>
                                         <th>Gaji Pokok</th>
                                         <th>Tunjangan</th>
                                         <th>Total upah</th>
                                         <th>Total denda</th>
                                         <th>Total bonus siswa</th>
-                                        <th>Total bonus absen</th>
+                                        <th>Total bonus presensi</th>
                                         <th>Gaji Bersih</th>
                                         <th></th>
                                     </tr>

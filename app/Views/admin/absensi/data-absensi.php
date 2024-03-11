@@ -11,7 +11,7 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Absensi Hari Ini</h4>
+                            <h4 class="card-title">Presensi Hari Ini</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
@@ -60,7 +60,7 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Riwayat Absensi</h4>
+                            <h4 class="card-title">Riwayat Presensi</h4>
                         </div>
                     </div>
                     <div class="iq-card-body">
