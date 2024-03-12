@@ -373,6 +373,7 @@ class Pegawai extends BaseController
             } else {
                 $terlambat = 0; // 0 Berarti tidak terlambat
             }
+        } else {
             $jam_lembur = strtotime($jabatan->jam_keluar) + 1800; // Menambah 30 menit (1800 detik)
             if (strtotime($waktu_absen) > $jam_lembur) {
                 $terlambat = 1; // 1 Berarti Telambat
@@ -380,6 +381,7 @@ class Pegawai extends BaseController
                 $terlambat = 0; // 0 Berarti tidak terlambat
             }
         }
+        
 
         // echo "Jarak Saya dengan Kantor adalah $jarak M, Batas Jarak yg di tetapkan adalah $pengaturan_absen->batas_jarak M";
 

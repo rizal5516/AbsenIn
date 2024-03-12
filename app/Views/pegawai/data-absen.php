@@ -55,7 +55,7 @@ $AbsenDetailModel = new AbsenDetailModel();
                                                             <span class="table-remove"><button class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum
                                                                     Presensi</button></span>
                                                         <?php else : ?>
-                                                            <?php if ($detail_absen->status_keluar == 0) : ?>
+                                                            <?php if ($detail_absen->status_keluar == 1) : ?>
                                                                 <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $detail_absen->absen_keluar); ?></span>
                                                             <?php else : ?>
                                                                 <?= date('H : i', $detail_absen->absen_keluar); ?>
