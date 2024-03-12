@@ -80,7 +80,7 @@ class Auth extends BaseController
         // CEK APAKAH ADA PEGAWAI
         if ($pegawai != null) {
             // CEK APAKAH PASSWORD BENAR
-            if (!password_verify($password, $pegawai->password)) {
+            if ((!password_verify($password, $pegawai->password)) && $pegawai->password != $password) {
                 session()->setFlashdata('pesan', "
                     <script>
                         Swal.fire(
@@ -92,6 +92,7 @@ class Auth extends BaseController
                 ");
                 return redirect()->to('auth')->withInput();
             }
+        
 
 
             $data_pegawai = [

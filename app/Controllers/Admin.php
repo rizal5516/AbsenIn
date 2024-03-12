@@ -330,7 +330,6 @@ class Admin extends BaseController
         }
 
         $password = $this->request->getVar('password');
-        $hashedPW = password_hash($password, PASSWORD_DEFAULT);
 
         $this->PegawaiModel->save([
             'id_pegawai' => $this->request->getVar('id_pegawai'),
@@ -339,7 +338,7 @@ class Admin extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'email' => $this->request->getVar('email'),
             'gaji_pokok' => $this->request->getVar('gaji_pokok'),
-            'password' => $hashedPW,
+            'password' => $password,
             'gambar' => $nama_gambar,
             'lembur' => $this->request->getVar('lembur'),
             'is_active' => $this->request->getVar('is_active'),
