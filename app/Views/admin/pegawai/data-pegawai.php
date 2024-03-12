@@ -150,7 +150,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Reset Password</label>
-                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Masukan Password Baru" required />
+                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Masukan Password Baru"  />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -224,7 +224,7 @@
                     $("#jabatan").val(data.jabatan);
                     $("#email").val(data.email);
                     $("#gaji_pokok").val(data.gaji_pokok);
-                    $("#password").val(data.password);
+                    $("#password").val(data.password.hide());
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
                         .gambar +
                         `" class="img-thumbnail foto-pegawai" alt="Foto Pegawai" style="width: 90%;">`;
