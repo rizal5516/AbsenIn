@@ -224,7 +224,7 @@
                     $("#jabatan").val(data.jabatan);
                     $("#email").val(data.email);
                     $("#gaji_pokok").val(data.gaji_pokok);
-                    $("#password").val(data.password.hide());
+                    $("#password").val(data.password).attr('type','password');
                     var gambar = `<img src="<?= base_url('assets/img/pegawai'); ?>/` + data
                         .gambar +
                         `" class="img-thumbnail foto-pegawai" alt="Foto Pegawai" style="width: 90%;">`;
