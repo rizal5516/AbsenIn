@@ -60,23 +60,12 @@
     </footer>
     <!-- Footer END -->
 
-    <!-- Jquery Counter Up JavaScript -->
-    <script src="<?= base_url() ?>/assets/template/js/jquery.counterup.min.js"></script>
 
     <!-- Magnific Popup JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/jquery.magnific-popup.min.js"></script>
 
-    <!-- Smooth Scrollbar JavaScript -->
-    <script src="<?= base_url() ?>/assets/template/js/smooth-scrollbar.js"></script>
-
-    <!-- Slick JavaScript -->
-    <script src="<?= base_url() ?>/assets/template/js/slick.min.js"></script>
-
     <!-- Select2 JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/select2.min.js"></script>
-
-    <!-- Chart Custom JavaScript -->
-    <script src="<?= base_url() ?>/assets/template/js/chart-custom.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="<?= base_url() ?>/assets/template/js/custom.js"></script>
