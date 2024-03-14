@@ -365,7 +365,7 @@ class Pegawai extends BaseController
             return redirect()->to('pegawai/absen' . '/' . $kode_absensi);
         }
 
-        // CEK APAKAH DIA TERLAMBAT
+        // CEK APAKAH DIA LEMBUR
         if ($pegawai->lembur == 1) {
             $jam_lembur = strtotime($jabatan->jam_keluar) + 7200; // Menambah 2 jam (7200 detik)
             if (strtotime($waktu_absen) > $jam_lembur) {
@@ -373,6 +373,8 @@ class Pegawai extends BaseController
             } else {
                 $terlambat = 0; // 0 Berarti tidak terlambat
             }
+        } else {
+
             $jam_lembur = strtotime($jabatan->jam_keluar) + 1800; // Menambah 30 menit (1800 detik)
             if (strtotime($waktu_absen) > $jam_lembur) {
                 $terlambat = 1; // 1 Berarti Telambat

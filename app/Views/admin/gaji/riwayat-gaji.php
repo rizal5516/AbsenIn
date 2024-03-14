@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <table id="datatable_riwayat-penggajian" class="table table-bordered table-responsive-md table-striped text-center">
+                            <table id="datatable_riwayat-penggajian" class="table table-bordered table-responsive-md table-responsive table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th>Upah per jam</th>

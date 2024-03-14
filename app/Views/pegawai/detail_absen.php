@@ -86,9 +86,12 @@
                                             </li>
                                             <li class="list-group-item"><span>Presensi Pulang:</span>
                                                 <?= date('H:i', $detail_absen->absen_keluar); ?>
-                                            <li class="list-group-item">
-                                                <span>Status Presensi: </span>
-                                                <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sukses</span>
+                                            <li class="list-group-item"><span>Status Presensi:</span>
+                                                <?php if ($detail_absen->status_keluar == 0) : ?>
+                                                    <span class="btn iq-bg-success btn-rounded btn-sm my-0 mr-2">Sukses</span>
+                                                <?php else : ?>
+                                                    <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2">Terlambat</span>
+                                                <?php endif; ?>
                                             </li>
                                         </ul>
                                     </div>

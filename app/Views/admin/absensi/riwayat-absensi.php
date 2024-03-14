@@ -72,7 +72,11 @@
                                                         <?php if ($absen->absen_keluar == 0) : ?>
                                                             <span class="btn iq-bg-primary btn-rounded btn-sm my-0 mr-2">Belum Presensi</span>
                                                         <?php else : ?>
-                                                            <?= date('H : i', $absen->absen_keluar); ?>
+                                                            <?php if ($absen->status_keluar == 1) : ?>
+                                                                <span class="btn iq-bg-danger btn-rounded btn-sm my-0 mr-2"><?= date('H : i', $absen->absen_keluar); ?></span>
+                                                            <?php else : ?>
+                                                                <?= date('H : i', $absen->absen_keluar); ?>
+                                                            <?php endif; ?>
                                                         <?php endif; ?>
                                                     <?php else : ?>
                                                         IZIN

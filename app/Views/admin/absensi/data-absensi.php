@@ -151,8 +151,13 @@
             }
         ],
         "order": [
-            [1, "asc"],
-        ]
+            [0, "desc"]
+        ],
+        "columnDefs": [{
+            "type": "date",
+            "targets": 0,
+            "orderSequence": ["desc", "asc"]
+        }]
     });
 
     // Ubah desain search field
