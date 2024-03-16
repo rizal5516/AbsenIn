@@ -154,10 +154,10 @@ class Gaji extends BaseController
             if ($absenKeluar == NULL || $detail->status_keluar == 1) {
                 $diff = 0;
             } else {
-                $diff = floor(abs($absenMasuk - $absenKeluar) / 60);
+                $diff = floor(abs($absenMasuk - $absenKeluar));
             }
             $jumlahJamKerja += $diff;
-            $totaljamkerja = floor($jumlahJamKerja / 60);
+            $totaljamkerja = floor($jumlahJamKerja / 3600);
         }
 
         $pengaturan = $this->PengaturanModel->asObject()->first();
